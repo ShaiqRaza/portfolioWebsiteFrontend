@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import {Header} from './components'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import {Layout} from './Layout'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Header/>
+    element: <Layout/>
   }
 ])
 
