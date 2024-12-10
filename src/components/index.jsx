@@ -6,3 +6,6 @@ export {Footer}
 
 import Home from './home'
 export {Home}
+
+import Skills from './skills'
+export {Skills}
