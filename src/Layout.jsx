@@ -3,9 +3,11 @@ import { Outlet } from 'react-router-dom'
 const Layout = ()=>{
     return (
       <>
-        <Header/>
-        <Outlet/>
-        <Footer/>
+        <div className='h-screen w-screen'>
+          <Header/>
+          <Outlet/>
+          <Footer/>
+        </div>
       </>
     )
   }
