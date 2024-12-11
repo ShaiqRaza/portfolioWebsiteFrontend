@@ -2,7 +2,7 @@ import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaPhoneAlt } from 'reac
 
 const Footer = () => {
   return (
-    <div className="z-50 text-sm text-gray-500 flex flex-col items-center justify-center bg-gray-900 py-6 w-full xs:text-[14px] text-[13px]">
+    <div className="z-50 text-sm text-gray-500 flex flex-col items-center justify-center bg-gray-900 py-8 w-full xs:text-[14px] text-[13px]">
       {/* Copyright Section */}
       <div className="flex items-center mb-4">
         © 2024

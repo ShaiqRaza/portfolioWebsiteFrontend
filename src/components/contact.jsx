@@ -31,7 +31,7 @@ const Contact = () => {
             }}  onMouseLeave={()=>{
                 sethovered(false)
             }} className={
-                `w-full max-w-lg ${ishovered? "bg-gradient-to-r from-blue-600 to-indigo-600": "bg-gray-800"} p-10 rounded-lg transform transition-all duration-300 shadow-2xl`
+                `w-full max-w-lg ${ishovered? "bg-gradient-to-r from-blue-600 to-indigo-600": "bg-gray-800"} p-10 rounded-lg transform transition-all duration-300`
             }>
                 <div className="mb-6">
                     <label htmlFor="name" className="block text-lg font-semibold text-white">Your Name</label>
