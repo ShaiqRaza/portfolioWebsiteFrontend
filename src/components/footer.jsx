@@ -2,7 +2,7 @@ import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaPhoneAlt } from 'reac
 
 const Footer = () => {
   return (
-    <div className="z-50 text-sm text-gray-500 flex flex-col items-center justify-center bg-gray-900 py-6 w-full">
+    <div className="z-50 text-sm text-gray-500 flex flex-col items-center justify-center bg-gray-900 py-6 w-full xs:text-[14px] text-[13px]">
       {/* Copyright Section */}
       <div className="flex items-center mb-4">
         © 2024
@@ -15,16 +15,16 @@ const Footer = () => {
       {/* Social Media Links */}
       <div className="flex space-x-6 mb-4">
         <a href="https://www.facebook.com" className=" hover:text-blue-500">
-          <FaFacebook size={24} />
+          <FaFacebook size={22} />
         </a>
         <a href="https://www.twitter.com" className=" hover:text-blue-400">
-          <FaTwitter size={24} />
+          <FaTwitter size={22} />
         </a>
         <a href="https://www.instagram.com" className=" hover:text-pink-500">
-          <FaInstagram size={24} />
+          <FaInstagram size={22} />
         </a>
         <a href="https://www.linkedin.com" className=" hover:text-blue-700">
-          <FaLinkedin size={24} />
+          <FaLinkedin size={22} />
         </a>
       </div>
 

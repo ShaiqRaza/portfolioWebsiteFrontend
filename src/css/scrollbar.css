@@ -10,16 +10,29 @@
 .custom-scrollbar::-webkit-scrollbar-track {
     background: transparent; /* Transparent track */
 }
+/* Base styles for the custom scrollbar */
 .custom-scrollbar::-webkit-scrollbar-thumb {
     cursor: pointer;
-    background: rgba(107, 114, 128, 0); /* Fully transparent initially */
     border-radius: 9999px; /* Rounded thumb */
     transition: background 0.3s ease; /* Smooth transition for color change */
+    background: rgba(107, 114, 128, 0); /* Fully transparent initially */
 }
 
-.custom-scrollbar:hover::-webkit-scrollbar-thumb {
-    background: rgba(107, 114, 128, 1); /* Fully opaque gray on hover */
+/* Hover effect for screens wider than 800px */
+@media (min-width: 800px) {
+    .custom-scrollbar:hover::-webkit-scrollbar-thumb {
+        background: rgba(107, 114, 128, 1); /* Fully opaque gray on hover */
+    }
 }
+
+/* For screens smaller than 800px, make the thumb visible by default */
+@media (max-width: 999px) {
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(107, 114, 128, 1); /* Make the thumb visible (opaque) */
+    }
+}
+
+
 .custom-scrollbar::-webkit-scrollbar-button {
     display: none; /* Hide up/down arrows */
 }
