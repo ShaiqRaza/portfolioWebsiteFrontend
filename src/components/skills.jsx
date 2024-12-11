@@ -1,11 +1,14 @@
+import '../css/scrollbar.css'
+
 const Skill = ({
     name,
     description
 })=>{
-    return (
+    return (       
         <div className="flex flex-col items-center justify-center bg-gray-700 p-6 rounded-lg shadow-md">
             <h3 className="font-bold text-xl mb-3 uppercase">{name}</h3>
-            <p className="text-sm text-gray-300 overflow-y-auto h-[48px] break-words scrollbar:!w-10 scrollbar-thumb-rounded scrollbar-thumb-gray-500">{description}</p>
+            <p className="text-sm text-gray-300 overflow-y-auto h-[40px] break-words custom-scrollbar">
+                {description}</p>
         </div>
     )
 }

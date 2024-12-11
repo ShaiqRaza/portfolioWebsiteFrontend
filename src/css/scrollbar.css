@@ -1,0 +1,25 @@
+.custom-scrollbar {
+    overflow: auto;
+    max-height: 20rem; /* Example height */
+}
+
+/* Webkit Scrollbar Styles */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px; /* Thin scrollbar width */
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent; /* Transparent track */
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    cursor: pointer;
+    background: rgba(107, 114, 128, 0); /* Fully transparent initially */
+    border-radius: 9999px; /* Rounded thumb */
+    transition: background 0.3s ease; /* Smooth transition for color change */
+}
+
+.custom-scrollbar:hover::-webkit-scrollbar-thumb {
+    background: rgba(107, 114, 128, 1); /* Fully opaque gray on hover */
+}
+.custom-scrollbar::-webkit-scrollbar-button {
+    display: none; /* Hide up/down arrows */
+}
