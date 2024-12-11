@@ -73,7 +73,7 @@ const Contact = () => {
                 </div>
 
                 <button type="submit" className={
-                    `w-full ${ishovered? "bg-gray-800 hover:bg-gray-900":"bg-gradient-to-r from-blue-600 to-indigo-600"}  text-white p-4 rounded-lg font-semibold hover:scale-105 transform transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500`
+                    `w-full ${ishovered? "bg-gray-800 hover:bg-gray-900":"bg-gradient-to-r from-blue-600 to-indigo-600"}  text-white p-4 rounded-lg font-semibold transform transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500`
                 }>
                     Send Message
                 </button>
