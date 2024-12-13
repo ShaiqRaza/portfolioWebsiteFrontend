@@ -31,32 +31,34 @@ const Contact = () => {
             }}  onMouseLeave={()=>{
                 sethovered(false)
             }} className={
-                `w-full max-w-lg ${ishovered? "bg-gradient-to-r from-blue-600 to-indigo-600": "bg-gray-800"} p-10 rounded-lg transform transition-all duration-300`
+                `w-full ${ishovered? "bg-gradient-to-r from-blue-600 to-indigo-600": "bg-gray-800"} p-10 rounded-lg transform transition-all duration-300`
             }>
-                <div className="mb-6">
-                    <label htmlFor="name" className="block text-lg font-semibold text-white">Your Name</label>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="w-full sm:px-4 px-3 sm:py-2 py-1 mt-2 bg-transparent border-2 border-white rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all resize-none"
-                    />
-                </div>
+                <div className='grid sm:grid-cols-2 gap-[5%]'>
+                    <div className="mb-6">
+                        <label htmlFor="name" className="block text-lg font-semibold text-white">Your Name</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            required
+                            className="w-full sm:px-4 px-3 sm:py-2 py-1 mt-2 bg-transparent border-2 border-white rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all resize-none"
+                        />
+                    </div>
 
-                <div className="mb-6">
-                    <label htmlFor="email" className="block text-lg font-semibold text-white">Email Address</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="w-full sm:px-4 px-3 sm:py-2 py-1 mt-2 bg-transparent border-2 border-white rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all resize-none"
-                    />
+                    <div className="mb-6">
+                        <label htmlFor="email" className="block text-lg font-semibold text-white">Email Address</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                            className="w-full sm:px-4 px-3 sm:py-2 py-1 mt-2 bg-transparent border-2 border-white rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all resize-none"
+                        />
+                    </div>
                 </div>
 
                 <div className="mb-6">
