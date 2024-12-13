@@ -9,3 +9,6 @@ export {Home}
 
 import Skills from './skills'
 export {Skills}
+
+import Login from './login'
+export {Login}

@@ -54,7 +54,7 @@ const Header = ()=>{
                 </NavLink>
             </div>
             <NavLink 
-                to='/owner'
+                to='/login'
                 className={({isActive})=>
                     `${isActive? "text-cyan-400": "text-white hover:text-cyan-400"} font-bold lg:text-[18px] md:text[17px] sm:text-[16px] xs:text-[15px] text-[14px]`
                 }>
