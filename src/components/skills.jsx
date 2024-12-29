@@ -16,7 +16,7 @@ const Skill = ({
 
 const Skills = () => {
     return (
-        <div className="w-full text-white flex flex-col items-center lg:pt-12 md:pt-10 pt-8">
+        <div className="w-full text-white flex flex-col items-center lg:py-12 md:py-10 py-8 mb-6 h-full">
             <h2 className="text-center font-bold text-2xl lg:text-3xl mb-6 text-blue-500 animate__animated animate__fadeIn">My Skills</h2>
             <div className="w-full columns-1 sm:columns-2 lg:columns-3 gap-2">
                 <Skill name="HTML" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Id sunt ad explicabo eligendi quasi cumque sequi suscipit voluptatum aspernatur minus, vitae, maxime distinctio modi impedit vel, doloribus at. Ipsa, maxime." />
