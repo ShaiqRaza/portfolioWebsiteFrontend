@@ -12,3 +12,6 @@ export {Skills}
 
 import Login from './login'
 export {Login}
+
+import Projects from './projects'
+export {Projects}
