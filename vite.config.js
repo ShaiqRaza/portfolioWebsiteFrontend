@@ -9,7 +9,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: process.env.VITE_API_BASE_URL, // Your backend server URL
+        target: process.env.BACKEND_URL, // Your backend server URL
         changeOrigin: true, // Allows CORS
         rewrite: (path) => path.replace(/^\/api/, ''), // Optionally rewrite the path
       },
