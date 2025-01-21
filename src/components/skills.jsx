@@ -1,4 +1,6 @@
 import '../css/scrollbar.css'
+import axios from 'axios'
+import {useState, useEffect} from 'react'
 
 const Skill = ({
     name,
@@ -15,16 +17,32 @@ const Skill = ({
 }
 
 const Skills = () => {
+
+    const [skills, setSkills] = useState(null);
+
+    useEffect(()=>{
+        axios.get('/api/skill/get-all')
+        .then(response=>{
+            setSkills(response.data.data)
+        })
+        .catch(err=>{
+            return (
+                <h1 className='text-5xl'>Something error occured</h1>
+            )
+        })
+    }, [])
+
     return (
         <div className="w-full text-white flex flex-col items-center lg:py-12 md:py-10 py-8 mb-6 h-full">
             <h2 className="text-center font-bold text-2xl lg:text-3xl mb-6 text-blue-500 animate__animated animate__fadeIn">My Skills</h2>
             <div className="w-full columns-1 sm:columns-2 lg:columns-3 gap-2">
-                <Skill name="HTML" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Id sunt ad explicabo eligendi quasi cumque sequi suscipit voluptatum aspernatur minus, vitae, maxime distinctio modi impedit vel, doloribus at. Ipsa, maxime." />
-                <Skill name="CSS" description="Lorem ipsum dolor sit amet consectetur adipisicing elit.  suscipit voluptatum aspernatur minus quasi cumque sequi suscipit voluptatum sequi suscipit voluptatum aspernatur minus quasi cumque sequi suscipit voluptatum aspernatur minus, vitae, maxime distinctio modi impedit vel, doloribus at. Ipsa, maxime." />
-                <Skill name="JavaScript" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Id sunt ad explicabo eligendi impedit vel, doloribus at. Ipsa, maxime." />
-                <Skill name="C++" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Id sunt ad explicabo eligendi quasi cumque sequi suscipit voluptatum aspernatur minus, vitae, maxime distinctio modi impedit vel, doloribus at. Ipsa, maxime." />
-                <Skill name="DSA" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Id sunt ad explicabo eligendi quasi cumque sequi suscipit voluptatum aspernatur minus, vitae, modi impedit vel, doloribus at. Ipsa, maxime." />
-                <Skill name="OOP" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Id sunt ad explicabo eligendi quasi cumque sequi suscipit voluptatum aspernatur minus, vitae, maxime quasi cumque sequi suscipit voluptatum aspernatur minus distinctio modi impedit vel, doloribus at. Ipsa, maxime." />
+                {
+                    skills?.map(skill=>{
+                        return (
+                            <Skill name={skill?.title} description={skill?.description} key={skill?._id}/>
+                        )
+                    })
+                }
             </div>
         </div>
     );
