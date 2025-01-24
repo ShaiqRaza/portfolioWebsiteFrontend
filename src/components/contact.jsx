@@ -1,5 +1,3 @@
-import dotenv from 'dotenv'
-dotenv.config();
 import { useState, useEffect } from 'react';
 import '../css/scrollbar.css';
 import axios from 'axios'
