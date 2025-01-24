@@ -5,8 +5,6 @@ const About = () => {
     
     const [about, setAbout] = useState(null);
 
-    console.log(import.meta.env)
-
     useEffect(()=>{
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/about/get`)
         .then((response)=>{
