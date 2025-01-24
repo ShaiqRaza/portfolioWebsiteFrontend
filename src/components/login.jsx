@@ -1,11 +1,22 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
+import axios from 'axios'
+
 const Login = ()=>{
-    const [ishovered, sethovered] = useState(false)
+    const [ishovered, sethovered] = useState(false);
+    const [formData, setFormData] = useState(null);
 
     const handleSubmission = (e)=>{
         e.preventDefault();
-        console.log(e)
+        setFormData({
+            email: e.target[0].value,
+            password: e.target[1].value
+        })
     }
+
+    useEffect(()=>{
+        if(formData)
+            axios.post('/api/auth/login', formData)
+    }, [formData])
 
     return (
         <div className="w-full h-[80vh] lg:pt-[100px] md:pt-[95px] sm:pt-[90px] xs:pt-[85px] xss:pt-[80px] pt-[75px] bg-gray-900 lg:px-20 md:px-16 sm:px-14 xs:px-12 xss:px-10 px-8 flex justify-center items-center">       
