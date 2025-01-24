@@ -14,7 +14,7 @@ const About = () => {
         })
         .catch((err)=>{
             return (
-                <h className='text-5xl'>Something Error Occured</h>
+                <h1 className='text-5xl'>Something Error Occured</h1>
             )
         })
     }, [])
