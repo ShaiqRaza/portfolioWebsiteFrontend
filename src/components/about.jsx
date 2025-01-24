@@ -1,8 +1,6 @@
 import axios from 'axios';  
 import { useEffect, useState } from 'react';
 
-
-
 const About = () => {
     
     const [about, setAbout] = useState(null);
@@ -21,7 +19,7 @@ const About = () => {
 
 
     return (
-        <div className="flex sm:flex-row flex-col justify-evenly items-center h-[80vh] w-full text-white sm:gap-2 px-[5vw]">
+        <div className="flex sm:flex-row flex-col justify-evenly items-center h-[80vh] w-full text-white sm:gap-2">
             <div className="flex justify-center sm:justify-end items-center sm:w-[40%] w-full sm:order-2 order-1 relative">
                 <img src={about?.avatar} alt="Image!" className="rounded-full z-20 lg:w-[350px] md:w-[270px] sm:w-[230px] w-[180px] lg:h-[350px] md:h-[270px] sm:h-[230px] h-[180px]" />
                 <div className='absolute lg:w-[350px] md:w-[270px] sm:w-[230px] w-[180px] lg:h-[350px] md:h-[270px] sm:h-[230px] h-[180px] flex justify-center items-center'>
