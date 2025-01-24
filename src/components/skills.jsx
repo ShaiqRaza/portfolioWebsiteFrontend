@@ -1,3 +1,5 @@
+import dotenv from 'dotenv'
+dotenv.config();
 import '../css/scrollbar.css'
 import axios from 'axios'
 import {useState, useEffect} from 'react'
@@ -21,7 +23,7 @@ const Skills = () => {
     const [skills, setSkills] = useState(null);
 
     useEffect(()=>{
-        axios.get('/api/skill/get-all')
+        axios.get(`${process.env.BACKEND_URL}/skill/get-all`)
         .then(response=>{
             setSkills(response.data.data)
         })

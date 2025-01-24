@@ -1,3 +1,5 @@
+import dotenv from 'dotenv'
+dotenv.config();
 import axios from 'axios';  
 import { useEffect, useState } from 'react';
 
@@ -6,7 +8,7 @@ const About = () => {
     const [about, setAbout] = useState(null);
 
     useEffect(()=>{
-        axios.get('/api/about/get')
+        axios.get(`${process.env.BACKEND_URL}/about/get`)
         .then((response)=>{
             setAbout(response.data.data);
         })

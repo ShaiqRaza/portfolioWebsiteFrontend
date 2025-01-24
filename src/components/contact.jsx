@@ -1,3 +1,5 @@
+import dotenv from 'dotenv'
+dotenv.config();
 import { useState, useEffect } from 'react';
 import '../css/scrollbar.css';
 import axios from 'axios'
@@ -14,7 +16,7 @@ const Contact = () => {
 
     useEffect(()=>{
         if(formData){
-            axios.post('/api/contact/send-email', formData);
+            axios.post(`${process.env.BACKEND_URL}/contact/send-email`, formData);
             setIsSubmit(true);
         }
     }, [formData])
