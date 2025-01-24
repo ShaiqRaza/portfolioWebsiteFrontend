@@ -6,7 +6,7 @@ const About = () => {
     const [about, setAbout] = useState(null);
 
     useEffect(()=>{
-        axios.get(`${process.env.BACKEND_URL}/about/get`)
+        axios.get(`${import.meta.env.VITE_BACKEND_URL}/about/get`)
         .then((response)=>{
             setAbout(response.data.data);
         })

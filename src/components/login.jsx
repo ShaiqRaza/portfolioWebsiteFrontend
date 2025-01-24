@@ -1,5 +1,3 @@
-import dotenv from 'dotenv'
-dotenv.config();
 import {useState, useEffect} from 'react'
 import axios from 'axios'
 
@@ -17,7 +15,7 @@ const Login = ()=>{
 
     useEffect(()=>{
         if(formData)
-            axios.post(`${process.env.BACKEND_URL}/auth/login`, formData)
+            axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/login`, formData)
     }, [formData])
 
     return (

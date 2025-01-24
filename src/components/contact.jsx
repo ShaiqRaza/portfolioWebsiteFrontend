@@ -14,7 +14,7 @@ const Contact = () => {
 
     useEffect(()=>{
         if(formData){
-            axios.post(`${process.env.BACKEND_URL}/contact/send-email`, formData);
+            axios.post(`${import.meta.env.VITE_BACKEND_URL}/contact/send-email`, formData);
             setIsSubmit(true);
         }
     }, [formData])

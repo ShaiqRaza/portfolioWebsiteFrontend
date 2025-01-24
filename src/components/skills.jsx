@@ -21,7 +21,7 @@ const Skills = () => {
     const [skills, setSkills] = useState(null);
 
     useEffect(()=>{
-        axios.get(`${process.env.BACKEND_URL}/skill/get-all`)
+        axios.get(`${import.meta.env.VITE_BACKEND_URL}/skill/get-all`)
         .then(response=>{
             setSkills(response.data.data)
         })
