@@ -19,7 +19,7 @@ const Login = ()=>{
     }, [formData])
 
     return (
-        <div className="w-full h-[80vh] lg:pt-[100px] md:pt-[95px] sm:pt-[90px] xs:pt-[85px] xss:pt-[80px] pt-[75px] bg-gray-900 lg:px-20 md:px-16 sm:px-14 xs:px-12 xss:px-10 px-8 flex justify-center items-center">       
+        <div className="w-full h-[80vh] lg:pt-[15vh] sm:pt-[14vh] pt-[11vh] bg-gray-900 lg:px-20 md:px-16 sm:px-14 xs:px-12 xss:px-10 px-8 flex justify-center items-center">       
             <form
             onMouseEnter={
                 ()=>{

@@ -29,7 +29,7 @@ const Header = ()=>{
     return(
         <div className='w-full flex justify-center'>
             <div className={
-                `mt-[2vw] w-[96vw] px-[3vw] rounded-md shadow-2xl font-semibold lg:text-[18px] md:text[17px] sm:text-[16px] xs:text-[15px] text-[14px] text-white fixed z-50 flex items-center justify-between bg-blue-900 ${isScrolled? "lg:h-[90px] md:h-[85px] sm:h-[80px] xs:h-[75px] xss:h-[70px] h-[65px]": "lg:h-[100px] md:h-[95px] sm:h-[90px] xs:h-[85px] xss:h-[80px] h-[75px]"}`
+                `lg:mt-[3vh] sm:mt-[2vh] mt-[1vh] w-[96vw] px-[3vw] rounded-md shadow-2xl font-semibold lg:text-[18px] md:text[17px] sm:text-[16px] xs:text-[15px] text-[14px] text-white fixed z-50 flex items-center justify-between bg-blue-900 ${isScrolled? "sm:h-[11vh] h-[9vh]": "sm:h-[12vh] h-[10vh]"}`
             }>
                 <div className='md:gap-[60px] xs:gap-[35px] sm:gap-[50px] xss:gap-[25px] gap-[20px] flex items-center'>
                     <NavLink 

@@ -5,8 +5,6 @@ const About = () => {
     
     const [about, setAbout] = useState(null);
 
-    console.log(import.meta.env)
-
     useEffect(()=>{
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/about/get`)
         .then((response)=>{
@@ -18,7 +16,6 @@ const About = () => {
             )
         })
     }, [])
-
 
     return (
         <div className="flex sm:flex-row flex-col justify-evenly items-center h-[80vh] w-full text-white sm:gap-2">
