@@ -8,8 +8,8 @@ const Project = ({project})=>{
     const [clicked, setClicked] = useState(false);
 
     return(
-        <div onClick={()=>{setClicked(!clicked)}} key={project._id} className='rounded-sm bg-slate-700 text-white px-3'>
-            <div className='capitalize cursor-pointer h-[7vh] flex items-center justify-between font-bold text-xl'>
+        <div key={project._id} className='rounded-sm bg-slate-700 text-white px-3'>
+            <div onClick={()=>{setClicked(!clicked)}} className='capitalize cursor-pointer h-[7vh] flex items-center justify-between font-bold text-xl'>
                 <div>{project.title}</div>
                 {clicked? <IoIosArrowDown size={16}/>: <IoIosArrowForward size={16}/>}
             </div>
@@ -19,18 +19,18 @@ const Project = ({project})=>{
                     <p>{project.description}</p>
                     <div className='w-full columns-1 sm:columns-2 lg:columns-3 gap-2'>
                         {
-                            images?.length>0 &&
-                            images.map(image => {
+                            project.images?.length>0 &&
+                            project.images.map(image => {
                                 return (
-                                    <img src={image.image} key={_id} className='h-max-[40vh] w-max-[80vw] h-auto'/>
+                                    <img src={image.image} key={image.image_id} className='max-h-[30vh] min-h-[15vw] h-auto mb-2 w-full'/>
                                 )
                             })
                         }
                     </div>
-                    <div className='w-full justify-center py-5'>
+                    <div className='w-full flex justify-center py-5'>
                         {
-                            video &&
-                            <video src="project.video"></video>
+                            project.video &&
+                            <video controls src={project.video} className='max-h-[50vh] h-auto border-2 border-yellow-50'></video>
                         }
                     </div>
                 </div>
@@ -57,11 +57,11 @@ const Projects = ()=>{
 
     
     return (
-        <div className="px-[5vw] w-full h-[80vh] lg:pt-[17vh] sm:pt-[16vh] pt-[13vh] bg-gray-900 flex flex-col gap-1">
+        <div className="px-[5vw] w-full min-h-[80vh] h-auto lg:pt-[17vh] sm:pt-[16vh] pt-[13vh] bg-gray-900 flex flex-col gap-1">
             {
                 projects?.map(project=>{
                     return (
-                        <Project project={project}/>                        
+                        <Project project={project} key={project._id}/>                        
                     )
                 })
             }
