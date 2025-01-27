@@ -15,3 +15,6 @@ export {Login}
 
 import Projects from './projects'
 export {Projects}
+
+import Docs from './docs'
+export {Docs}
