@@ -2,8 +2,14 @@ import {useState, useEffect} from 'react'
 import axios from 'axios'
 import { IoIosArrowForward } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
+import Masonry from "react-masonry-css";
+const breakpointColumns = {
+    default: 4,
+    580: 3,
+    400: 2
+  };
 
-const Project = ({project})=>{
+const Project = ({project, setImageClicked})=>{
 
     const [clicked, setClicked] = useState(false);
 
@@ -19,15 +25,15 @@ const Project = ({project})=>{
                     <p>{project.description}</p>
                     {
                         project.images?.length>0 &&
-                        <div className='w-full columns-1 sm:columns-2 lg:columns-3 gap-2'>
-                                {
+                        <Masonry className='w-full flex gap-2' breakpointCols={breakpointColumns} columnClassName="masonry-column">
+                            {
                                 project.images.map(image => {
                                     return (
-                                        <img src={image.image} key={image.image_id} className='max-h-[30vh] min-h-[15vw] h-auto mb-2 w-full'/>
+                                        <img onClick={()=>{setImageClicked(true)}} src={image.image} key={image.image_id} className='hover:brightness-50 cursor-pointer hover:bg-black w-full max-h-[30vh] min-h-[5vh] h-auto mb-2'/>
                                     )
                                 })
-                                }
-                        </div>
+                            }
+                        </Masonry>
                     }
                     {
                         project.video &&
@@ -44,6 +50,7 @@ const Project = ({project})=>{
 const Projects = ()=>{
 
     const [projects, setProjects] = useState(null)
+    const [imageClicked, setImageClicked] = useState(false);
 
     useEffect(()=>{
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/project/get-all`)
@@ -59,11 +66,11 @@ const Projects = ()=>{
 
     
     return (
-        <div className="px-[5vw] w-full min-h-[80vh] h-auto lg:pt-[17vh] sm:pt-[16vh] pt-[13vh] bg-gray-900 flex flex-col gap-1">
+        <div className={`filter ${imageClicked && "blur-[2px]"} px-[5vw] w-full min-h-[80vh] h-auto lg:pt-[17vh] sm:pt-[16vh] pt-[13vh] bg-gray-900 flex flex-col gap-1`}>
             {
                 projects?.map(project=>{
                     return (
-                        <Project project={project} key={project._id}/>                        
+                        <Project project={project} setImageClicked={setImageClicked} key={project._id}/>                        
                     )
                 })
             }
