@@ -41,7 +41,7 @@ const Skills = () => {
     return (
         <div className="w-full text-white flex flex-col items-center lg:py-12 md:py-10 py-8 mb-6 h-full">
             <h2 className="text-center font-bold text-2xl lg:text-3xl mb-6 text-blue-500 animate__animated animate__fadeIn">My Skills</h2>
-            <Masonry className="w-full flex gap-2" columnClassName="masonry-column" breakpointCols={breakpointColumns}>
+            <Masonry className="w-full flex gap-2" breakpointCols={breakpointColumns}>
                 {
                     skills?.map(skill=>{
                         return (

@@ -25,7 +25,7 @@ const Project = ({project, setImageClicked})=>{
                     <p>{project.description}</p>
                     {
                         project.images?.length>0 &&
-                        <Masonry className='w-full flex gap-2' breakpointCols={breakpointColumns} columnClassName="masonry-column">
+                        <Masonry className='w-full flex gap-2' breakpointCols={breakpointColumns}>
                             {
                                 project.images.map(image => {
                                     return (
