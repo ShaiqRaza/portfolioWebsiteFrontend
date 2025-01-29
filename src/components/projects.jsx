@@ -21,24 +21,30 @@ const Project = ({project, setImageClicked})=>{
             </div>
             {
                 clicked &&
-                <div className='flex flex-col gap-3 px-3 py-1'>
+                <div className='flex flex-col gap-5 px-3 py-1'>
                     <p>{project.description}</p>
                     {
                         project.images?.length>0 &&
-                        <Masonry className='w-full flex gap-2' breakpointCols={breakpointColumns}>
-                            {
-                                project.images.map(image => {
-                                    return (
-                                        <img onClick={()=>{setImageClicked(true)}} src={image.image} key={image.image_id} className='hover:brightness-50 cursor-pointer hover:bg-black w-full max-h-[30vh] min-h-[5vh] h-auto mb-2'/>
-                                    )
-                                })
-                            }
-                        </Masonry>
+                        <div className='flex flex-col gap-5'>
+                            <div className='h-[1px] w-full bg-gray-500'></div>
+                            <Masonry className='w-full flex gap-2' breakpointCols={breakpointColumns}>
+                                {
+                                    project.images.map(image => {
+                                        return (
+                                            <img onClick={()=>{setImageClicked(true)}} src={image.image} key={image.image_id} className='hover:brightness-50 cursor-pointer hover:bg-black w-full max-h-[30vh] min-h-[5vh] h-auto mb-2'/>
+                                        )
+                                    })
+                                }
+                            </Masonry>
+                        </div>
                     }
                     {
                         project.video &&
-                        <div className='w-full flex justify-center py-5'>
-                                <video controls src={project.video} className='max-h-[50vh] h-auto border-2 border-yellow-50'></video>
+                        <div className='flex flex-col gap-5'>
+                            <div className='h-[1px] w-full bg-gray-500'></div>
+                            <div className='w-full flex justify-center py-5'>
+                                    <video controls src={project.video} className='max-h-[50vh] h-auto border-2 border-yellow-50'></video>
+                            </div>
                         </div>
                     }
                 </div>
