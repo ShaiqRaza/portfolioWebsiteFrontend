@@ -31,7 +31,7 @@ const Project = ({project, setImageClicked})=>{
                                 {
                                     project.images.map(image => {
                                         return (
-                                            <img onClick={()=>{setImageClicked(true)}} src={image.image} key={image.image_id} className='hover:brightness-50 cursor-pointer hover:bg-black w-full max-h-[30vh] min-h-[5vh] h-auto mb-2'/>
+                                            <img onClick={()=>{setImageClicked(image.image)}} src={image.image} key={image.image_id} className='hover:brightness-50 cursor-pointer hover:bg-black w-full max-h-[30vh] min-h-[5vh] h-auto mb-2'/>
                                         )
                                     })
                                 }
@@ -42,8 +42,8 @@ const Project = ({project, setImageClicked})=>{
                         project.video &&
                         <div className='flex flex-col gap-5'>
                             <div className='h-[1px] w-full bg-gray-500'></div>
-                            <div className='w-full flex justify-center py-5'>
-                                    <video controls src={project.video} className='max-h-[50vh] h-auto border-2 border-yellow-50'></video>
+                            <div className='w-full flex justify-center pb-5 pt-2'>
+                                <video controls src={project.video} className='max-h-[50vh] h-auto border-2 border-yellow-50'></video>
                             </div>
                         </div>
                     }
@@ -56,7 +56,7 @@ const Project = ({project, setImageClicked})=>{
 const Projects = ()=>{
 
     const [projects, setProjects] = useState(null)
-    const [imageClicked, setImageClicked] = useState(false);
+    const [imageClicked, setImageClicked] = useState(null);
 
     useEffect(()=>{
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/project/get-all`)
@@ -72,15 +72,27 @@ const Projects = ()=>{
 
     
     return (
-        <div className={`filter ${imageClicked && "blur-[2px]"} px-[5vw] w-full min-h-[80vh] h-auto lg:pt-[17vh] sm:pt-[16vh] pt-[13vh] bg-gray-900 flex flex-col gap-1`}>
+
+        <>
             {
-                projects?.map(project=>{
-                    return (
-                        <Project project={project} setImageClicked={setImageClicked} key={project._id}/>                        
-                    )
-                })
+                imageClicked
+                ? <div className={`w-full min-h-[80vh] h-auto bg-gray-900 z-0 flex justify-center items-center px-[5vw] sm:pt-[10vh]`}>
+                    <div className='flex flex-col items-center justify-center w-full'>
+                        <button className='text-gray-300 hover:text-white pb-2' onClick={()=>{setImageClicked(null)}}>Close</button>
+                        <img src={imageClicked} alt="Image!" className='max-h-[50vh] min-h-[30vh] h-auto w-auto z-40' />
+                    </div>
+                </div>
+                : <div className={`filter ${imageClicked && "blur-[2px]"} px-[5vw] w-full min-h-[80vh] h-auto lg:pt-[17vh] sm:pt-[16vh] pt-[13vh] bg-gray-900 flex flex-col gap-1 z-0`}>
+                    {
+                        projects?.map(project=>{
+                            return (
+                                <Project project={project} setImageClicked={setImageClicked} key={project._id}/>                        
+                            )
+                        })
+                    }
+                </div>
             }
-        </div>
+        </>
     )
 }
 export default Projects
