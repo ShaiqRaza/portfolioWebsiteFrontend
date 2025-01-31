@@ -83,7 +83,7 @@ const Projects = ()=>{
                     </div>
                 </div>
             }
-            <div className={`filter ${imageClicked && "blur-sm"} px-[5vw] w-full min-h-[80vh] h-auto lg:pt-[17vh] sm:pt-[16vh] pt-[13vh] bg-gray-900 flex flex-col gap-1 z-0`}>
+            <div className={`filter ${imageClicked && "blur-sm"} px-[5vw] w-full min-h-[85vh] h-auto lg:pt-[17vh] sm:pt-[16vh] pt-[13vh] bg-gray-900 flex flex-col gap-1 z-0`}>
                 {
                     projects?.map(project=>{
                         return (

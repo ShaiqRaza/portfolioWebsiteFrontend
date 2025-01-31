@@ -26,7 +26,7 @@ const Docs = ()=>{
     }, [])
 
     return (
-        <div className="px-[5vw] w-full min-h-[80vh] h-auto lg:pt-[17vh] sm:pt-[16vh] pt-[13vh] bg-gray-900 flex flex-col gap-1"></div>
+        <div className="px-[5vw] w-full min-h-[85vh] h-auto lg:pt-[17vh] sm:pt-[16vh] pt-[13vh] bg-gray-900 flex flex-col gap-1"></div>
     )
 }
 

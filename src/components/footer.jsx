@@ -3,18 +3,18 @@ import {FaXTwitter} from 'react-icons/fa6'
 
 const Footer = () => {
   return (
-    <div className="z-50 h-[20vh] text-sm text-gray-500 flex flex-col items-center justify-center bg-gray-900 py-8 w-full xs:text-[14px] text-[13px]">
+    <div className="z-50 h-[15vh] text-sm text-gray-500 flex flex-col items-center justify-evenly pt-5 bg-gray-900 py-2 w-full xs:text-[14px] text-[13px]">
       {/* Copyright Section */}
-      <div className="flex items-center mb-4">
+      <div className="flex items-center">
         © 2024
-        <a href="#" className="hover:underline ml-1">
+        <a href="#" className="hover:underline">
           MuhammadKhushamAli
         </a>
         .  All Rights Reserved.
       </div>
 
       {/* Social Media Links */}
-      <div className="flex space-x-6 mb-4">
+      <div className="flex space-x-6">
         <a href="https://www.facebook.com" className=" hover:text-blue-500">
           <FaFacebook size={22} />
         </a>
