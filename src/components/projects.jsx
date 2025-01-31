@@ -76,14 +76,14 @@ const Projects = ()=>{
         <>
             {
                 imageClicked &&
-                <div className={`fixed w-full min-h-[90vh] h-auto z-[45] flex justify-center items-center px-[5vw] sm:pt-[10vh]`}>
+                <div className={`fixed w-full h-[90vh] z-[45] flex justify-center items-center px-[5vw] sm:pt-[10vh]`}>
                     <div className='flex flex-col sm:items-center items-end justify-center w-full'>
                         <button className='text-gray-300 hover:text-white pb-4' onClick={()=>{setImageClicked(null)}}>Close</button>
                         <img src={imageClicked} alt="Image!" className='rounded-md drop-shadow-lg max-h-[50vh] min-h-[30vh] h-auto w-auto z-40' />
                     </div>
                 </div>
             }
-            <div className={`filter ${imageClicked && "blur-sm"} px-[5vw] w-full min-h-[85vh] h-auto lg:pt-[17vh] sm:pt-[16vh] pt-[13vh] bg-gray-900 flex flex-col gap-1 z-0`}>
+            <div className={`filter ${imageClicked && "blur-sm"} px-[5vw] w-full min-h-[80vh] h-auto lg:pt-[17vh] sm:pt-[16vh] pt-[13vh] bg-gray-900 flex flex-col gap-1 z-0`}>
                 {
                     projects?.map(project=>{
                         return (
