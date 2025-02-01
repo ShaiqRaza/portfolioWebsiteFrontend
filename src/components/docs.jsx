@@ -9,9 +9,9 @@ const breakpointColumns = {
 
 const Doc = ({document, setImageClicked}) =>{
     return (
-        <div className="py-2 flex flex-col sm:gap-2 gap-1">
+        <div className="pb-2 flex flex-col sm:gap-2 gap-1">
             <img src={document.image} alt="Image!" className="max-h-[70vh] min-h-[10vh] h-auto cursor-pointer rounded-sm hover:brightness-50" onClick={()=>{setImageClicked(document)}}/>
-            <p className="text-white font-bold capitalize sm:text-xl text-md">{document.title}</p>
+            <p className="text-white font-bold capitalize sm:text-base text-xs">{document.title}</p>
         </div>
     )
 }
