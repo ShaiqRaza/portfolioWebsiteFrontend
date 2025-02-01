@@ -3,7 +3,6 @@ import '../css/scrollbar.css';
 import axios from 'axios'
 
 const Contact = () => {
-    const [ishovered, sethovered] = useState(false);
     const [formData, setFormData] = useState(null);
     const [isSubmit, setIsSubmit] = useState(false);
 
@@ -20,40 +19,33 @@ const Contact = () => {
     }, [formData])
 
     return (
-        <div className="w-full text-white flex flex-col items-center lg:pt-12 md:pt-10 pt-8">
+        <div className="w-full text-white flex flex-col items-center lg:pt-12 md:pt-10 pt-8 gap-4">
             {
                 isSubmit
                 ? <h1>Thank you for contacting me.</h1>
                 : <>
-                    <h2 className="text-center font-bold text-3xl lg:text-4xl mb-6 text-sky-500 animate__animated animate__fadeIn">Contact Me</h2>
-
-                    <form onSubmit={handleSubmit} onMouseEnter={()=>{
-                        sethovered(true)
-                    }}  onMouseLeave={()=>{
-                        sethovered(false)
-                    }} className={
-                        `w-full ${ishovered? "bg-gradient-to-r from-blue-600 to-indigo-600": "bg-gray-800"} p-10 rounded-lg transform transition-all duration-300`
-                    }>
-                        <div className='grid sm:grid-cols-2 gap-[5%]'>
-                            <div className="mb-6">
+                    <h2 className="text-center font-bold text-3xl lg:text-4xl mb-6 text-sky-500">Contact Me</h2>
+                    <form className={`w-full bg-gray-800 lg:p-8 md:p-6 sm:p-5 p-4 rounded-lg`}>
+                        <div className='grid sm:grid-cols-2 gap-4 pb-4'>
+                            <div>
                                 <label htmlFor="name" className="block text-lg font-semibold text-white">Your Name</label>
                                 <input
                                     type="text"
                                     id="name"
                                     name="name"
                                     required
-                                    className="w-full sm:px-4 px-3 sm:py-2 py-1 mt-2 bg-transparent border-2 border-white rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all resize-none"
+                                    className="w-full sm:px-3 px-2 sm:py-2 py-1 mt-2 bg-transparent border-2 border-white hover:border-sky-400 outline-none rounded-lg text-white transition-all"
                                 />
                             </div>
 
-                            <div className="mb-6">
+                            <div>
                                 <label htmlFor="email" className="block text-lg font-semibold text-white">Email Address</label>
                                 <input
                                     type="email"
                                     id="email"
                                     name="email"
                                     required
-                                    className="w-full sm:px-4 px-3 sm:py-2 py-1 mt-2 bg-transparent border-2 border-white rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all resize-none"
+                                    className="w-full sm:px-3 px-2 sm:py-2 py-1 mt-2 bg-transparent border-2 border-white rounded-lg text-white hover:border-sky-400 outline-none transition-all"
                                 />
                             </div>
                         </div>
@@ -64,14 +56,12 @@ const Contact = () => {
                                 id="message"
                                 name="message"
                                 required
-                                className="w-full custom-scrollbar sm:px-4 px-3 sm:py-2 py-1 mt-2 bg-transparent border-2 border-white rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all resize-none"
+                                className="w-full custom-scrollbar sm:px-3 px-2 sm:py-2 py-1 mt-2 bg-transparent border-2 border-white rounded-lg text-white hover:border-sky-400 outline-none transition-all"
                                 rows="3"
                             />
                         </div>
 
-                        <button type="submit" className={
-                            `w-full ${ishovered? "bg-gray-800 hover:bg-gray-900":"bg-gradient-to-r from-blue-600 to-indigo-600"}  text-white p-4 rounded-lg font-semibold transform transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500`
-                        }>
+                        <button type="submit" className={`w-full bg-sky-600 hover:bg-sky-800 text-white p-4 rounded-lg font-semibold transform transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500`}>
                             Send Message
                         </button>
                     </form>
