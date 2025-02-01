@@ -40,7 +40,6 @@ const Docs = ()=>{
                     <div className="flex flex-col gap-4 justify-center items-center w-auto h-full">
                         <button onClick={()=>{setImageClicked(null)}} className="absolute top-0 right-0 text-2xl p-2 text-gray-500 hover:text-white mr-2">X</button>
                         <img src={imageClicked.image} alt="Image!" className="max-h-[70vh] max-w-[60vw]"/>
-                        <div className="max-w-[60vw] max-h-[20vh] text-white">{imageClicked.description}</div>
                     </div>
                 </div>
             }
