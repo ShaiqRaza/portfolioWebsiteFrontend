@@ -11,8 +11,6 @@ const Doc = ({document, setImageClicked}) =>{
 
     const [docHovered, setDocHovered] = useState(false);
 
-    console.log(docHovered)
-
     return (
         <div className="pb-2 flex flex-col sm:gap-2 gap-1">
             <img onMouseEnter={()=>{setDocHovered(true)}} onMouseLeave={()=>{setDocHovered(false)}} src={document.image} alt="Image!" className="max-h-[70vh] min-h-[10vh] h-auto cursor-pointer rounded-sm hover:brightness-50" onClick={()=>{setImageClicked(document)}}/>

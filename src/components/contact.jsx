@@ -25,7 +25,7 @@ const Contact = () => {
                 isSubmit
                 ? <h1>Thank you for contacting me.</h1>
                 : <>
-                    <h2 className="text-center font-bold text-3xl lg:text-4xl mb-6 text-blue-500 animate__animated animate__fadeIn">Contact Me</h2>
+                    <h2 className="text-center font-bold text-3xl lg:text-4xl mb-6 text-sky-500 animate__animated animate__fadeIn">Contact Me</h2>
 
                     <form onSubmit={handleSubmit} onMouseEnter={()=>{
                         sethovered(true)
