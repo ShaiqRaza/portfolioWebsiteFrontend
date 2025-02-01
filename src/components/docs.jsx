@@ -10,7 +10,7 @@ const breakpointColumns = {
 const Doc = ({document, setImageClicked}) =>{
     return (
         <div className="py-2 flex flex-col sm:gap-2 gap-1">
-            <img src={document.image} alt="Image!" className="max-h-[70vh] min-h-[10vh] h-auto cursor-pointer hover:brightness-50" onClick={()=>{setImageClicked(document)}}/>
+            <img src={document.image} alt="Image!" className="max-h-[70vh] min-h-[10vh] h-auto cursor-pointer rounded-sm hover:brightness-50" onClick={()=>{setImageClicked(document)}}/>
             <p className="text-white font-bold capitalize sm:text-xl text-md">{document.title}</p>
         </div>
     )
@@ -37,11 +37,11 @@ const Docs = ()=>{
         <>  {
                 imageClicked &&
                 <div className="fixed w-full h-full bg-black bg-opacity-80 z-50">
-                    <div className="flex flex-col gap-4 justify-center items-center w-auto h-full">
-                        <button onClick={()=>{setImageClicked(null)}} className="absolute top-0 right-0 text-2xl p-2 text-gray-500 hover:text-white mr-2">X</button>
-                        <div className="flex flex-col gap-4 justify-center items-center h-full">
-                            <p className="text-white font-bold capitalize md:text-2xl text-xl">{imageClicked.title}</p>
-                            <img src={imageClicked.image} alt="Image!" className="max-h-[70vh] max-w-[60vw]"/>
+                    <div className="flex flex-col sm:gap-3 gap-2 justify-center items-center w-auto h-full">
+                        <button onClick={()=>{setImageClicked(null)}} className="absolute sm:top-2 right-4 top-4 text-2xl text-gray-500 hover:text-white">X</button>
+                        <div className="flex flex-col sm:gap-3 gap-2 justify-center items-center h-full">
+                            <p className="text-white font-bold capitalize sm:text-lg text-sm">{imageClicked.title}</p>
+                            <img src={imageClicked.image} alt="Image!" className="rounded-md drop-shadow-lg max-h-[70vh] sm:max-w-[60vw] max-w-[90vw]"/>
                         </div>
                     </div>
                 </div>
