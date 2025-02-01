@@ -8,10 +8,16 @@ const breakpointColumns = {
 }
 
 const Doc = ({document, setImageClicked}) =>{
+
+    const [docHovered, setDocHovered] = useState(false);
+
+    console.log(docHovered)
+
     return (
         <div className="pb-2 flex flex-col sm:gap-2 gap-1">
-            <img src={document.image} alt="Image!" className="max-h-[70vh] min-h-[10vh] h-auto cursor-pointer rounded-sm hover:brightness-50" onClick={()=>{setImageClicked(document)}}/>
-            <p className="text-white font-bold capitalize sm:text-base text-xs">{document.title}</p>
+            <img onMouseEnter={()=>{setDocHovered(true)}} onMouseLeave={()=>{setDocHovered(false)}} src={document.image} alt="Image!" className="max-h-[70vh] min-h-[10vh] h-auto cursor-pointer rounded-sm hover:brightness-50" onClick={()=>{setImageClicked(document)}}/>
+            <p className={`font-semibold capitalize sm:text-base text-xs text-white absolute px-2 ${docHovered ? "opacity-100" : "opacity-0"}`}>Click to Expand</p>
+            <p className={`font-bold capitalize sm:text-base text-xs ${docHovered ? "text-gray-400" : "text-white"}`}>{document.title}</p>
         </div>
     )
 }
