@@ -22,10 +22,10 @@ const Contact = () => {
         <div className="w-full text-white flex flex-col items-center lg:pt-12 md:pt-10 pt-8 gap-4">
             {
                 isSubmit
-                ? <h1>Thank you for contacting me.</h1>
+                ? <h1 className='mb-6 text-xl'>Thank you for <span className='text-sky-500'>contacting</span> me.</h1>
                 : <>
                     <h2 className="text-center font-bold text-3xl lg:text-4xl mb-6 text-sky-500">Contact Me</h2>
-                    <form className={`w-full bg-gray-800 lg:p-8 md:p-6 sm:p-5 p-4 rounded-lg`}>
+                    <form className={`w-full bg-gray-800 lg:p-8 md:p-6 sm:p-5 p-4 rounded-lg`} onSubmit={handleSubmit}>
                         <div className='grid sm:grid-cols-2 gap-4 pb-4'>
                             <div>
                                 <label htmlFor="name" className="block text-lg font-semibold text-white">Your Name</label>
