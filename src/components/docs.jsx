@@ -3,15 +3,15 @@ import axios from 'axios'
 import Masonry from 'react-masonry-css'
 const breakpointColumns = {
     default: 4,
-    580: 3,
-    400: 2
+    768: 3,
+    580: 2,
 }
 
 const Doc = ({document, setImageClicked}) =>{
     return (
-        <div className="py-2 flex flex-col gap-2">
-            <img src={document.image} alt="Image!" className="max-h-[70vh] min-h-[10vh] h-auto" onClick={()=>{setImageClicked(document)}}/>
-            <p className="text-white font-bold text-xl">{document.title}</p>
+        <div className="py-2 flex flex-col sm:gap-2 gap-1">
+            <img src={document.image} alt="Image!" className="max-h-[70vh] min-h-[10vh] h-auto cursor-pointer hover:brightness-50" onClick={()=>{setImageClicked(document)}}/>
+            <p className="text-white font-bold capitalize sm:text-xl text-md">{document.title}</p>
         </div>
     )
 }
@@ -36,10 +36,13 @@ const Docs = ()=>{
     return (
         <>  {
                 imageClicked &&
-                <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 z-50">
+                <div className="fixed w-full h-full bg-black bg-opacity-80 z-50">
                     <div className="flex flex-col gap-4 justify-center items-center w-auto h-full">
                         <button onClick={()=>{setImageClicked(null)}} className="absolute top-0 right-0 text-2xl p-2 text-gray-500 hover:text-white mr-2">X</button>
-                        <img src={imageClicked.image} alt="Image!" className="max-h-[70vh] max-w-[60vw]"/>
+                        <div className="flex flex-col gap-4 justify-center items-center h-full">
+                            <p className="text-white font-bold capitalize md:text-2xl text-xl">{imageClicked.title}</p>
+                            <img src={imageClicked.image} alt="Image!" className="max-h-[70vh] max-w-[60vw]"/>
+                        </div>
                     </div>
                 </div>
             }
