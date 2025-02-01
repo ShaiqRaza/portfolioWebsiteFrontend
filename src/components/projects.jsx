@@ -21,8 +21,8 @@ const Project = ({project, setImageClicked})=>{
             </div>
             {
                 clicked &&
-                <div className='flex flex-col gap-5 px-3 py-1'>
-                    <p>{project.description}</p>
+                <div className='flex flex-col gap-5 px-3 py-1 text-gray-300'>
+                    <p className='first-letter:uppercase whitespace-pre-line'>{project.description}</p>
                     {
                         project.images?.length>0 &&
                         <div className='flex flex-col gap-5'>
