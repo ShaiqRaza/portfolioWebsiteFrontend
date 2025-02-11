@@ -5,6 +5,7 @@ import { useOutletContext, useNavigate } from 'react-router-dom';
 const Login = ()=>{
     const [ishovered, sethovered] = useState(false);
     const { setIsLogged } = useOutletContext() || {};
+    const [error, setError] = useState(null);
     const  navigate = useNavigate();
 
     const handleSubmission = (e)=>{
@@ -16,7 +17,7 @@ const Login = ()=>{
                 navigate('/');
             })
             .catch(err => {
-                alert(err.response.data.message);
+                setError(err.response.data.message);
             })
     }
 
@@ -38,6 +39,9 @@ const Login = ()=>{
             onSubmit = {handleSubmission}
 
             >
+                {
+                    error && <p className="relative bottom-[5vh] text-red-500">{error}</p>
+                }
                 <input type="email" placeholder="Enter Email" className="pl-1 border-b-2 bg-gray-900 outline-none sm:h-[35px] sm:text-[16px] h-[30px] border-white hover:border-cyan-500 w-[200px]"/>
                 <input type="password" placeholder="Enter Password" className="pl-1 border-b-2 bg-gray-900 outline-none sm:h-[35px] sm:text-[16px] h-[30px] border-white hover:border-cyan-500 w-[200px]"/>
                 <button type="submit" 
