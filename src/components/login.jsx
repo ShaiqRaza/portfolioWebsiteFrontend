@@ -24,7 +24,7 @@ const Login = ()=>{
                 navigate('/');
             })
             .catch(err => {
-                setIsLogged(false);
+                alert(err.response.data.message);
             })
         }
     }, [formData])
