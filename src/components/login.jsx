@@ -1,11 +1,12 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios'
-import { useOutletContext } from 'react-router-dom';
+import { useOutletContext, useNavigate } from 'react-router-dom';
 
 const Login = ()=>{
     const [ishovered, sethovered] = useState(false);
     const [formData, setFormData] = useState(null);
     const { setIsLogged } = useOutletContext() || {};
+    const  navigate = useNavigate();
 
     const handleSubmission = (e)=>{
         e.preventDefault();
@@ -20,6 +21,7 @@ const Login = ()=>{
             axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/login`, formData, { withCredentials: true })
             .then(response => {
                 setIsLogged(response.data.success);
+                navigate('/');
             })
             .catch(err => {
                 setIsLogged(false);
