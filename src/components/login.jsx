@@ -4,7 +4,6 @@ import { useOutletContext, useNavigate } from 'react-router-dom';
 
 const Login = ()=>{
     const [ishovered, sethovered] = useState(false);
-    const [formData, setFormData] = useState(null);
     const { setIsLogged } = useOutletContext() || {};
     const  navigate = useNavigate();
 
