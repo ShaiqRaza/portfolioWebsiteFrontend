@@ -14,9 +14,23 @@ const Login = ()=>{
     }
 
     useEffect(()=>{
-        if(formData)
-            axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/login`, formData)
+        if(formData){
+            axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/login`, formData, { withCredentials: true })
+            .then(response => {
+                console.log(response)
+                axios.get(`${import.meta.env.VITE_BACKEND_URL}/auth`, { withCredentials: true })
+                .then(response => {
+                    console.log(response.data);
+                    setIsLogged(response.data.success);
+                })
+                .catch(err => {
+                    setIsLogged(false);
+                })
+            })
+        }
     }, [formData])
+
+    console.log(isLogged);
 
     return (
         <div className="w-full h-[80vh] lg:pt-[15vh] sm:pt-[14vh] pt-[11vh] bg-gray-900 lg:px-20 md:px-16 sm:px-14 xs:px-12 xss:px-10 px-8 flex justify-center items-center">       
