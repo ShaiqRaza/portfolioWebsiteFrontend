@@ -18,7 +18,7 @@ const Layout = ()=>{
       <>
         <div className='w-full h-screen'>
           <Header/>
-          <Outlet isLogged={isLogged} setIsLogged={setIsLogged}/>
+          <Outlet context={{isLogged, setIsLogged}}/>
           <Footer isLogged={isLogged} setIsLogged={setIsLogged}/>
         </div>
       </>

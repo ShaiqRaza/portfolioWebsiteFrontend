@@ -1,9 +1,11 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios'
+import { useOutletContext } from 'react-router-dom';
 
 const Login = ()=>{
     const [ishovered, sethovered] = useState(false);
     const [formData, setFormData] = useState(null);
+    const { isLogged, setIsLogged } = useOutletContext();
 
     const handleSubmission = (e)=>{
         e.preventDefault();

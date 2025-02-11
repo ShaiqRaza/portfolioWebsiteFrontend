@@ -3,13 +3,14 @@ import axios from 'axios'
 import { IoIosArrowForward } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
 import Masonry from "react-masonry-css";
+import { useOutletContext } from "react-router-dom" 
 const breakpointColumns = {
     default: 4,
     580: 3,
     400: 2
   };
 
-const Project = ({project, setImageClicked})=>{
+const Project = ({project, setImageClicked, isLogged, setIsLogged})=>{
 
     const [clicked, setClicked] = useState(false);
 
@@ -57,6 +58,7 @@ const Projects = ()=>{
 
     const [projects, setProjects] = useState(null)
     const [imageClicked, setImageClicked] = useState(null);
+    const { isLogged } = useOutletContext();
 
     useEffect(()=>{
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/project/get-all`)

@@ -1,7 +1,7 @@
 import axios from 'axios';  
 import { useEffect, useState } from 'react';
 
-const About = () => {
+const About = ({isLogged}) => {
     
     const [about, setAbout] = useState(null);
 

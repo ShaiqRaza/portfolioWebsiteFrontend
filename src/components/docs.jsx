@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import axios from 'axios'
 import Masonry from 'react-masonry-css'
+import { useOutletContext } from "react-router-dom"
 const breakpointColumns = {
     default: 4,
     768: 3,
@@ -24,6 +25,7 @@ const Docs = ()=>{
 
     const [docs, setDocs] = useState(null);
     const [imageClicked, setImageClicked] = useState(null);
+    const { isLogged } = useOutletContext();
 
     useEffect(()=>{
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/doc/get-all`)

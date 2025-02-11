@@ -22,7 +22,7 @@ const Skill = ({
     );
 }
 
-const Skills = () => {
+const Skills = ({isLogged}) => {
 
     const [skills, setSkills] = useState(null);
 

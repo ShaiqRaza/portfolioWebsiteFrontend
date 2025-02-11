@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import '../css/scrollbar.css';
 import axios from 'axios'
 
-const Contact = () => {
+const Contact = ({isLogged}) => {
     const [formData, setFormData] = useState(null);
     const [isSubmit, setIsSubmit] = useState(false);
 
