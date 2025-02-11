@@ -5,7 +5,7 @@ import { useOutletContext } from 'react-router-dom';
 const Login = ()=>{
     const [ishovered, sethovered] = useState(false);
     const [formData, setFormData] = useState(null);
-    const { isLogged, setIsLogged } = useOutletContext();
+    const { setIsLogged } = useOutletContext() || {};
 
     const handleSubmission = (e)=>{
         e.preventDefault();
@@ -19,20 +19,13 @@ const Login = ()=>{
         if(formData){
             axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/login`, formData, { withCredentials: true })
             .then(response => {
-                console.log(response)
-                axios.get(`${import.meta.env.VITE_BACKEND_URL}/auth`, { withCredentials: true })
-                .then(response => {
-                    console.log(response.data);
-                    setIsLogged(response.data.success);
-                })
-                .catch(err => {
-                    setIsLogged(false);
-                })
+                setIsLogged(response.data.success);
+            })
+            .catch(err => {
+                setIsLogged(false);
             })
         }
     }, [formData])
-
-    console.log(isLogged);
 
     return (
         <div className="w-full h-[80vh] lg:pt-[15vh] sm:pt-[14vh] pt-[11vh] bg-gray-900 lg:px-20 md:px-16 sm:px-14 xs:px-12 xss:px-10 px-8 flex justify-center items-center">       
@@ -53,7 +46,7 @@ const Login = ()=>{
 
             >
                 <input type="email" placeholder="Enter Email" className="pl-1 border-b-2 bg-gray-900 outline-none sm:h-[35px] sm:text-[16px] h-[30px] border-white hover:border-cyan-500 w-[200px]"/>
-                <input type="text" placeholder="Enter Password" className="pl-1 border-b-2 bg-gray-900 outline-none sm:h-[35px] sm:text-[16px] h-[30px] border-white hover:border-cyan-500 w-[200px]"/>
+                <input type="password" placeholder="Enter Password" className="pl-1 border-b-2 bg-gray-900 outline-none sm:h-[35px] sm:text-[16px] h-[30px] border-white hover:border-cyan-500 w-[200px]"/>
                 <button type="submit" 
                 className={
                     `${ishovered? "block":"hidden"} sm:h-[30px] sm:w-[45px] h-[25px] w-[37px] outline-none hover:bg-cyan-600 bg-cyan-500 rounded-[3px] font-semibold`
