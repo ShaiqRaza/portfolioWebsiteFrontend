@@ -10,15 +10,8 @@ const Login = ()=>{
 
     const handleSubmission = (e)=>{
         e.preventDefault();
-        setFormData({
-            email: e.target[0].value,
-            password: e.target[1].value
-        })
-    }
 
-    useEffect(()=>{
-        if(formData){
-            axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/login`, formData, { withCredentials: true })
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/login`, {email: e.target[0].value, password: e.target[1].value}, { withCredentials: true })
             .then(response => {
                 setIsLogged(response.data.success);
                 navigate('/');
@@ -26,8 +19,7 @@ const Login = ()=>{
             .catch(err => {
                 alert(err.response.data.message);
             })
-        }
-    }, [formData])
+    }
 
     return (
         <div className="w-full h-[80vh] lg:pt-[15vh] sm:pt-[14vh] pt-[11vh] bg-gray-900 lg:px-20 md:px-16 sm:px-14 xs:px-12 xss:px-10 px-8 flex justify-center items-center">       
