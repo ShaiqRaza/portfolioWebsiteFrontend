@@ -10,6 +10,18 @@ const breakpointColumns = {
     400: 2
   };
 
+const ProjectImage = ({image, setImageClicked})=>{
+    const [hovered, setHovered] = useState(false);
+    return (
+        <div className='relative' onMouseEnter={()=>{setHovered(true)}} onMouseLeave={()=>{setHovered(false)}}>
+            {
+                hovered && <p className='absolute left-2 top-2 text-white font-medium z-20 lg:text-base sm:text-sm text-xs'>Click to Expand</p>
+            }
+            <img onClick={()=>{setImageClicked(image.image)}} src={image.image} key={image.image_id} className='hover:brightness-50 rounded-sm cursor-pointer hover:bg-black w-full max-h-[30vh] min-h-[5vh] h-auto mb-2'/>
+        </div>
+    )
+}
+
 const Project = ({project, setImageClicked, isLogged, setIsLogged})=>{
 
     const [clicked, setClicked] = useState(false);
@@ -30,11 +42,9 @@ const Project = ({project, setImageClicked, isLogged, setIsLogged})=>{
                             <div className='h-[1px] w-full bg-gray-500'></div>
                             <Masonry className='w-full flex gap-2' breakpointCols={breakpointColumns}>
                                 {
-                                    project.images.map(image => {
-                                        return (
-                                            <img onClick={()=>{setImageClicked(image.image)}} src={image.image} key={image.image_id} className='hover:brightness-50 rounded-sm cursor-pointer hover:bg-black w-full max-h-[30vh] min-h-[5vh] h-auto mb-2'/>
-                                        )
-                                    })
+                                    project.images.map(image => 
+                                        <ProjectImage image={image} setImageClicked={setImageClicked} key={image.image_id}/>
+                                    )
                                 }
                             </Masonry>
                         </div>
