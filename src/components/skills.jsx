@@ -23,14 +23,14 @@ const Skill = ({
     return (
         <div className="bg-gray-800 lg:p-6 sm:p-4 p-2 rounded-md flex-col flex items-center shadow-md mb-2 break-inside-avoid relative">
             {isLogged && (
-                <div className="absolute top-2 right-2">
-                    <button onClick={() => setShowOptions(!showOptions)}>
+                <div className="absolute top-2 right-2" onMouseEnter={() => setShowOptions(true)}>
+                    <button>
                         <FaEllipsisH className="text-white" />
                     </button>
                     {showOptions && (
-                        <div className="absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg z-10">
-                            <button onClick={onEdit} className="block w-full text-left px-4 py-2 text-sm text-gray-700">Edit</button>
-                            <button onClick={onDelete} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Delete</button>
+                        <div className="absolute right-0 mt-2 w-32 bg-white shadow-lg z-10 rounded-md" onMouseLeave={() => setShowOptions(false)}>
+                            <button onClick={onEdit} className="block w-full text-left px-4 py-2 text-sm rounded-t-md text-gray-700 hover:bg-gray-200">Edit</button>
+                            <button onClick={onDelete} className="block w-full text-left px-4 py-2 text-sm rounded-b-md text-gray-700 hover:bg-gray-200">Delete</button>
                         </div>
                     )}
                 </div>
