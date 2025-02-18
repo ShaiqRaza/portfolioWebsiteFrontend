@@ -62,7 +62,7 @@ const About = ({isLogged}) => {
                         isLogged
                         ?<form onSubmit={(e)=>{handleIntroSubmission(e)}} className='w-full flex gap-2'>
                             <input type="text" value={intro} className='bg-gray-900 w-[90%] border border-white hover:border-cyan-500 rounded-md p-2 text-2xl sm:text-3xl font-bold text-white outline-none' onChange={(e)=>{setIntro(e.target.value)}}/>
-                            <button type='submit' className='hover:text-cyan-500'><IoMdArrowRoundForward size={22}/></button>
+                            <button type='submit' className='hover:text-cyan-500 font-semibold'>Save</button>
                         </form>
                         :<h1 className="text-2xl sm:text-3xl font-bold text-white ">{intro}</h1>
                     }
@@ -72,7 +72,7 @@ const About = ({isLogged}) => {
                         isLogged
                         ?<form onSubmit={(e)=>{handleDescriptionSubmission(e)}} className='w-full flex gap-2'>
                             <textarea value={description} className='bg-gray-900 w-[90%] p-2 text-sm sm:text-base rounded-md border border-white hover:border-cyan-500' onChange={(e)=>{setDescription(e.target.value)}}/>
-                            <button type='submit' className='hover:text-cyan-500'><IoMdArrowRoundForward size={22}/></button>
+                            <button type='submit' className='hover:text-cyan-500 text-white font-semibold'>Save</button>
                          </form>
                         :<p className="text-sm sm:text-base">{description}</p>
                     }
