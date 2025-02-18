@@ -14,8 +14,6 @@ const breakpointColumns = {
 const Skill = ({
     name,
     description,
-    onEdit,
-    onDelete,
     isLogged
 }) => {
     const [showOptions, setShowOptions] = useState(false);
@@ -29,8 +27,8 @@ const Skill = ({
                     </button>
                     {showOptions && (
                         <div className="absolute right-0 mt-2 w-32 bg-white shadow-lg z-10 rounded-md">
-                            <button onClick={onEdit} className="block w-full text-left px-4 py-2 text-sm rounded-t-md text-gray-700 hover:bg-gray-200">Edit</button>
-                            <button onClick={onDelete} className="block w-full text-left px-4 py-2 text-sm rounded-b-md text-gray-700 hover:bg-gray-200">Delete</button>
+                            <button className="block w-full text-left px-4 py-2 text-sm rounded-t-md text-gray-700 hover:bg-gray-200">Edit</button>
+                            <button className="block w-full text-left px-4 py-2 text-sm rounded-b-md text-gray-700 hover:bg-gray-200">Delete</button>
                         </div>
                     )}
                 </div>
@@ -46,6 +44,7 @@ const Skill = ({
 const Skills = () => {
     const { isLogged } = useOutletContext();
     const [skills, setSkills] = useState(null);
+    const [addSkill, setAddSkill] = useState(false)
 
     useEffect(() => {
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/skill/get-all`)
@@ -59,23 +58,35 @@ const Skills = () => {
             })
     }, [])
 
-    const handleAddSkill = () => {
-        // Logic to add a new skill
-    }
-
-    const handleEditSkill = (id) => {
-        // Logic to edit a skill
-    }
-
-    const handleDeleteSkill = (id) => {
-        // Logic to delete a skill
+    const handleAddSkillSubmission = (e) => {
+        e.preventDefault();
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/skill/create`, {title: e.target[0].value, description: e.target[1].value})
+        .then(response => {
+            setSkills([...skills, response.data.data])
+            setAddSkill(false);
+        })
     }
 
     return (
-        <div className="w-full relative text-white flex flex-col items-center lg:py-12 md:py-10 py-8 mb-6 h-full">
+            <>
+                {
+                    addSkill &&
+                    <form onSubmit={handleAddSkillSubmission} className='fixed top-0 right-0 w-screen h-screen bg-black bg-opacity-80 z-50 flex justify-center items-center'>
+                        <div className='sm:w-1/2 w-[80%] bg-gray-800 p-6 rounded-md'>
+                            <h2 className='text-2xl text-sky-500 font-bold mb-4'>Add a new Skill</h2>
+                            <input type='text' required placeholder='Skill Name' className='outline-none w-full hover:border hover:border-cyan-500 p-2 rounded-md bg-gray-700 text-white mb-4' />
+                            <textarea required placeholder='Skill Description' className='outline-none hover:border hover:border-cyan-500 w-full p-2 rounded-md bg-gray-700 text-white mb-4' />
+                            <div className='w-full flex gap-2'>
+                                <button onClick={()=>{setAddSkill(false)}} className='bg-red-500 hover:bg-red-600 text-white rounded-md p-2 w-1/2'>Cancel</button>
+                                <button type='submit' className='bg-cyan-500 hover:bg-cyan-600 text-white rounded-md p-2 w-1/2'>Add</button>
+                            </div>
+                        </div>
+                    </form>
+                }
+                <div className="w-full relative text-white flex flex-col items-center lg:py-12 md:py-10 py-8 mb-6 h-full">
                 <h2 className="text-center font-bold text-2xl lg:text-3xl text-sky-500 mb-6">My Skills
                 {isLogged && (
-                    <button onClick={handleAddSkill} className="text-white absolute right-0 hover:text-cyan-400">+</button>
+                    <button onClick={()=>{setAddSkill(true)}} className="text-white absolute right-0 hover:text-cyan-400">+</button>
                 )}
                 </h2>
             <Masonry className="w-full flex gap-2" breakpointCols={breakpointColumns}>
@@ -86,15 +97,14 @@ const Skills = () => {
                                 name={skill?.title}
                                 description={skill?.description}
                                 key={skill?._id}
-                                onEdit={() => handleEditSkill(skill?._id)}
-                                onDelete={() => handleDeleteSkill(skill?._id)}
                                 isLogged={isLogged}
                             />
                         )
                     })
                 }
             </Masonry>
-        </div>
+                </div>
+            </>
     );
 };
 
