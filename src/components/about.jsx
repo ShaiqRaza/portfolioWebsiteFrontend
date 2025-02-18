@@ -4,18 +4,17 @@ import { MdOutlineModeEdit } from "react-icons/md";
 import { IoMdArrowRoundForward } from "react-icons/io";
 
 const About = ({isLogged}) => {
-    
-    const [about, setAbout] = useState(null);
+
     const [intro, setIntro] = useState(null);
     const [description, setDescription] = useState(null);
-    const [image, setImage] = useState(null);
+    const [avatar, setAvatar] = useState(null);
 
     useEffect(()=>{
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/about/get`)
         .then((response)=>{
-            setAbout(response.data.data);
             setIntro(response.data.data.intro);
             setDescription(response.data.data.description);
+            setAvatar(response.data.data.avatar);
         })
         .catch((err)=>{
             return (
@@ -34,13 +33,17 @@ const About = ({isLogged}) => {
     }
     const handleAvatarSubmission = (e) => {
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/about/update-avatar`, {avatar: e.target.files[0]}, {headers: {'Content-Type': 'multipart/form-data'}})
+        .then((response)=>{
+            console.log("avatar update hp gya hai");
+            setAvatar(response.data.data.avatar);      
+        })
     }
 
     return (
         <div className="flex sm:flex-row flex-col justify-evenly items-center h-[80vh] w-full text-white sm:gap-2">
             <div className="flex justify-center sm:justify-end items-center sm:w-[40%] w-full sm:order-2 order-1 relative">
                 <div className="relative z-20 lg:w-[350px] md:w-[270px] sm:w-[230px] w-[180px] lg:h-[350px] md:h-[270px] sm:h-[230px] h-[180px]">
-                    <img src={about?.avatar} alt="Image!" className='w-full h-full rounded-full z-20'/>
+                    <img src={avatar} alt="Image!" className='w-full h-full rounded-full z-20'/>
                     {
                         isLogged &&
                             <>
@@ -61,7 +64,7 @@ const About = ({isLogged}) => {
                             <input type="text" value={intro} className='bg-gray-900 w-[90%] border border-white hover:border-cyan-500 rounded-md p-2 text-2xl sm:text-3xl font-bold text-white outline-none' onChange={(e)=>{setIntro(e.target.value)}}/>
                             <button type='submit' className='hover:text-cyan-500'><IoMdArrowRoundForward size={22}/></button>
                         </form>
-                        :<h1 className="text-2xl sm:text-3xl font-bold text-white ">{about?.intro}</h1>
+                        :<h1 className="text-2xl sm:text-3xl font-bold text-white ">{intro}</h1>
                     }
                 </div>
                 <div className='flex items-center gap-[2vw] relative text-gray-300'>
@@ -71,7 +74,7 @@ const About = ({isLogged}) => {
                             <textarea value={description} className='bg-gray-900 w-[90%] p-2 text-sm sm:text-base rounded-md border border-white hover:border-cyan-500' onChange={(e)=>{setDescription(e.target.value)}}/>
                             <button type='submit' className='hover:text-cyan-500'><IoMdArrowRoundForward size={22}/></button>
                          </form>
-                        :<p className="text-sm sm:text-base">{about?.description}</p>
+                        :<p className="text-sm sm:text-base">{description}</p>
                     }
                     </div>
             </div>
