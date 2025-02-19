@@ -14,7 +14,9 @@ const breakpointColumns = {
 const Skill = ({
     name,
     description,
-    isLogged
+    isLogged,
+    ID,
+    handleSkillDeletion
 }) => {
     const [showOptions, setShowOptions] = useState(false);
 
@@ -28,7 +30,7 @@ const Skill = ({
                     {showOptions && (
                         <div className="absolute right-0 mt-2 w-32 bg-white shadow-lg z-10 rounded-md">
                             <button className="block w-full text-left px-4 py-2 text-sm rounded-t-md text-gray-700 hover:bg-gray-200">Edit</button>
-                            <button className="block w-full text-left px-4 py-2 text-sm rounded-b-md text-gray-700 hover:bg-gray-200">Delete</button>
+                            <button onClick={()=>handleSkillDeletion(ID)} className="block w-full text-left px-4 py-2 text-sm rounded-b-md text-gray-700 hover:bg-gray-200">Delete</button>
                         </div>
                     )}
                 </div>
@@ -66,6 +68,12 @@ const Skills = () => {
             setAddSkill(false);
         })
     }
+    const handleSkillDeletion = (ID)=>{
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/skill/delete/${ID}`)
+        .then(response => {
+            setSkills(skills.filter(skill => skill._id != ID))
+        })
+    }
 
     return (
             <>
@@ -96,8 +104,10 @@ const Skills = () => {
                             <Skill
                                 name={skill?.title}
                                 description={skill?.description}
+                                ID={skill?._id}
                                 key={skill?._id}
                                 isLogged={isLogged}
+                                handleSkillDeletion={handleSkillDeletion}
                             />
                         )
                     })
