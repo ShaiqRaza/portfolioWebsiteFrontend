@@ -69,6 +69,7 @@ const Projects = ()=>{
     const [projects, setProjects] = useState(null)
     const [imageClicked, setImageClicked] = useState(null);
     const { isLogged } = useOutletContext();
+    const [addProject, setAddProject] = useState(false);
 
     useEffect(()=>{
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/project/get-all`)
@@ -87,6 +88,24 @@ const Projects = ()=>{
 
         <>
             {
+                addProject &&
+                <form className={`fixed w-full h-full flex justify-center items-center bg-black bg-opacity-80 z-50`}>
+                    <div className='sm:w-1/2 w-[80%] bg-gray-800 p-6 rounded-md flex flex-col gap-3'>
+                        <h2 className='text-2xl text-sky-500 font-bold'>Add a new Project</h2>
+                        <input type="text" placeholder='Title' required className='outline-none w-full bg-gray-700 text-white p-2 rounded-md'/>
+                        <textarea placeholder='Description' required className='outline-none w-full bg-gray-700 text-white p-2 rounded-md'></textarea>
+                        <div className='flex gap-2'>
+                            <label htmlFor="project-images" className='w-1/2 bg-cyan-700 text-white sm:text-base text-sm flex justify-center rounded-md p-1'>Add Images</label>
+                            <input id='project-images' type="file" multiple className='w-full bg-gray-700 text-white p-2 rounded-md hidden'/>
+                            <label htmlFor="project-images" className='w-1/2 bg-cyan-700 text-white sm:text-base text-sm flex justify-center rounded-md p-1'>Add Video</label>
+                            <input id='project-images' type="file" accept='video/*' className='w-full bg-gray-700 text-white p-2 rounded-md hidden'/>
+                        </div>
+                        <button type='submit' className='w-full bg-sky-500 text-white p-2 rounded-md hover:bg-sky-600'>Add</button>
+                        <button onClick={()=>{setAddProject(false)}} className='w-full bg-red-500 text-white p-2 rounded-md hover:bg-red-600'>Cancel</button>
+                    </div>
+                </form>
+            }
+            {
                 imageClicked &&
                 <div className={`fixed w-full h-full flex justify-center items-center bg-black bg-opacity-80 z-50`}>
                     <button className='absolute sm:top-2 right-4 top-4 text-gray-500 hover:text-white text-2xl' onClick={()=>{setImageClicked(null)}}>X</button>
@@ -94,6 +113,12 @@ const Projects = ()=>{
                 </div>
             }
             <div className={`px-[5vw] w-full min-h-[80vh] h-auto lg:pt-[17vh] sm:pt-[16vh] pt-[13vh] bg-gray-900 flex flex-col gap-1 z-0`}>
+                {
+                    isLogged &&
+                    <div className='w-full flex justify-center mb-2'>
+                        <h1 onClick={()=>{setAddProject(true)}} className='text-6xl text-white cursor-pointer hover:text-cyan-500'>+</h1>
+                    </div>
+                }
                 {
                     projects?.map(project=>{
                         return (
