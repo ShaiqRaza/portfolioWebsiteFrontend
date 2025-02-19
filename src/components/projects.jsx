@@ -71,6 +71,24 @@ const Projects = ()=>{
     const { isLogged } = useOutletContext();
     const [addProject, setAddProject] = useState(false);
 
+    const addProjectSubmission = (e)=>{
+        e.preventDefault();
+        console.log(e)
+        console.log(Array.from(e.target[2].files))
+        const formData = new FormData();
+        formData.append("title", e.target[0].value);
+        formData.append("description", e.target[1].value);
+
+        Array.from(e.target[2].files).forEach((file) => formData.append("images", file));
+
+        formData.append("videos", e.target[3].files[0]);
+
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/project/create`, formData, {
+            headers: { "Content-Type": "multipart/form-data" }
+        });
+        setAddProject(false);
+    }
+
     useEffect(()=>{
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/project/get-all`)
         .then(response=>{
@@ -89,7 +107,7 @@ const Projects = ()=>{
         <>
             {
                 addProject &&
-                <form className={`fixed w-full h-full flex justify-center items-center bg-black bg-opacity-80 z-50`}>
+                <form onSubmit={addProjectSubmission} className={`fixed w-full h-full flex justify-center items-center bg-black bg-opacity-80 z-50`}>
                     <div className='sm:w-1/2 w-[80%] bg-gray-800 p-6 rounded-md flex flex-col gap-3'>
                         <h2 className='text-2xl text-sky-500 font-bold'>Add a new Project</h2>
                         <input type="text" placeholder='Title' required className='outline-none w-full bg-gray-700 text-white p-2 rounded-md'/>
@@ -97,8 +115,8 @@ const Projects = ()=>{
                         <div className='flex gap-2'>
                             <label htmlFor="project-images" className='w-1/2 bg-cyan-700 text-white sm:text-base text-sm flex justify-center rounded-md p-1'>Add Images</label>
                             <input id='project-images' type="file" multiple className='w-full bg-gray-700 text-white p-2 rounded-md hidden'/>
-                            <label htmlFor="project-images" className='w-1/2 bg-cyan-700 text-white sm:text-base text-sm flex justify-center rounded-md p-1'>Add Video</label>
-                            <input id='project-images' type="file" accept='video/*' className='w-full bg-gray-700 text-white p-2 rounded-md hidden'/>
+                            <label htmlFor="project-video" className='w-1/2 bg-cyan-700 text-white sm:text-base text-sm flex justify-center rounded-md p-1'>Add Video</label>
+                            <input id='project-video' type="file" accept='video/*' className='w-full bg-gray-700 text-white p-2 rounded-md hidden'/>
                         </div>
                         <button type='submit' className='w-full bg-sky-500 text-white p-2 rounded-md hover:bg-sky-600'>Add</button>
                         <button onClick={()=>{setAddProject(false)}} className='w-full bg-red-500 text-white p-2 rounded-md hover:bg-red-600'>Cancel</button>
