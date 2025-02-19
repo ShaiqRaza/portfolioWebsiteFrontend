@@ -12,34 +12,54 @@ const breakpointColumns = {
 };
 
 const Skill = ({
-    name,
+    title,
     description,
     isLogged,
     ID,
-    handleSkillDeletion
+    handleSkillDeletion,
+    handleSkillUpdation
 }) => {
     const [showOptions, setShowOptions] = useState(false);
+    const [updateSkill, setUpdateSkill] = useState(false);
+    const [stateTitle, setStateTitle] = useState(title);
+    const [stateDescription, setStateDescription] = useState(description);
 
     return (
-        <div className="bg-gray-800 lg:p-6 sm:p-4 p-2 rounded-md flex-col flex items-center shadow-md mb-2 break-inside-avoid relative" onMouseLeave={() => setShowOptions(false)}>
-            {isLogged && (
-                <div className="absolute top-2 right-2" >
-                    <button>
-                        <FaEllipsisH className="text-white" onMouseEnter={() => setShowOptions(true)}/>
-                    </button>
-                    {showOptions && (
-                        <div className="absolute right-0 mt-2 w-32 bg-white shadow-lg z-10 rounded-md">
-                            <button className="block w-full text-left px-4 py-2 text-sm rounded-t-md text-gray-700 hover:bg-gray-200">Edit</button>
-                            <button onClick={()=>handleSkillDeletion(ID)} className="block w-full text-left px-4 py-2 text-sm rounded-b-md text-gray-700 hover:bg-gray-200">Delete</button>
+        <>
+            {
+                updateSkill &&
+                <form onSubmit={(e)=>{handleSkillUpdation(e, ID, stateTitle, stateDescription); setUpdateSkill(false)}} className='h-screen w-screen fixed bg-black bg-opacity-80 z-50 top-0 right-0 flex justify-center items-center'>
+                    <div className='sm:w-1/2 w-[80%] bg-gray-800 p-6 rounded-md'>
+                        <h2 className='text-2xl text-sky-500 font-bold mb-4'>Update Skill</h2>
+                        <input type='text' value={stateTitle} required className='outline-none w-full hover:border hover:border-cyan-500 p-2 rounded-md bg-gray-700 text-white mb-4' onChange={(e)=>{setStateTitle(e.target.value)}}/>
+                        <textarea value={stateDescription} required className='outline-none hover:border hover:border-cyan-500 w-full p-2 rounded-md bg-gray-700 text-white mb-4' onChange={(e)=>{setStateDescription(e.target.value)}}/>
+                        <div className='w-full flex gap-2'>
+                            <button onClick={()=>{setUpdateSkill(false)}} className='bg-red-500 hover:bg-red-600 text-white rounded-md p-2 w-1/2'>Cancel</button>
+                            <button type='submit' className='bg-cyan-500 hover:bg-cyan-600 text-white rounded-md p-2 w-1/2'>Update</button>
                         </div>
-                    )}
-                </div>
-            )}
-            <h3 className="font-bold text-xl mb-3 uppercase text-center text-sky-400">{name}</h3>
-            <p className="text-sm text-gray-300 break-words text-left">
-                {description}
-            </p>
-        </div>
+                    </div>
+                </form>
+            }
+            <div className="bg-gray-800 lg:p-6 sm:p-4 p-2 rounded-md flex-col flex items-center shadow-md mb-2 break-inside-avoid relative" onMouseLeave={() => setShowOptions(false)}>
+                {isLogged && (
+                    <div className="absolute top-2 right-2" >
+                        <button>
+                            <FaEllipsisH className="text-white" onMouseEnter={() => setShowOptions(true)}/>
+                        </button>
+                        {showOptions && (
+                            <div className="absolute right-0 mt-2 w-32 bg-white shadow-lg z-10 rounded-md">
+                                <button onClick={()=>{setUpdateSkill(true)}} className="block w-full text-left px-4 py-2 text-sm rounded-t-md text-gray-700 hover:bg-gray-200">Edit</button>
+                                <button onClick={()=>handleSkillDeletion(ID)} className="block w-full text-left px-4 py-2 text-sm rounded-b-md text-gray-700 hover:bg-gray-200">Delete</button>
+                            </div>
+                        )}
+                    </div>
+                )}
+                <h3 className="font-bold text-xl mb-3 uppercase text-center text-sky-400">{title}</h3>
+                <p className="text-sm text-gray-300 break-words text-left">
+                    {description}
+                </p>
+            </div>
+        </>
     );
 }
 
@@ -74,6 +94,13 @@ const Skills = () => {
             setSkills(skills.filter(skill => skill._id != ID))
         })
     }
+    const handleSkillUpdation = (e, ID, title, description)=>{
+        e.preventDefault(); 
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/skill/update/${ID}`, {title, description})
+        .then(response => {
+            setSkills(skills.map(skill => skill._id == ID ? response.data.data : skill));
+        })
+    }
 
     return (
             <>
@@ -102,12 +129,13 @@ const Skills = () => {
                     skills?.map(skill => {
                         return (
                             <Skill
-                                name={skill?.title}
+                                title={skill?.title}
                                 description={skill?.description}
                                 ID={skill?._id}
                                 key={skill?._id}
                                 isLogged={isLogged}
                                 handleSkillDeletion={handleSkillDeletion}
+                                handleSkillUpdation={handleSkillUpdation}
                             />
                         )
                     })
