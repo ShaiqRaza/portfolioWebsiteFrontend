@@ -73,8 +73,6 @@ const Projects = ()=>{
 
     const addProjectSubmission = (e)=>{
         e.preventDefault();
-        console.log(e)
-        console.log(Array.from(e.target[2].files))
         const formData = new FormData();
         formData.append("title", e.target[0].value);
         formData.append("description", e.target[1].value);
@@ -85,7 +83,10 @@ const Projects = ()=>{
 
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/project/create`, formData, {
             headers: { "Content-Type": "multipart/form-data" }
-        });
+        })
+        .then((response)=>{
+            setProjects([...projects, response.data.data])
+        })
         setAddProject(false);
     }
 
