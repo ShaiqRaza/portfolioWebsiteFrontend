@@ -22,20 +22,26 @@ const ProjectImage = ({image, setImageClicked})=>{
     )
 }
 
-const Project = ({project, setImageClicked, isLogged, handleProjectDeletion})=>{
+const Project = ({project, setImageClicked, isLogged, handleProjectDeletion, handleTitleUpdation})=>{
 
     const [clicked, setClicked] = useState(false);
+    const [title, setTitle] = useState(project.title);
     
     return(
-        <div key={project._id} className='rounded-sm bg-slate-700 text-white px-3 break-inside-avoid'>
+        <>
+            <div key={project._id} className='rounded-sm bg-slate-700 text-white px-3 break-inside-avoid'>
             <div onClick={()=>{setClicked(!clicked)}} className='capitalize cursor-pointer h-[7vh] flex items-center justify-between font-bold text-xl'>
-                <div className='flex gap-2'>
-                    {project.title}
+                <div className='flex gap-10'>
+                    {
+                        isLogged
+                        ?<input type="text" onClick={e=>{e.stopPropagation()}} className='rounded-sm outline-none border border-white bg-slate-700 p-1 my-1' value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
+                        :title
+                    }
                     {
                         isLogged &&
-                        <span className='font-normal flex gap-2'>|
-                            <button onClick={()=>{handleProjectDeletion(project._id)}} className='text-white sm:text-[14px] text-[13px] hover:text-cyan-500'>Delete</button>
-                            <button onClick={()=>{handleProjectDeletion(project._id)}} className='text-white sm:text-[14px] text-[13px] hover:text-cyan-500'>edit_title</button>
+                        <span className='font-normal flex gap-5'>
+                            <button onClick={(e)=>{e.stopPropagation(); handleTitleUpdation(project._id, title)}} className='text-white sm:text-[14px] text-[13px] hover:text-cyan-500'>save_title</button>
+                            <button onClick={(e)=>{e.stopPropagation(); handleProjectDeletion(project._id)}} className='text-white sm:text-[14px] text-[13px] hover:text-cyan-500'>Delete</button>
                         </span>
                     }
                 </div>
@@ -69,7 +75,8 @@ const Project = ({project, setImageClicked, isLogged, handleProjectDeletion})=>{
                     }
                 </div>
             }
-        </div>
+            </div>
+        </>
     )
 }
 
@@ -102,6 +109,12 @@ const Projects = ()=>{
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/project/delete/${ID}`)
         .then(response=>{
             setProjects(projects.filter(proj=>proj._id!=ID))
+        })
+    }
+    const handleTitleUpdation = (ID, title)=>{
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/project/update-title/${ID}`, {title})
+        .then(response=>{
+            setProjects(projects.map(proj=>proj._id==ID?response.data.data:proj))
         })
     }
 
@@ -156,7 +169,7 @@ const Projects = ()=>{
                 {
                     projects?.map(project=>{
                         return (
-                            <Project isLogged={isLogged} handleProjectDeletion={handleProjectDeletion} project={project} setImageClicked={setImageClicked} key={project._id}/>                        
+                            <Project isLogged={isLogged} handleTitleUpdation={handleTitleUpdation} handleProjectDeletion={handleProjectDeletion} project={project} setImageClicked={setImageClicked} key={project._id}/>                        
                         )
                     })
                 }
