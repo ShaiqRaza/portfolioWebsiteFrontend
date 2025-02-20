@@ -109,14 +109,14 @@ const Projects = ()=>{
             {
                 addProject &&
                 <form onSubmit={addProjectSubmission} className={`fixed w-full h-full flex justify-center items-center bg-black bg-opacity-80 z-50`}>
-                    <div className='sm:w-1/2 w-[80%] bg-gray-800 p-6 rounded-md flex flex-col gap-3'>
+                    <div className='lg:w-[40%] md:w-1/2 sm:w-[60%] w-[80%] bg-gray-800 p-6 rounded-md flex flex-col gap-3'>
                         <h2 className='text-2xl text-sky-500 font-bold'>Add a new Project</h2>
                         <input type="text" placeholder='Title' required className='outline-none w-full bg-gray-700 text-white p-2 rounded-md'/>
                         <textarea placeholder='Description' required className='outline-none w-full bg-gray-700 text-white p-2 rounded-md'></textarea>
                         <div className='flex gap-2'>
-                            <label htmlFor="project-images" className='w-1/2 bg-cyan-700 text-white sm:text-base text-sm flex justify-center rounded-md p-1'>Add Images</label>
+                            <label htmlFor="project-images" className='w-1/2 bg-gray-700 text-white sm:text-base text-sm flex justify-center rounded-md p-1 cursor-pointer hover:text-cyan-500'>Add Images</label>
                             <input id='project-images' type="file" multiple className='w-full bg-gray-700 text-white p-2 rounded-md hidden'/>
-                            <label htmlFor="project-video" className='w-1/2 bg-cyan-700 text-white sm:text-base text-sm flex justify-center rounded-md p-1'>Add Video</label>
+                            <label htmlFor="project-video" className='w-1/2 bg-gray-700 text-white sm:text-base text-sm flex justify-center rounded-md p-1 cursor-pointer hover:text-cyan-500'>Add Video</label>
                             <input id='project-video' type="file" accept='video/*' className='w-full bg-gray-700 text-white p-2 rounded-md hidden'/>
                         </div>
                         <button type='submit' className='w-full bg-sky-500 text-white p-2 rounded-md hover:bg-sky-600'>Add</button>
