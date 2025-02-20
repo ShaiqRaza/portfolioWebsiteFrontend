@@ -22,14 +22,20 @@ const ProjectImage = ({image, setImageClicked})=>{
     )
 }
 
-const Project = ({project, setImageClicked, isLogged, setIsLogged})=>{
+const Project = ({project, setImageClicked, isLogged, handleProjectDeletion})=>{
 
     const [clicked, setClicked] = useState(false);
-
+    
     return(
         <div key={project._id} className='rounded-sm bg-slate-700 text-white px-3 break-inside-avoid'>
             <div onClick={()=>{setClicked(!clicked)}} className='capitalize cursor-pointer h-[7vh] flex items-center justify-between font-bold text-xl'>
-                <div>{project.title}</div>
+                <div>
+                    {project.title}
+                    {
+                        isLogged &&
+                        <span className='p-2 font-normal'>| <button onClick={()=>{handleProjectDeletion(project._id)}} className='text-white sm:text-[14px] text-[13px] hover:text-cyan-500'>Delete</button></span>
+                    }
+                </div>
                 {clicked? <IoIosArrowDown size={16}/>: <IoIosArrowForward size={16}/>}
             </div>
             {
@@ -89,6 +95,12 @@ const Projects = ()=>{
         })
         setAddProject(false);
     }
+    const handleProjectDeletion = (ID)=>{
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/project/delete/${ID}`)
+        .then(response=>{
+            setProjects(projects.filter(proj=>proj._id!=ID))
+        })
+    }
 
     useEffect(()=>{
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/project/get-all`)
@@ -141,7 +153,7 @@ const Projects = ()=>{
                 {
                     projects?.map(project=>{
                         return (
-                            <Project project={project} setImageClicked={setImageClicked} key={project._id}/>                        
+                            <Project isLogged={isLogged} handleProjectDeletion={handleProjectDeletion} project={project} setImageClicked={setImageClicked} key={project._id}/>                        
                         )
                     })
                 }
