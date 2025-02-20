@@ -29,11 +29,14 @@ const Project = ({project, setImageClicked, isLogged, handleProjectDeletion})=>{
     return(
         <div key={project._id} className='rounded-sm bg-slate-700 text-white px-3 break-inside-avoid'>
             <div onClick={()=>{setClicked(!clicked)}} className='capitalize cursor-pointer h-[7vh] flex items-center justify-between font-bold text-xl'>
-                <div>
+                <div className='flex gap-2'>
                     {project.title}
                     {
                         isLogged &&
-                        <span className='p-2 font-normal'>| <button onClick={()=>{handleProjectDeletion(project._id)}} className='text-white sm:text-[14px] text-[13px] hover:text-cyan-500'>Delete</button></span>
+                        <span className='font-normal flex gap-2'>|
+                            <button onClick={()=>{handleProjectDeletion(project._id)}} className='text-white sm:text-[14px] text-[13px] hover:text-cyan-500'>Delete</button>
+                            <button onClick={()=>{handleProjectDeletion(project._id)}} className='text-white sm:text-[14px] text-[13px] hover:text-cyan-500'>edit_title</button>
+                        </span>
                     }
                 </div>
                 {clicked? <IoIosArrowDown size={16}/>: <IoIosArrowForward size={16}/>}
