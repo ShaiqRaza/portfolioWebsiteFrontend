@@ -30,11 +30,10 @@ const Project = ({project, setImageClicked, isLogged, handleProjectDeletion, han
     return(
         <>
             <div key={project._id} className='rounded-sm bg-slate-700 text-white px-3 break-inside-avoid'>
-            <div onClick={()=>{setClicked(!clicked)}} className='capitalize cursor-pointer h-[7vh] flex items-center justify-between font-bold text-xl'>
-                <div className='flex gap-10'>
+            <div onClick={()=>{setClicked(!clicked)}} className='capitalize cursor-pointer h-[7vh] flex items-center justify-between font-bold md:text-xl sm:text-lg text-base'>
                     {
                         isLogged
-                        ?<input type="text" onClick={e=>{e.stopPropagation()}} className='rounded-sm outline-none border border-white bg-slate-700 p-1 my-1' value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
+                        ?<input type="text" onClick={e=>{e.stopPropagation()}} className='sm:w-1/3 w-1/2 rounded-sm outline-none border border-white bg-slate-700 p-1 my-1' value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
                         :title
                     }
                     {
@@ -44,7 +43,6 @@ const Project = ({project, setImageClicked, isLogged, handleProjectDeletion, han
                             <button onClick={(e)=>{e.stopPropagation(); handleProjectDeletion(project._id)}} className='text-white sm:text-[14px] text-[13px] hover:text-cyan-500'>Delete</button>
                         </span>
                     }
-                </div>
                 {clicked? <IoIosArrowDown size={16}/>: <IoIosArrowForward size={16}/>}
             </div>
             {
