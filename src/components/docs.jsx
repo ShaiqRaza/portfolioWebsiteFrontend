@@ -26,6 +26,7 @@ const Docs = ()=>{
     const [docs, setDocs] = useState(null);
     const [imageClicked, setImageClicked] = useState(null);
     const { isLogged } = useOutletContext();
+    const [addDoc, setAddDoc] = useState(false);
 
     useEffect(()=>{
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/doc/get-all`)
@@ -40,7 +41,8 @@ const Docs = ()=>{
     }, [])
 
     return (
-        <>  {
+        <> 
+            {
                 imageClicked &&
                 <div className="fixed w-full h-full bg-black bg-opacity-80 z-50">
                     <div className="flex flex-col sm:gap-3 gap-2 justify-center items-center w-auto h-full">
@@ -52,15 +54,38 @@ const Docs = ()=>{
                     </div>
                 </div>
             }
-            <Masonry className="px-[5vw] w-full min-h-[80vh] h-auto lg:pt-[17vh] sm:pt-[16vh] pt-[13vh] bg-gray-900 flex gap-2" breakpointCols={breakpointColumns}>
+            {
+                addDoc &&
+                <form className="h-screen w-screen fixed bg-black bg-opacity-80 z-50 top-0 right-0 flex justify-center items-center">
+                    <div className='sm:w-1/2 w-[80%] bg-gray-800 p-6 rounded-md flex flex-col gap-4'>
+                        <h2 className='text-2xl text-sky-500 font-bold'>Add Document</h2>
+                        <input name="title" type='text' placeholder="Enter title" required className='outline-none w-full hover:border hover:border-cyan-500 p-2 rounded-md bg-gray-700 text-white'/>
+                        <label htmlFor="doc-image" className="cursor-pointer w-full p-2 rounded-md border border-cyan-500 hover:text-cyan-500 bg-gray-700 flex justify-center text-gray-200">Add Image</label>
+                        <input type="file" required accept="image/*" className="hidden" name="image" id="doc-image"/>
+                        <div className='w-full flex gap-2'>
+                            <button className='bg-red-500 hover:bg-red-600 text-white rounded-md p-2 w-1/2'>Cancel</button>
+                            <button type='submit' className='bg-cyan-500 hover:bg-cyan-600 text-white rounded-md p-2 w-1/2'>Add</button>
+                        </div>
+                    </div>
+                </form>
+            }
+            <div className="lg:pt-[17vh] sm:pt-[16vh] pt-[13vh] bg-gray-900 flex flex-col gap-5">
                 {
-                    docs?.map(doc=>{
-                        return (
-                            <Doc document={doc} key={doc._id} setImageClicked={setImageClicked}/>
-                        )
-                    })
-                }
-            </Masonry>
+                    isLogged &&
+                    <div className="w-full flex justify-center">
+                        <button onClick={()=>{setAddDoc(true)}} className="sm:text-sm text-xs font-semibold text-white hover:text-cyan-500">Add Document</button>
+                    </div>
+                } 
+                <Masonry className="px-[5vw] w-full min-h-[60vh] h-auto flex gap-2" breakpointCols={breakpointColumns}>
+                    {
+                        docs?.map(doc=>{
+                            return (
+                                <Doc document={doc} key={doc._id} setImageClicked={setImageClicked}/>
+                            )
+                        })
+                    }
+                </Masonry>
+            </div>
         </>
     )
 }
