@@ -34,10 +34,10 @@ const Project = ({project, handleVideoDeletion, handleVideoAddition, setImageCli
     return(
         <>
             <div key={project._id} className='rounded-sm bg-slate-700 text-white px-3 break-inside-avoid flex flex-col gap-5'>
-            <div onClick={()=>{setClicked(!clicked)}} className='capitalize cursor-pointer h-[7vh] flex items-center justify-between font-bold md:text-xl sm:text-lg text-base'>
+                <div onClick={()=>{setClicked(!clicked)}} className='capitalize cursor-pointer h-[7vh] flex items-center justify-between font-bold md:text-xl sm:text-lg text-base'>
                     {
                         isLogged
-                        ?<input type="text" onClick={e=>{e.stopPropagation()}} className='sm:w-1/3 w-1/2 rounded-sm outline-none border border-white bg-slate-700 p-1 my-1' value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
+                        ?<input type="text" onClick={e=>{e.stopPropagation()}} className='sm:w-1/3 w-1/2 rounded-sm outline-none border border-white bg-slate-700 p-1 my-2 hover:border-cyan-500' value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
                         :title
                     }
                     {
@@ -48,54 +48,56 @@ const Project = ({project, handleVideoDeletion, handleVideoAddition, setImageCli
                         </span>
                     }
                 {clicked? <IoIosArrowDown size={16}/>: <IoIosArrowForward size={16}/>}
-            </div>
-            {
-                clicked &&
-                <div className='flex flex-col gap-5 px-3 py-1 pb-2 text-gray-300'>
+                </div>
+                {
+                    clicked &&
+                    <div className='flex flex-col gap-5 px-3 py-1 pb-2 text-gray-300'>
                     {
                         isLogged
                         ?<form onSubmit={(e)=>{console.log(e); e.preventDefault(); handleDiscriptionUpdation(project._id, description)}} className='w-full flex justify-center items-center flex-col gap-2'>
-                            <textarea className='w-full bg-slate-700 text-white p-2 rounded-sm outline-none border border-white' rows={3} value={description} onChange={(e)=>{setDescription(e.target.value)}}></textarea>
+                            <textarea className='w-full bg-slate-700 text-white p-2 rounded-sm outline-none border border-white hover:border-cyan-500' rows={3} value={description} onChange={(e)=>{setDescription(e.target.value)}}></textarea>
                             <button type='submit' className='sm:text-base text-sm rounded-md bg-gray-700 border border-white text-white hover:text-cyan-500 hover:border-cyan-500 py-1 px-2'>Save</button>
                         </form>
                         :<p className='first-letter:uppercase whitespace-pre-line'>{description}</p>
                     }
-                    {
-                        <div className='flex flex-col gap-5'>
-                            <div className='h-[1px] w-full bg-gray-500'></div>
-                            <Masonry className='w-full flex gap-2' breakpointCols={breakpointColumns}>
-                                {
-                                    project.images?.map(image => 
-                                        <ProjectImage handleImageDeletion={handleImageDeletion} ID={project._id} image={image} setImageClicked={setImageClicked} key={image.image_id}/>
-                                    )
-                                }
-                            </Masonry>
-                            <div className=' w-full flex justify-center'>
-                                <label htmlFor='project-image' className='sm:text-sm text-xs font-semibold text-white hover:text-cyan-500 cursor-pointer'>Add Image</label>
-                                <input type='file' name='image' id='project-image' onChange={(e)=>{handleAddImage(project._id, e.target.files[0])}} className='hidden'/>
-                            </div>
-                        </div>
-                    }
                     <div className='flex flex-col gap-5'>
-                    <div className='h-[1px] w-full bg-gray-500'></div>
-                    {
-                        project.video
-                        ?<div className='w-full flex flex-col justify-center items-center pb-5 pt-2 gap-4'>
-                            <video controls src={project.video} className='max-h-[50vh] h-auto border-2 border-gray-300'></video>
+                        <div className='h-[1px] w-full bg-gray-500'></div>
+                        {
+                            project.images.length>0 
+                            && 
+                            <Masonry className='w-full flex gap-2' breakpointCols={breakpointColumns}>
                             {
-                                isLogged &&
-                                <button onClick={()=>{handleVideoDeletion(project._id, project.video_id)}} className='sm:text-sm text-xs font-semibold text-white hover:text-red-400'>Delete video</button>
+                                project.images.map(image => 
+                                    <ProjectImage handleImageDeletion={handleImageDeletion} ID={project._id} image={image} setImageClicked={setImageClicked} key={image.image_id}/>
+                                )
                             }
+                            </Masonry>
+                        }
+                        <div className=' w-full flex justify-center'>
+                            <label htmlFor='project-image' className='sm:text-sm text-xs font-semibold text-white hover:text-cyan-500 cursor-pointer'>Add Image</label>
+                            <input type='file' name='image' accept='image/*' id='project-image' onChange={(e)=>{handleAddImage(project._id, e.target.files[0])}} className='hidden'/>
                         </div>
-                        : <div className='w-full flex justify-center'>
-                            <label htmlFor='add-video' className='sm:text-sm text-xs font-semibold text-white hover:text-cyan-500 cursor-pointer'>Add Video</label>
-                            <input id='add-video' type='file' name='video' accept='video/*' onChange={(e)=>{handleVideoAddition(project._id, e.target.files[0])}} className='hidden'/>
-                        </div>
-
-                    }
                     </div>
-                </div>
-            }
+                    <div className='flex flex-col gap-5'>
+                        <div className='h-[1px] w-full bg-gray-500'></div>
+                        {
+                            project.video
+                            ?<div className='w-full flex flex-col justify-center items-center pb-5 pt-2 gap-5'>
+                                <video controls src={project.video} className='max-h-[50vh] h-auto border-2 border-gray-300'></video>
+                                {
+                                    isLogged &&
+                                    <button onClick={()=>{handleVideoDeletion(project._id, project.video_id)}} className='sm:text-sm text-xs font-semibold text-white hover:text-red-400'>Delete video</button>
+                                }
+                            </div>
+                            : <div className='w-full flex justify-center'>
+                                <label htmlFor='add-video' className='sm:text-sm text-xs font-semibold text-white hover:text-cyan-500 cursor-pointer'>Add Video</label>
+                                <input id='add-video' type='file' name='video' accept='video/*' onChange={(e)=>{handleVideoAddition(project._id, e.target.files[0])}} className='hidden'/>
+                            </div>
+
+                        }
+                    </div>
+                    </div>
+                }
             </div>
         </>
     )
@@ -188,13 +190,13 @@ const Projects = ()=>{
             {
                 addProject &&
                 <form onSubmit={addProjectSubmission} className={`fixed w-full h-full flex justify-center items-center bg-black bg-opacity-80 z-50`}>
-                    <div className='lg:w-[40%] md:w-1/2 sm:w-[60%] w-[80%] bg-gray-800 p-6 rounded-md flex flex-col gap-3'>
+                    <div className='sm:w-[450px] w-[80%] bg-gray-800 p-6 rounded-md flex flex-col gap-3'>
                         <h2 className='text-2xl text-sky-500 font-bold'>Add a new Project</h2>
                         <input type="text" placeholder='Title' required className='outline-none w-full bg-gray-700 text-white p-2 rounded-md'/>
                         <textarea placeholder='Description' required className='outline-none w-full bg-gray-700 text-white p-2 rounded-md'></textarea>
                         <div className='flex gap-2'>
                             <label htmlFor="project-images" className='w-1/2 bg-gray-700 text-white sm:text-base text-sm flex justify-center rounded-md p-1 cursor-pointer hover:text-cyan-500'>Add Images</label>
-                            <input id='project-images' type="file" multiple className='w-full bg-gray-700 text-white p-2 rounded-md hidden'/>
+                            <input id='project-images' type="file" accept='image/*' multiple className='w-full bg-gray-700 text-white p-2 rounded-md hidden'/>
                             <label htmlFor="project-video" className='w-1/2 bg-gray-700 text-white sm:text-base text-sm flex justify-center rounded-md p-1 cursor-pointer hover:text-cyan-500'>Add Video</label>
                             <input id='project-video' type="file" accept='video/*' className='w-full bg-gray-700 text-white p-2 rounded-md hidden'/>
                         </div>
@@ -214,7 +216,7 @@ const Projects = ()=>{
                 {
                     isLogged &&
                     <div className='w-full flex justify-center mb-2'>
-                        <h1 onClick={()=>{setAddProject(true)}} className='text-6xl text-white cursor-pointer hover:text-cyan-500'>+</h1>
+                        <h1 onClick={()=>{setAddProject(true)}} className='sm:text-sm text-xs text-white cursor-pointer hover:text-cyan-500'>Add project</h1>
                     </div>
                 }
                 {
