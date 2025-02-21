@@ -12,14 +12,17 @@ const breakpointColumns = {
     400: 2
   };
 
-const ProjectImage = ({image, ID, setImageClicked, handleImageDeletion})=>{
+const ProjectImage = ({image, ID, setImageClicked, handleImageDeletion, isLogged})=>{
     const [hovered, setHovered] = useState(false);
     return (
         <div className='relative' onMouseEnter={()=>{setHovered(true)}} onMouseLeave={()=>{setHovered(false)}}>
             {
                 hovered && <p className='absolute left-2 top-2 text-white font-medium z-20 lg:text-base sm:text-sm text-xs'>Click to Expand</p>
             }
-            <MdOutlineDeleteOutline onClick={()=>{handleImageDeletion(ID, image.image_id)}} onMouseEnter={()=>{setHovered(false)}} onMouseLeave={()=>{setHovered(true)}} className='cursor-pointer absolute top-[-6px] right-[-6px] text-white bg-gray-700 hover:bg-red-800 z-20 p-1 rounded-full' size={20}/>
+            {
+                isLogged &&
+                <MdOutlineDeleteOutline onClick={()=>{handleImageDeletion(ID, image.image_id)}} onMouseEnter={()=>{setHovered(false)}} onMouseLeave={()=>{setHovered(true)}} className='cursor-pointer absolute top-[-6px] right-[-6px] text-white bg-gray-700 hover:bg-red-800 z-20 p-1 rounded-full' size={20}/>
+            }
             <img onClick={()=>{setImageClicked(image.image)}} src={image.image} key={image.image_id} className='hover:brightness-50 rounded-sm cursor-pointer hover:bg-black w-full max-h-[30vh] min-h-[5vh] h-auto mb-2'/>
         </div>
     )
@@ -60,26 +63,32 @@ const Project = ({project, handleVideoDeletion, handleVideoAddition, setImageCli
                         </form>
                         :<p className='first-letter:uppercase whitespace-pre-line'>{description}</p>
                     }
-                    <div className='flex flex-col gap-5'>
-                        <div className='h-[1px] w-full bg-gray-500'></div>
-                        {
-                            project.images.length>0 
-                            && 
+                    {
+                        project.images.length>0 
+                        && 
+                        <div className='flex flex-col gap-5'>
+                            <div className='h-[1px] w-full bg-gray-500'></div>
                             <Masonry className='w-full flex gap-2' breakpointCols={breakpointColumns}>
                             {
                                 project.images.map(image => 
-                                    <ProjectImage handleImageDeletion={handleImageDeletion} ID={project._id} image={image} setImageClicked={setImageClicked} key={image.image_id}/>
+                                    <ProjectImage handleImageDeletion={handleImageDeletion} isLogged={isLogged} ID={project._id} image={image} setImageClicked={setImageClicked} key={image.image_id}/>
                                 )
                             }
                             </Masonry>
-                        }
+                        </div>
+                    }
+                    {
+                        isLogged &&
                         <div className=' w-full flex justify-center'>
                             <label htmlFor='project-image' className='sm:text-sm text-xs font-semibold text-white hover:text-cyan-500 cursor-pointer'>Add Image</label>
                             <input type='file' name='image' accept='image/*' id='project-image' onChange={(e)=>{handleAddImage(project._id, e.target.files[0])}} className='hidden'/>
                         </div>
-                    </div>
+                    }
                     <div className='flex flex-col gap-5'>
-                        <div className='h-[1px] w-full bg-gray-500'></div>
+                        {
+                            isLogged &&
+                            <div className='h-[1px] w-full bg-gray-500'></div>
+                        }
                         {
                             project.video
                             ?<div className='w-full flex flex-col justify-center items-center pb-5 pt-2 gap-5'>
@@ -90,8 +99,13 @@ const Project = ({project, handleVideoDeletion, handleVideoAddition, setImageCli
                                 }
                             </div>
                             : <div className='w-full flex justify-center'>
-                                <label htmlFor='add-video' className='sm:text-sm text-xs font-semibold text-white hover:text-cyan-500 cursor-pointer'>Add Video</label>
-                                <input id='add-video' type='file' name='video' accept='video/*' onChange={(e)=>{handleVideoAddition(project._id, e.target.files[0])}} className='hidden'/>
+                                {
+                                    isLogged &&
+                                <div>
+                                    <label htmlFor='add-video' className='sm:text-sm text-xs font-semibold text-white hover:text-cyan-500 cursor-pointer'>Add Video</label>
+                                    <input id='add-video' type='file' name='video' accept='video/*' onChange={(e)=>{handleVideoAddition(project._id, e.target.files[0])}} className='hidden'/>
+                                </div>
+                            }
                             </div>
 
                         }
