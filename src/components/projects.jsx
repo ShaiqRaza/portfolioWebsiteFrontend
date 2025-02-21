@@ -22,7 +22,7 @@ const ProjectImage = ({image, setImageClicked})=>{
     )
 }
 
-const Project = ({project, setImageClicked, isLogged, handleProjectDeletion, handleTitleUpdation, handleDiscriptionUpdation})=>{
+const Project = ({project, setImageClicked, isLogged, handleProjectDeletion, handleTitleUpdation, handleDiscriptionUpdation, handleAddImage})=>{
 
     const [clicked, setClicked] = useState(false);
     const [title, setTitle] = useState(project.title);
@@ -48,26 +48,29 @@ const Project = ({project, setImageClicked, isLogged, handleProjectDeletion, han
             </div>
             {
                 clicked &&
-                <div className='flex flex-col gap-5 px-3 py-1 text-gray-300'>
+                <div className='flex flex-col gap-5 px-3 py-1 pb-2 text-gray-300'>
                     {
                         isLogged
-                        ?<form onSubmit={(e)=>{console.log(e); e.preventDefault(); handleDiscriptionUpdation(project._id, description)}} className='w-full flex justify-center items-center flex-col gap-5'>
-                            <textarea className='w-full bg-slate-700 text-white p-2 rounded-md outline-none border border-white' rows={3} value={description} onChange={(e)=>{setDescription(e.target.value)}}></textarea>
+                        ?<form onSubmit={(e)=>{console.log(e); e.preventDefault(); handleDiscriptionUpdation(project._id, description)}} className='w-full flex justify-center items-center flex-col gap-2'>
+                            <textarea className='w-full bg-slate-700 text-white p-2 rounded-sm outline-none border border-white' rows={3} value={description} onChange={(e)=>{setDescription(e.target.value)}}></textarea>
                             <button type='submit' className='sm:text-base text-sm rounded-md bg-gray-700 border border-white text-white hover:text-cyan-500 hover:border-cyan-500 py-1 px-2'>Save</button>
                         </form>
                         :<p className='first-letter:uppercase whitespace-pre-line'>{description}</p>
                     }
                     {
-                        project.images?.length>0 &&
                         <div className='flex flex-col gap-5'>
                             <div className='h-[1px] w-full bg-gray-500'></div>
                             <Masonry className='w-full flex gap-2' breakpointCols={breakpointColumns}>
                                 {
-                                    project.images.map(image => 
+                                    project.images?.map(image => 
                                         <ProjectImage image={image} setImageClicked={setImageClicked} key={image.image_id}/>
                                     )
                                 }
                             </Masonry>
+                            <div className=' w-full flex justify-center'>
+                                <label htmlFor='project-image' className='sm:text-sm text-xs font-semibold text-white hover:text-cyan-500 cursor-pointer'>Add Image</label>
+                                <input type='file' name='image' id='project-image' onChange={(e)=>{handleAddImage(project._id, e.target.files[0])}} className='hidden'/>
+                            </div>
                         </div>
                     }
                     {
@@ -129,6 +132,12 @@ const Projects = ()=>{
             setProjects(projects.map(proj=>proj._id==ID?response.data.data:proj))
         })
     }
+    const handleAddImage = (ID, image)=>{
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/project/add-image/${ID}`, {image}, {headers: {'Content-Type': 'multipart/form-data'}})
+        .then(response=>{
+            setProjects(projects.map(proj=>proj._id==ID?response.data.data:proj))
+        })
+    }
 
     useEffect(()=>{
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/project/get-all`)
@@ -181,7 +190,7 @@ const Projects = ()=>{
                 {
                     projects?.map(project=>{
                         return (
-                            <Project isLogged={isLogged} handleDiscriptionUpdation={handleDiscriptionUpdation} handleTitleUpdation={handleTitleUpdation} handleProjectDeletion={handleProjectDeletion} project={project} setImageClicked={setImageClicked} key={project._id}/>                        
+                            <Project isLogged={isLogged} handleAddImage={handleAddImage} handleDiscriptionUpdation={handleDiscriptionUpdation} handleTitleUpdation={handleTitleUpdation} handleProjectDeletion={handleProjectDeletion} project={project} setImageClicked={setImageClicked} key={project._id}/>                        
                         )
                     })
                 }
