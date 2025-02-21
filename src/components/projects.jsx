@@ -25,7 +25,7 @@ const ProjectImage = ({image, ID, setImageClicked, handleImageDeletion})=>{
     )
 }
 
-const Project = ({project, setImageClicked, isLogged, handleImageDeletion, handleProjectDeletion, handleTitleUpdation, handleDiscriptionUpdation, handleAddImage})=>{
+const Project = ({project, handleVideoDeletion, handleVideoAddition, setImageClicked, isLogged, handleImageDeletion, handleProjectDeletion, handleTitleUpdation, handleDiscriptionUpdation, handleAddImage})=>{
 
     const [clicked, setClicked] = useState(false);
     const [title, setTitle] = useState(project.title);
@@ -76,15 +76,20 @@ const Project = ({project, setImageClicked, isLogged, handleImageDeletion, handl
                             </div>
                         </div>
                     }
+                    <div className='flex flex-col gap-5'>
+                    <div className='h-[1px] w-full bg-gray-500'></div>
                     {
-                        project.video &&
-                        <div className='flex flex-col gap-5'>
-                            <div className='h-[1px] w-full bg-gray-500'></div>
-                            <div className='w-full flex justify-center pb-5 pt-2'>
-                                <video controls src={project.video} className='max-h-[50vh] h-auto border-2 border-yellow-50'></video>
-                            </div>
+                        project.video
+                        ?<div className='w-full flex flex-col justify-center items-center pb-5 pt-2 gap-4'>
+                            <video controls src={project.video} className='max-h-[50vh] h-auto border-2 border-gray-300'></video>
+                            {
+                                isLogged &&
+                                <button onClick={()=>{handleVideoDeletion(project._id, project.video_id)}} className='sm:text-sm text-xs font-semibold text-white hover:text-red-400'>Delete video</button>
+                            }
                         </div>
+                        : <button className='sm:text-sm text-xs font-semibold text-white hover:text-cyan-500'>Add Video</button>
                     }
+                    </div>
                 </div>
             }
             </div>
@@ -147,6 +152,12 @@ const Projects = ()=>{
             setProjects(projects.map(proj=>proj._id==ID?response.data.data:proj))
         })
     }
+    const handleVideoDeletion = (ID, video_id)=>{
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/project/delete-video/${ID}`, {video_id})
+        .then(response=>{
+            setProjects(projects.map(proj=>proj._id==ID?response.data.data:proj))
+        })
+    }
 
     useEffect(()=>{
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/project/get-all`)
@@ -199,7 +210,7 @@ const Projects = ()=>{
                 {
                     projects?.map(project=>{
                         return (
-                            <Project isLogged={isLogged} handleImageDeletion={handleImageDeletion} handleAddImage={handleAddImage} handleDiscriptionUpdation={handleDiscriptionUpdation} handleTitleUpdation={handleTitleUpdation} handleProjectDeletion={handleProjectDeletion} project={project} setImageClicked={setImageClicked} key={project._id}/>                        
+                            <Project isLogged={isLogged} handleVideoDeletion={handleVideoDeletion} handleImageDeletion={handleImageDeletion} handleAddImage={handleAddImage} handleDiscriptionUpdation={handleDiscriptionUpdation} handleTitleUpdation={handleTitleUpdation} handleProjectDeletion={handleProjectDeletion} project={project} setImageClicked={setImageClicked} key={project._id}/>                        
                         )
                     })
                 }
