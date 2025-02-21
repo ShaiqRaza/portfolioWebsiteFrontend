@@ -87,7 +87,11 @@ const Project = ({project, handleVideoDeletion, handleVideoAddition, setImageCli
                                 <button onClick={()=>{handleVideoDeletion(project._id, project.video_id)}} className='sm:text-sm text-xs font-semibold text-white hover:text-red-400'>Delete video</button>
                             }
                         </div>
-                        : <button className='sm:text-sm text-xs font-semibold text-white hover:text-cyan-500'>Add Video</button>
+                        : <div className='w-full flex justify-center'>
+                            <label htmlFor='add-video' className='sm:text-sm text-xs font-semibold text-white hover:text-cyan-500 cursor-pointer'>Add Video</label>
+                            <input id='add-video' type='file' name='video' accept='video/*' onChange={(e)=>{handleVideoAddition(project._id, e.target.files[0])}} className='hidden'/>
+                        </div>
+
                     }
                     </div>
                 </div>
@@ -158,6 +162,12 @@ const Projects = ()=>{
             setProjects(projects.map(proj=>proj._id==ID?response.data.data:proj))
         })
     }
+    const handleVideoAddition = (ID, video)=>{
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/project/add-video/${ID}`, {video}, {headers: {'Content-Type': 'multipart/form-data'}})
+        .then(response=>{
+            setProjects(projects.map(proj=>proj._id==ID?response.data.data:proj))
+        })
+    }
 
     useEffect(()=>{
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/project/get-all`)
@@ -210,7 +220,7 @@ const Projects = ()=>{
                 {
                     projects?.map(project=>{
                         return (
-                            <Project isLogged={isLogged} handleVideoDeletion={handleVideoDeletion} handleImageDeletion={handleImageDeletion} handleAddImage={handleAddImage} handleDiscriptionUpdation={handleDiscriptionUpdation} handleTitleUpdation={handleTitleUpdation} handleProjectDeletion={handleProjectDeletion} project={project} setImageClicked={setImageClicked} key={project._id}/>                        
+                            <Project isLogged={isLogged} handleVideoAddition={handleVideoAddition} handleVideoDeletion={handleVideoDeletion} handleImageDeletion={handleImageDeletion} handleAddImage={handleAddImage} handleDiscriptionUpdation={handleDiscriptionUpdation} handleTitleUpdation={handleTitleUpdation} handleProjectDeletion={handleProjectDeletion} project={project} setImageClicked={setImageClicked} key={project._id}/>                        
                         )
                     })
                 }
