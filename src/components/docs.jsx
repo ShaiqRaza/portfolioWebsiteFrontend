@@ -19,7 +19,7 @@ const Doc = ({document, setImageClicked, isLogged, handleDocDeletion}) =>{
                 <img onMouseEnter={()=>{setDocHovered(true)}} onMouseLeave={()=>{setDocHovered(false)}} src={document.image} alt="Image!" className="max-h-[70vh] min-h-[10vh] h-auto cursor-pointer rounded-sm hover:brightness-50" onClick={()=>{setImageClicked(document)}}/>
                 {
                     isLogged &&
-                    <MdOutlineDeleteOutline onClick={()=>handleDocDeletion(document._id)} className="absolute z-50 text-white hover:text-red-600 cursor-pointer bg-gray-900 right-[-4px] top-[-4px] rounded-full p-1" size={22}/>
+                    <MdOutlineDeleteOutline onClick={()=>handleDocDeletion(document._id)} className="absolute z-20 text-white hover:text-red-600 cursor-pointer bg-gray-900 right-[-4px] top-[-4px] rounded-full p-1" size={22}/>
                 }
                 <p className={`font-semibold capitalize sm:text-base text-xs text-white absolute top-1 left-1 ${docHovered ? "opacity-100" : "opacity-0"}`}>Click to Expand</p>
             </div>
@@ -79,7 +79,7 @@ const Docs = ()=>{
             {
                 addDoc &&
                 <form onSubmit={handleAddDocument} className="h-screen w-screen fixed bg-black bg-opacity-80 z-50 top-0 right-0 flex justify-center items-center">
-                    <div className='sm:w-1/2 w-[80%] bg-gray-800 p-6 rounded-md flex flex-col gap-4'>
+                    <div className='sm:w-[400px] w-[80%] bg-gray-800 p-6 rounded-md flex flex-col gap-4'>
                         <h2 className='text-2xl text-sky-500 font-bold'>Add Document</h2>
                         <input name="title" type='text' placeholder="Enter title" required className='outline-none w-full hover:border hover:border-cyan-500 p-2 rounded-md bg-gray-700 text-white'/>
                         <label htmlFor="doc-image" className="cursor-pointer w-full p-2 rounded-md border border-cyan-500 hover:text-cyan-500 bg-gray-700 flex justify-center text-gray-200">Add Image</label>
@@ -98,7 +98,7 @@ const Docs = ()=>{
                         <button onClick={()=>{setAddDoc(true)}} className="sm:text-sm text-xs font-semibold text-white hover:text-cyan-500">Add Document</button>
                     </div>
                 } 
-                <Masonry className="px-[5vw] w-full min-h-[60vh] h-auto flex gap-2" breakpointCols={breakpointColumns}>
+                <Masonry className="px-[5vw] w-full min-h-[70vh] h-auto flex gap-2" breakpointCols={breakpointColumns}>
                     {
                         docs?.map(doc=>{
                             return (
