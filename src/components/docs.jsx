@@ -98,7 +98,7 @@ const Docs = ()=>{
                         <button onClick={()=>{setAddDoc(true)}} className="sm:text-sm text-xs font-semibold text-white hover:text-cyan-500">Add Document</button>
                     </div>
                 } 
-                <Masonry className="px-[5vw] w-full min-h-[70vh] h-auto flex gap-2" breakpointCols={breakpointColumns}>
+                <Masonry className="px-[5vw] w-full min-h-[70vh] h-auto flex justify-center gap-2" breakpointCols={breakpointColumns}>
                     {
                         docs?.map(doc=>{
                             return (
