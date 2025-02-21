@@ -4,25 +4,28 @@ import { IoIosArrowForward } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
 import Masonry from "react-masonry-css";
 import { useOutletContext } from "react-router-dom" 
+import { MdOutlineDeleteOutline } from "react-icons/md";
+
 const breakpointColumns = {
     default: 4,
     580: 3,
     400: 2
   };
 
-const ProjectImage = ({image, setImageClicked})=>{
+const ProjectImage = ({image, ID, setImageClicked, handleImageDeletion})=>{
     const [hovered, setHovered] = useState(false);
     return (
         <div className='relative' onMouseEnter={()=>{setHovered(true)}} onMouseLeave={()=>{setHovered(false)}}>
             {
                 hovered && <p className='absolute left-2 top-2 text-white font-medium z-20 lg:text-base sm:text-sm text-xs'>Click to Expand</p>
             }
+            <MdOutlineDeleteOutline onClick={()=>{handleImageDeletion(ID, image.image_id)}} onMouseEnter={()=>{setHovered(false)}} onMouseLeave={()=>{setHovered(true)}} className='cursor-pointer absolute top-[-6px] right-[-6px] text-white bg-gray-700 hover:bg-red-800 z-20 p-1 rounded-full' size={20}/>
             <img onClick={()=>{setImageClicked(image.image)}} src={image.image} key={image.image_id} className='hover:brightness-50 rounded-sm cursor-pointer hover:bg-black w-full max-h-[30vh] min-h-[5vh] h-auto mb-2'/>
         </div>
     )
 }
 
-const Project = ({project, setImageClicked, isLogged, handleProjectDeletion, handleTitleUpdation, handleDiscriptionUpdation, handleAddImage})=>{
+const Project = ({project, setImageClicked, isLogged, handleImageDeletion, handleProjectDeletion, handleTitleUpdation, handleDiscriptionUpdation, handleAddImage})=>{
 
     const [clicked, setClicked] = useState(false);
     const [title, setTitle] = useState(project.title);
@@ -63,7 +66,7 @@ const Project = ({project, setImageClicked, isLogged, handleProjectDeletion, han
                             <Masonry className='w-full flex gap-2' breakpointCols={breakpointColumns}>
                                 {
                                     project.images?.map(image => 
-                                        <ProjectImage image={image} setImageClicked={setImageClicked} key={image.image_id}/>
+                                        <ProjectImage handleImageDeletion={handleImageDeletion} ID={project._id} image={image} setImageClicked={setImageClicked} key={image.image_id}/>
                                     )
                                 }
                             </Masonry>
@@ -138,6 +141,12 @@ const Projects = ()=>{
             setProjects(projects.map(proj=>proj._id==ID?response.data.data:proj))
         })
     }
+    const handleImageDeletion = (ID, image_id)=>{
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/project/delete-image/${ID}`, {image_id})
+        .then(response=>{
+            setProjects(projects.map(proj=>proj._id==ID?response.data.data:proj))
+        })
+    }
 
     useEffect(()=>{
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/project/get-all`)
@@ -190,7 +199,7 @@ const Projects = ()=>{
                 {
                     projects?.map(project=>{
                         return (
-                            <Project isLogged={isLogged} handleAddImage={handleAddImage} handleDiscriptionUpdation={handleDiscriptionUpdation} handleTitleUpdation={handleTitleUpdation} handleProjectDeletion={handleProjectDeletion} project={project} setImageClicked={setImageClicked} key={project._id}/>                        
+                            <Project isLogged={isLogged} handleImageDeletion={handleImageDeletion} handleAddImage={handleAddImage} handleDiscriptionUpdation={handleDiscriptionUpdation} handleTitleUpdation={handleTitleUpdation} handleProjectDeletion={handleProjectDeletion} project={project} setImageClicked={setImageClicked} key={project._id}/>                        
                         )
                     })
                 }
