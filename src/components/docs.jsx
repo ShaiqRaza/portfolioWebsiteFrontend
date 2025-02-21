@@ -28,6 +28,15 @@ const Docs = ()=>{
     const { isLogged } = useOutletContext();
     const [addDoc, setAddDoc] = useState(false);
 
+    const handleAddDocument = (e)=>{
+        e.preventDefault();
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/doc/create`, {title: e.target[0].value, image: e.target[1].files[0]}, {headers:{'Content-Type': 'multipart/form-data'}})
+        .then((response)=>{
+            setDocs([...docs, response.data.data])
+            setAddDoc(false)
+        })
+    }
+
     useEffect(()=>{
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/doc/get-all`)
         .then((response)=>{
@@ -56,14 +65,14 @@ const Docs = ()=>{
             }
             {
                 addDoc &&
-                <form className="h-screen w-screen fixed bg-black bg-opacity-80 z-50 top-0 right-0 flex justify-center items-center">
+                <form onSubmit={handleAddDocument} className="h-screen w-screen fixed bg-black bg-opacity-80 z-50 top-0 right-0 flex justify-center items-center">
                     <div className='sm:w-1/2 w-[80%] bg-gray-800 p-6 rounded-md flex flex-col gap-4'>
                         <h2 className='text-2xl text-sky-500 font-bold'>Add Document</h2>
                         <input name="title" type='text' placeholder="Enter title" required className='outline-none w-full hover:border hover:border-cyan-500 p-2 rounded-md bg-gray-700 text-white'/>
                         <label htmlFor="doc-image" className="cursor-pointer w-full p-2 rounded-md border border-cyan-500 hover:text-cyan-500 bg-gray-700 flex justify-center text-gray-200">Add Image</label>
                         <input type="file" required accept="image/*" className="hidden" name="image" id="doc-image"/>
                         <div className='w-full flex gap-2'>
-                            <button className='bg-red-500 hover:bg-red-600 text-white rounded-md p-2 w-1/2'>Cancel</button>
+                            <button onClick={()=>{setAddDoc(false)}} className='bg-red-500 hover:bg-red-600 text-white rounded-md p-2 w-1/2'>Cancel</button>
                             <button type='submit' className='bg-cyan-500 hover:bg-cyan-600 text-white rounded-md p-2 w-1/2'>Add</button>
                         </div>
                     </div>
