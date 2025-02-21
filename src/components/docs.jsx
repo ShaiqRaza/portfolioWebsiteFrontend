@@ -9,7 +9,7 @@ const breakpointColumns = {
     580: 2,
 }
 
-const Doc = ({document, setImageClicked, isLogged}) =>{
+const Doc = ({document, setImageClicked, isLogged, handleDocDeletion}) =>{
 
     const [docHovered, setDocHovered] = useState(false);
 
@@ -17,7 +17,10 @@ const Doc = ({document, setImageClicked, isLogged}) =>{
         <div className="pb-2 flex flex-col sm:gap-2 gap-1">
             <div className="relative">
                 <img onMouseEnter={()=>{setDocHovered(true)}} onMouseLeave={()=>{setDocHovered(false)}} src={document.image} alt="Image!" className="max-h-[70vh] min-h-[10vh] h-auto cursor-pointer rounded-sm hover:brightness-50" onClick={()=>{setImageClicked(document)}}/>
-                <MdOutlineDeleteOutline className="absolute z-50 text-white hover:text-red-600 cursor-pointer bg-gray-900 right-[-4px] top-[-4px] rounded-full p-1" size={22}/>
+                {
+                    isLogged &&
+                    <MdOutlineDeleteOutline onClick={()=>handleDocDeletion(document._id)} className="absolute z-50 text-white hover:text-red-600 cursor-pointer bg-gray-900 right-[-4px] top-[-4px] rounded-full p-1" size={22}/>
+                }
                 <p className={`font-semibold capitalize sm:text-base text-xs text-white absolute top-1 left-1 ${docHovered ? "opacity-100" : "opacity-0"}`}>Click to Expand</p>
             </div>
             <p className={`font-bold capitalize sm:text-base text-xs ${docHovered ? "text-gray-400" : "text-white"}`}>{document.title}</p>
@@ -38,6 +41,12 @@ const Docs = ()=>{
         .then((response)=>{
             setDocs([...docs, response.data.data])
             setAddDoc(false)
+        })
+    }
+    const handleDocDeletion = (ID)=>{
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/doc/delete/${ID}`)
+        .then(()=>{
+            setDocs(docs.filter(doc => doc._id != ID))
         })
     }
 
@@ -93,7 +102,7 @@ const Docs = ()=>{
                     {
                         docs?.map(doc=>{
                             return (
-                                <Doc document={doc} isLogged={isLogged} key={doc._id} setImageClicked={setImageClicked}/>
+                                <Doc document={doc} handleDocDeletion={handleDocDeletion} isLogged={isLogged} key={doc._id} setImageClicked={setImageClicked}/>
                             )
                         })
                     }
