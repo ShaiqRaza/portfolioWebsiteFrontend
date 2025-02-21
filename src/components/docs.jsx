@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import axios from 'axios'
 import Masonry from 'react-masonry-css'
+import { MdOutlineDeleteOutline } from "react-icons/md";
 import { useOutletContext } from "react-router-dom"
 const breakpointColumns = {
     default: 4,
@@ -8,14 +9,17 @@ const breakpointColumns = {
     580: 2,
 }
 
-const Doc = ({document, setImageClicked}) =>{
+const Doc = ({document, setImageClicked, isLogged}) =>{
 
     const [docHovered, setDocHovered] = useState(false);
 
     return (
         <div className="pb-2 flex flex-col sm:gap-2 gap-1">
-            <img onMouseEnter={()=>{setDocHovered(true)}} onMouseLeave={()=>{setDocHovered(false)}} src={document.image} alt="Image!" className="max-h-[70vh] min-h-[10vh] h-auto cursor-pointer rounded-sm hover:brightness-50" onClick={()=>{setImageClicked(document)}}/>
-            <p className={`font-semibold capitalize sm:text-base text-xs text-white absolute px-2 ${docHovered ? "opacity-100" : "opacity-0"}`}>Click to Expand</p>
+            <div className="relative">
+                <img onMouseEnter={()=>{setDocHovered(true)}} onMouseLeave={()=>{setDocHovered(false)}} src={document.image} alt="Image!" className="max-h-[70vh] min-h-[10vh] h-auto cursor-pointer rounded-sm hover:brightness-50" onClick={()=>{setImageClicked(document)}}/>
+                <MdOutlineDeleteOutline className="absolute z-50 text-white hover:text-red-600 cursor-pointer bg-gray-900 right-[-4px] top-[-4px] rounded-full p-1" size={22}/>
+                <p className={`font-semibold capitalize sm:text-base text-xs text-white absolute top-1 left-1 ${docHovered ? "opacity-100" : "opacity-0"}`}>Click to Expand</p>
+            </div>
             <p className={`font-bold capitalize sm:text-base text-xs ${docHovered ? "text-gray-400" : "text-white"}`}>{document.title}</p>
         </div>
     )
@@ -89,7 +93,7 @@ const Docs = ()=>{
                     {
                         docs?.map(doc=>{
                             return (
-                                <Doc document={doc} key={doc._id} setImageClicked={setImageClicked}/>
+                                <Doc document={doc} isLogged={isLogged} key={doc._id} setImageClicked={setImageClicked}/>
                             )
                         })
                     }
