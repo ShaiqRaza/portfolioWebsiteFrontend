@@ -30,7 +30,7 @@ const Project = ({project, setImageClicked, isLogged, handleProjectDeletion, han
     
     return(
         <>
-            <div key={project._id} className='rounded-sm bg-slate-700 text-white px-3 break-inside-avoid'>
+            <div key={project._id} className='rounded-sm bg-slate-700 text-white px-3 break-inside-avoid flex flex-col gap-5'>
             <div onClick={()=>{setClicked(!clicked)}} className='capitalize cursor-pointer h-[7vh] flex items-center justify-between font-bold md:text-xl sm:text-lg text-base'>
                     {
                         isLogged
