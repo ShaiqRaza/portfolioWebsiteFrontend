@@ -11,7 +11,7 @@ export default {
         'xss': '370px',
       },
       animation: {
-        pingSlow: 'ping 5s cubic-bezier(0, 0, 0.2, 1) infinite', // Custom ping animation with 2s duration
+        pingSlow: 'ping 3.5s cubic-bezier(0, 0, 0.2, 1) infinite', // Custom ping animation with 2s duration
       },
     },
   },

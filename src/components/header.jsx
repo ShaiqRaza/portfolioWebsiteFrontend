@@ -2,10 +2,24 @@ import {NavLink} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import {useState, useEffect} from 'react'
+import axios from 'axios'
 
-const Header = ()=>{
+const Header = ({
+    isLogged,
+    setIsLogged
+})=>{
 
     const [isScrolled, setIsScrolled] = useState(false);
+
+    const handleLogout = ()=>{
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/logout`, {}, {withCredentials: true})
+        .then((response)=>{
+            setIsLogged(response.data.success);
+        })
+        .catch((err)=>{
+            setIsLogged(true);
+        })
+    }
 
     useEffect(() => {
         const handleScroll = () => {
@@ -54,13 +68,17 @@ const Header = ()=>{
                         Docs
                     </NavLink>
                 </div>
-                <NavLink 
+                {
+                    isLogged 
+                    ? <button onClick={handleLogout} className='lg:text-[18px] md:text[17px] sm:text-[16px] xs:text-[15px] text-[14px] font-bold text-white hover:text-cyan-400'>Logout</button>
+                    : <NavLink 
                     to='/login'
                     className={({isActive})=>
-                        `${isActive? "text-cyan-400": "text-white hover:text-cyan-400"} font-bold lg:text-[18px] md:text[17px] sm:text-[16px] xs:text-[15px] text-[14px]`
+                        `${isActive? "text-cyan-400": "text-white hover:text-cyan-400"}`
                     }>
                     <FontAwesomeIcon icon={faPen} className='cursor-pointer lg:text-[20px] md:text[19px] sm:text-[18px] xs:text-[17px] text-[16px]' />
-                </NavLink>           
+                </NavLink> 
+                }          
             </div>
         </div>
     )
