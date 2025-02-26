@@ -14,7 +14,7 @@ const Header = ({
     const handleLogout = ()=>{
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/logout`, {}, {withCredentials: true})
         .then((response)=>{
-            setIsLogged(response.data.success);
+            setIsLogged(!response.data.success);
         })
         .catch((err)=>{
             setIsLogged(true);
