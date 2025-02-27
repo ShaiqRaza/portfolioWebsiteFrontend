@@ -63,7 +63,10 @@ const Docs = ()=>{
     }, [])
 
     return (
-        <> 
+        <>
+            {
+                docs?
+                <div> 
             {
                 imageClicked &&
                 <div className="fixed w-full h-full bg-black bg-opacity-80 z-50">
@@ -108,6 +111,14 @@ const Docs = ()=>{
                     }
                 </Masonry>
             </div>
+                </div>
+                : 
+                <div className='h-[80vh] w-full flex justify-center items-center bg-gray-900'>
+                    <Box>
+                        <CircularProgress />
+                    </Box>
+                </div>
+            }
         </>
     )
 }
