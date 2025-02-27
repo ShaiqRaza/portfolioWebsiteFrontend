@@ -3,6 +3,8 @@ import axios from 'axios'
 import Masonry from 'react-masonry-css'
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { useOutletContext } from "react-router-dom"
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 const breakpointColumns = {
     default: 4,
     768: 3,
