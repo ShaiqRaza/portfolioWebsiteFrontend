@@ -5,6 +5,8 @@ import { IoIosArrowDown } from "react-icons/io";
 import Masonry from "react-masonry-css";
 import { useOutletContext } from "react-router-dom" 
 import { MdOutlineDeleteOutline } from "react-icons/md";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 const breakpointColumns = {
     default: 4,
@@ -202,45 +204,56 @@ const Projects = ()=>{
 
         <>
             {
-                addProject &&
-                <form onSubmit={addProjectSubmission} className={`fixed w-full h-full flex justify-center items-center bg-black bg-opacity-80 z-50`}>
-                    <div className='sm:w-[450px] w-[80%] bg-gray-800 p-6 rounded-md flex flex-col gap-3'>
-                        <h2 className='text-2xl text-sky-500 font-bold'>Add a new Project</h2>
-                        <input type="text" placeholder='Title' required className='outline-none w-full bg-gray-700 text-white p-2 rounded-md'/>
-                        <textarea placeholder='Description' required className='outline-none w-full bg-gray-700 text-white p-2 rounded-md'></textarea>
-                        <div className='flex gap-2'>
-                            <label htmlFor="project-images" className='w-1/2 bg-gray-700 text-white sm:text-base text-sm flex justify-center rounded-md p-1 cursor-pointer hover:text-cyan-500'>Add Images</label>
-                            <input id='project-images' type="file" accept='image/*' multiple className='w-full bg-gray-700 text-white p-2 rounded-md hidden'/>
-                            <label htmlFor="project-video" className='w-1/2 bg-gray-700 text-white sm:text-base text-sm flex justify-center rounded-md p-1 cursor-pointer hover:text-cyan-500'>Add Video</label>
-                            <input id='project-video' type="file" accept='video/*' className='w-full bg-gray-700 text-white p-2 rounded-md hidden'/>
+                projects?
+                <div>
+                {
+                    addProject &&
+                    <form onSubmit={addProjectSubmission} className={`fixed w-full h-full flex justify-center items-center bg-black bg-opacity-80 z-50`}>
+                        <div className='sm:w-[450px] w-[80%] bg-gray-800 p-6 rounded-md flex flex-col gap-3'>
+                            <h2 className='text-2xl text-sky-500 font-bold'>Add a new Project</h2>
+                            <input type="text" placeholder='Title' required className='outline-none w-full bg-gray-700 text-white p-2 rounded-md'/>
+                            <textarea placeholder='Description' required className='outline-none w-full bg-gray-700 text-white p-2 rounded-md'></textarea>
+                            <div className='flex gap-2'>
+                                <label htmlFor="project-images" className='w-1/2 bg-gray-700 text-white sm:text-base text-sm flex justify-center rounded-md p-1 cursor-pointer hover:text-cyan-500'>Add Images</label>
+                                <input id='project-images' type="file" accept='image/*' multiple className='w-full bg-gray-700 text-white p-2 rounded-md hidden'/>
+                                <label htmlFor="project-video" className='w-1/2 bg-gray-700 text-white sm:text-base text-sm flex justify-center rounded-md p-1 cursor-pointer hover:text-cyan-500'>Add Video</label>
+                                <input id='project-video' type="file" accept='video/*' className='w-full bg-gray-700 text-white p-2 rounded-md hidden'/>
+                            </div>
+                            <button type='submit' className='w-full bg-sky-500 text-white p-2 rounded-md hover:bg-sky-600'>Add</button>
+                            <button onClick={()=>{setAddProject(false)}} className='w-full bg-red-500 text-white p-2 rounded-md hover:bg-red-600'>Cancel</button>
                         </div>
-                        <button type='submit' className='w-full bg-sky-500 text-white p-2 rounded-md hover:bg-sky-600'>Add</button>
-                        <button onClick={()=>{setAddProject(false)}} className='w-full bg-red-500 text-white p-2 rounded-md hover:bg-red-600'>Cancel</button>
+                    </form>
+                }
+                {
+                    imageClicked &&
+                    <div className={`fixed w-full h-full flex justify-center items-center bg-black bg-opacity-80 z-50`}>
+                        <button className='absolute sm:top-2 right-4 top-4 text-gray-500 hover:text-white text-2xl' onClick={()=>{setImageClicked(null)}}>X</button>
+                        <img src={imageClicked} alt="Image!" className='rounded-md drop-shadow-lg max-h-[70vh] sm:max-w-[60vw] max-w-[90vw]' />
                     </div>
-                </form>
-            }
-            {
-                imageClicked &&
-                <div className={`fixed w-full h-full flex justify-center items-center bg-black bg-opacity-80 z-50`}>
-                    <button className='absolute sm:top-2 right-4 top-4 text-gray-500 hover:text-white text-2xl' onClick={()=>{setImageClicked(null)}}>X</button>
-                    <img src={imageClicked} alt="Image!" className='rounded-md drop-shadow-lg max-h-[70vh] sm:max-w-[60vw] max-w-[90vw]' />
+                }
+                <div className={`px-[5vw] w-full min-h-[80vh] h-auto lg:pt-[17vh] sm:pt-[16vh] pt-[13vh] bg-gray-900 flex flex-col gap-1 z-0`}>
+                    {
+                        isLogged &&
+                        <div className='w-full flex justify-center mb-2'>
+                            <h1 onClick={()=>{setAddProject(true)}} className='sm:text-sm text-xs text-white cursor-pointer hover:text-cyan-500'>Add project</h1>
+                        </div>
+                    }
+                    {
+                        projects?.map(project=>{
+                            return (
+                                <Project isLogged={isLogged} handleVideoAddition={handleVideoAddition} handleVideoDeletion={handleVideoDeletion} handleImageDeletion={handleImageDeletion} handleAddImage={handleAddImage} handleDiscriptionUpdation={handleDiscriptionUpdation} handleTitleUpdation={handleTitleUpdation} handleProjectDeletion={handleProjectDeletion} project={project} setImageClicked={setImageClicked} key={project._id}/>                        
+                            )
+                        })
+                    }
+                </div>
+                </div>
+                :
+                <div className='h-[80vh] w-full flex justify-center items-center bg-gray-900'>
+                    <Box>
+                        <CircularProgress />
+                    </Box>
                 </div>
             }
-            <div className={`px-[5vw] w-full min-h-[80vh] h-auto lg:pt-[17vh] sm:pt-[16vh] pt-[13vh] bg-gray-900 flex flex-col gap-1 z-0`}>
-                {
-                    isLogged &&
-                    <div className='w-full flex justify-center mb-2'>
-                        <h1 onClick={()=>{setAddProject(true)}} className='sm:text-sm text-xs text-white cursor-pointer hover:text-cyan-500'>Add project</h1>
-                    </div>
-                }
-                {
-                    projects?.map(project=>{
-                        return (
-                            <Project isLogged={isLogged} handleVideoAddition={handleVideoAddition} handleVideoDeletion={handleVideoDeletion} handleImageDeletion={handleImageDeletion} handleAddImage={handleAddImage} handleDiscriptionUpdation={handleDiscriptionUpdation} handleTitleUpdation={handleTitleUpdation} handleProjectDeletion={handleProjectDeletion} project={project} setImageClicked={setImageClicked} key={project._id}/>                        
-                        )
-                    })
-                }
-            </div>
         </>
     )
 }
