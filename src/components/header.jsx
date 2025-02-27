@@ -1,4 +1,4 @@
-import {NavLink} from 'react-router-dom'
+import {NavLink, useNavigate} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import {useState, useEffect} from 'react'
@@ -9,12 +9,14 @@ const Header = ({
     setIsLogged
 })=>{
 
+    const navigate = useNavigate();
     const [isScrolled, setIsScrolled] = useState(false);
 
     const handleLogout = ()=>{
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/logout`, {}, {withCredentials: true})
         .then((response)=>{
             setIsLogged(!response.data.success);
+            navigate('/')
         })
         .catch((err)=>{
             setIsLogged(true);
