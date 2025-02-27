@@ -57,7 +57,7 @@ const Footer = ({
           ©2024
           <a href="#" className=" ml-1 hover:underline">
             {
-              `${import.meta.env.VITE_OWNER}`
+              `${import.meta.env.VITE_BACKEND_URL}`
             }
           </a>
           .  All Rights Reserved.
