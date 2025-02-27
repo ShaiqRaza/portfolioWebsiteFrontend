@@ -56,7 +56,7 @@ const Footer = ({
         <div className="flex items-center">
           ©2024
           <a href="#" className=" ml-1 hover:underline">
-            MuhammadKhushamAli
+            {import.meta.env.OWNER}
           </a>
           .  All Rights Reserved.
         </div>
