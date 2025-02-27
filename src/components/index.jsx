@@ -18,3 +18,6 @@ export {Projects}
 
 import Docs from './docs'
 export {Docs}
+
+import ChangePassword from './changePassword'
+export {ChangePassword}

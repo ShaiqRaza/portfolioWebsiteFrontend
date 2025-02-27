@@ -68,18 +68,20 @@ const Header = ({
                         Docs
                     </NavLink>
                 </div>
-                {
-                    isLogged 
-                    ? <button onClick={handleLogout} className='lg:text-[18px] md:text[17px] sm:text-[16px] xs:text-[15px] text-[14px] font-bold text-white hover:text-cyan-400'>Logout</button>
-                    : <NavLink 
-                    to='/login'
-                    className={({isActive})=>
-                        `${isActive? "text-cyan-400": "text-white hover:text-cyan-400"}`
-                    }>
-                    <FontAwesomeIcon icon={faPen} className='cursor-pointer lg:text-[20px] md:text[19px] sm:text-[18px] xs:text-[17px] text-[16px]' />
-                </NavLink> 
-                }          
-            </div>
+                <div className='flex lg:gap-12 md:gap-11 sm:gap-10 xs:gap-8 gap-6'>
+                    {
+                        isLogged 
+                        && <button onClick={handleLogout} className='lg:text-[18px] md:text[17px] sm:text-[16px] xs:text-[15px] text-[14px] font-bold text-white hover:text-cyan-400'>Logout</button>
+                    }          
+                        <NavLink 
+                        to={isLogged? '/admin/update': '/login'}
+                        className={({isActive})=>
+                            `${isActive? "text-cyan-400": "text-white hover:text-cyan-400"}`
+                        }>
+                        <FontAwesomeIcon icon={faPen} className='cursor-pointer lg:text-[20px] md:text[19px] sm:text-[18px] xs:text-[17px] text-[16px]' />
+                    </NavLink> 
+                </div>
+                </div>
         </div>
     )
 }

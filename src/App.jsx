@@ -4,6 +4,7 @@ import {Home} from './components'
 import {Login} from './components'
 import {Projects} from './components'
 import {Docs} from './components'
+import {ChangePassword} from './components'
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path:'docs',
         element:<Docs/>
+      },
+      {
+        path:'admin/update',
+        element:<ChangePassword/>
       }
     ]
   }
