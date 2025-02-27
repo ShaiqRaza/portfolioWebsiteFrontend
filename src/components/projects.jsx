@@ -88,17 +88,16 @@ const Project = ({project, handleVideoDeletion, handleVideoAddition, setImageCli
                     }
                     <div className='flex flex-col gap-5'>
                         {
-                            isLogged &&
-                            <div className='h-[1px] w-full bg-gray-500'></div>
-                        }
-                        {
-                            project.video
-                            ?<div className='w-full flex flex-col justify-center items-center pb-5 pt-2 gap-5'>
-                                <video controls src={project.video} className='max-h-[50vh] h-auto border-2 border-gray-300'></video>
-                                {
-                                    isLogged &&
-                                    <button onClick={()=>{handleVideoDeletion(project._id, project.video_id)}} className='sm:text-sm text-xs font-semibold text-white hover:text-red-400'>Delete video</button>
-                                }
+                            project.video ?
+                            <div>
+                                <div className='h-[1px] w-full bg-gray-500'></div>
+                                <div className='w-full flex flex-col justify-center items-center pb-5 pt-2 gap-5'>
+                                    <video controls src={project.video} className='max-h-[50vh] h-auto border-2 border-gray-300'></video>
+                                    {
+                                        isLogged &&
+                                        <button onClick={()=>{handleVideoDeletion(project._id, project.video_id)}} className='sm:text-sm text-xs font-semibold text-white hover:text-red-400'>Delete video</button>
+                                    }
+                                </div>
                             </div>
                             : <div className='w-full flex justify-center'>
                                 {
