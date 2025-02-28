@@ -88,7 +88,7 @@ const Docs = ()=>{
                             addDoc &&
                             <form onSubmit={handleAddDocument} className="h-screen w-screen fixed bg-black bg-opacity-80 z-50 top-0 right-0 flex justify-center items-center">
                                 <div className='sm:w-[400px] w-[80%] bg-gray-800 p-6 rounded-md flex flex-col gap-4'>
-                                    <h2 className='text-2xl text-sky-500 font-bold'>Add Document</h2>
+                                    <h2 className='text-2xl text-cyan-500 font-bold'>Add Document</h2>
                                     <input name="title" type='text' placeholder="Enter title" required className='outline-none w-full hover:border hover:border-cyan-500 p-2 rounded-md bg-gray-700 text-white'/>
                                     <label htmlFor="doc-image" className="cursor-pointer w-full p-2 rounded-md border border-cyan-500 hover:text-cyan-500 bg-gray-700 flex justify-center text-gray-200">Add Image</label>
                                     <input type="file" required accept="image/*" className="hidden" name="image" id="doc-image"/>

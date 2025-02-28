@@ -212,7 +212,7 @@ const Projects = ()=>{
                             addProject &&
                             <form onSubmit={addProjectSubmission} className={`fixed w-full h-full flex justify-center items-center bg-black bg-opacity-80 z-50`}>
                             <div className='sm:w-[450px] w-[80%] bg-gray-800 p-6 rounded-md flex flex-col gap-3'>
-                                <h2 className='text-2xl text-sky-500 font-bold'>Add a new Project</h2>
+                                <h2 className='text-2xl text-cyan-500 font-bold'>Add a new Project</h2>
                                 <input type="text" placeholder='Title' required className='outline-none w-full bg-gray-700 text-white p-2 rounded-md'/>
                                 <textarea placeholder='Description' required className='outline-none w-full bg-gray-700 text-white p-2 rounded-md'></textarea>
                                 <div className='flex gap-2'>
@@ -221,7 +221,7 @@ const Projects = ()=>{
                                     <label htmlFor="project-video" className='w-1/2 bg-gray-700 text-white sm:text-base text-sm flex justify-center rounded-md p-1 cursor-pointer hover:text-cyan-500'>Add Video</label>
                                     <input id='project-video' type="file" accept='video/*' className='w-full bg-gray-700 text-white p-2 rounded-md hidden'/>
                                 </div>
-                                <button type='submit' className='w-full bg-sky-500 text-white p-2 rounded-md hover:bg-sky-600'>Add</button>
+                                <button type='submit' className='w-full bg-cyan-500 text-white p-2 rounded-md hover:bg-cyan-600'>Add</button>
                                 <button onClick={()=>{setAddProject(false)}} className='w-full bg-red-500 text-white p-2 rounded-md hover:bg-red-600'>Cancel</button>
                             </div>
                             </form>
@@ -250,7 +250,7 @@ const Projects = ()=>{
                             </div>
                         </div>
                         :
-                        <h1 className='lg:pt-[17vh] sm:pt-[16vh] pt-[13vh] h-[80vh] w-full flex justify-center items-center bg-gray-900 text-white'>I have <span className='text-sky-500 mx-1'>no projects</span> yet.</h1>
+                        <h1 className='lg:pt-[17vh] sm:pt-[16vh] pt-[13vh] h-[80vh] w-full flex justify-center items-center bg-gray-900 text-white'>I have <span className='text-cyan-500 mx-1'>no projects</span> yet.</h1>
                     }
                 </div>
                 :

@@ -22,9 +22,9 @@ const Contact = ({isLogged}) => {
         <div className="w-full text-white flex flex-col items-center lg:pt-12 md:pt-10 pt-8 gap-4">
             {
                 isSubmit
-                ? <h1 className='mb-6 text-xl'>Thank you for <span className='text-sky-500'>contacting</span> me.</h1>
+                ? <h1 className='mb-6 text-xl'>Thank you for <span className='text-cyan-500'>contacting</span> me.</h1>
                 : <>
-                    <h2 className="text-center font-bold text-3xl lg:text-4xl mb-6 text-sky-500">Contact Me</h2>
+                    <h2 className="text-center font-bold text-3xl lg:text-4xl mb-6 text-cyan-500">Contact Me</h2>
                     <form className={`w-full bg-gray-800 lg:p-8 md:p-6 sm:p-5 p-4 rounded-lg`} onSubmit={handleSubmit}>
                         <div className='grid sm:grid-cols-2 gap-4 pb-4'>
                             <div>
@@ -34,7 +34,7 @@ const Contact = ({isLogged}) => {
                                     id="name"
                                     name="name"
                                     required
-                                    className="w-full sm:px-3 px-2 sm:py-2 py-1 mt-2 bg-transparent border-2 border-white hover:border-sky-400 outline-none rounded-lg text-white transition-all"
+                                    className="w-full sm:px-3 px-2 sm:py-2 py-1 mt-2 bg-transparent border-2 border-white hover:border-cyan-400 outline-none rounded-lg text-white transition-all"
                                 />
                             </div>
 
@@ -45,7 +45,7 @@ const Contact = ({isLogged}) => {
                                     id="email"
                                     name="email"
                                     required
-                                    className="w-full sm:px-3 px-2 sm:py-2 py-1 mt-2 bg-transparent border-2 border-white rounded-lg text-white hover:border-sky-400 outline-none transition-all"
+                                    className="w-full sm:px-3 px-2 sm:py-2 py-1 mt-2 bg-transparent border-2 border-white rounded-lg text-white hover:border--400 outline-none transition-all"
                                 />
                             </div>
                         </div>
@@ -56,12 +56,12 @@ const Contact = ({isLogged}) => {
                                 id="message"
                                 name="message"
                                 required
-                                className="w-full custom-scrollbar sm:px-3 px-2 sm:py-2 py-1 mt-2 bg-transparent border-2 border-white rounded-lg text-white hover:border-sky-400 outline-none transition-all"
+                                className="w-full custom-scrollbar sm:px-3 px-2 sm:py-2 py-1 mt-2 bg-transparent border-2 border-white rounded-lg text-white hover:border--400 outline-none transition-all"
                                 rows="3"
                             />
                         </div>
 
-                        <button type="submit" className={`w-full bg-sky-600 hover:bg-sky-800 text-white p-4 rounded-lg font-semibold transform transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500`}>
+                        <button type="submit" className={`w-full bg--600 hover:bg--800 text-white p-4 rounded-lg font-semibold transform transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500`}>
                             Send Message
                         </button>
                     </form>

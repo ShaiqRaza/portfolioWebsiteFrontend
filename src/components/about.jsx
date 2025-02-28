@@ -59,7 +59,7 @@ const About = ({isLogged}) => {
                     {
                         isLogged &&
                             <>
-                                <label htmlFor="imageID"><MdOutlineModeEdit className='cursor-pointer absolute sm:right-[12%] right-[10%] bottom-3 rounded-full hover:bg-sky-500 bg-gray-700 lg:w-[40px] md:w-[35px] sm:w-[30px] w-[25px] lg:h-[40px] md:h-[35px] sm:h-[30px] h-[25px] md:p-2 p-1'/></label>
+                                <label htmlFor="imageID"><MdOutlineModeEdit className='cursor-pointer absolute sm:right-[12%] right-[10%] bottom-3 rounded-full hover:bg-cyan-500 bg-gray-700 lg:w-[40px] md:w-[35px] sm:w-[30px] w-[25px] lg:h-[40px] md:h-[35px] sm:h-[30px] h-[25px] md:p-2 p-1'/></label>
                                 <input id='imageID' type="file" accept='image/*' name='avatar' className='hidden' onChange={(e)=>{handleAvatarSubmission(e)}}/>
                             </>
                     }

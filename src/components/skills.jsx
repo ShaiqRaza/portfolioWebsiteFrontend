@@ -30,7 +30,7 @@ const Skill = ({
                 updateSkill &&
                 <form onSubmit={(e)=>{handleSkillUpdation(e, ID, stateTitle, stateDescription); setUpdateSkill(false)}} className='h-screen w-screen fixed bg-black bg-opacity-80 z-50 top-0 right-0 flex justify-center items-center'>
                     <div className='sm:w-[500px] w-[85%] bg-gray-800 p-6 rounded-md'>
-                        <h2 className='text-2xl text-sky-500 font-bold mb-4'>Update Skill</h2>
+                        <h2 className='text-2xl text-cyan-500 font-bold mb-4'>Update Skill</h2>
                         <input type='text' value={stateTitle} required className='outline-none w-full hover:border hover:border-cyan-500 p-2 rounded-md bg-gray-700 text-white mb-4' onChange={(e)=>{setStateTitle(e.target.value)}}/>
                         <textarea value={stateDescription} required className='outline-none hover:border hover:border-cyan-500 w-full p-2 rounded-md bg-gray-700 text-white mb-4' onChange={(e)=>{setStateDescription(e.target.value)}}/>
                         <div className='w-full flex gap-2'>
@@ -54,7 +54,7 @@ const Skill = ({
                         )}
                     </div>
                 )}
-                <h3 className="font-bold text-xl mb-3 uppercase text-center text-sky-400">{title}</h3>
+                <h3 className="font-bold text-xl mb-3 uppercase text-center text-cyan-400">{title}</h3>
                 <p className="text-sm text-gray-300 break-words text-left">
                     {description}
                 </p>
@@ -108,7 +108,7 @@ const Skills = () => {
                     addSkill &&
                     <form onSubmit={handleAddSkillSubmission} className='fixed top-0 right-0 w-screen h-screen bg-black bg-opacity-80 z-50 flex justify-center items-center'>
                         <div className='sm:w-[400px] w-[80%] bg-gray-800 p-6 rounded-md'>
-                            <h2 className='text-2xl text-sky-500 font-bold mb-4'>Add a new Skill</h2>
+                            <h2 className='text-2xl text-cyan-500 font-bold mb-4'>Add a new Skill</h2>
                             <input type='text' required placeholder='Skill Name' className='outline-none w-full hover:border hover:border-cyan-500 p-2 rounded-md bg-gray-700 text-white mb-4' />
                             <textarea required placeholder='Skill Description' className='outline-none hover:border hover:border-cyan-500 w-full p-2 rounded-md bg-gray-700 text-white mb-4' />
                             <div className='w-full flex gap-2'>
@@ -119,7 +119,7 @@ const Skills = () => {
                     </form>
                 }
                 <div className="w-full relative text-white flex flex-col items-center lg:py-12 md:py-10 py-8 mb-6 h-full gap-5">
-                    <h2 className="text-center font-bold text-2xl lg:text-3xl text-sky-500">My Skills</h2>
+                    <h2 className="text-center font-bold text-2xl lg:text-3xl text-cyan-500">My Skills</h2>
                     <Masonry className="w-full flex justify-center gap-2" breakpointCols={breakpointColumns}>
                         {
                             skills?.map(skill => {
