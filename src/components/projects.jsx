@@ -38,7 +38,7 @@ const Project = ({project, handleVideoDeletion, handleVideoAddition, setImageCli
     
     return(
         <>
-            <div key={project._id} className='rounded-sm bg-slate-700 text-white px-3 break-inside-avoid flex flex-col gap-5'>
+            <div key={project._id} className='rounded-sm bg-slate-700 text-white px-3 break-inside-avoid flex flex-col gap-3'>
                 <div onClick={()=>{setClicked(!clicked)}} className='capitalize cursor-pointer h-[7vh] flex items-center justify-between font-bold md:text-xl sm:text-lg text-base'>
                     {
                         isLogged
@@ -59,7 +59,7 @@ const Project = ({project, handleVideoDeletion, handleVideoAddition, setImageCli
                     <div className='flex flex-col gap-5 px-3 py-1 pb-2 text-gray-300'>
                     {
                         isLogged
-                        ?<form onSubmit={(e)=>{console.log(e); e.preventDefault(); handleDiscriptionUpdation(project._id, description)}} className='w-full flex justify-center items-center flex-col gap-2'>
+                        ?<form onSubmit={(e)=>{e.preventDefault(); handleDiscriptionUpdation(project._id, description)}} className='w-full flex justify-center items-center flex-col gap-2'>
                             <textarea className='w-full bg-slate-700 text-white p-2 rounded-sm outline-none border border-white hover:border-cyan-500' rows={3} value={description} onChange={(e)=>{setDescription(e.target.value)}}></textarea>
                             <button type='submit' className='sm:text-base text-sm rounded-md bg-gray-700 border border-white text-white hover:text-cyan-500 hover:border-cyan-500 py-1 px-2'>Save</button>
                         </form>
@@ -189,6 +189,7 @@ const Projects = ()=>{
     useEffect(()=>{
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/project/get-all`)
         .then(response=>{
+            console.log(response.data.data)
             setProjects(response.data.data)
         })
         .catch(err=>{
