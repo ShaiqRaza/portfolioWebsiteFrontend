@@ -45,7 +45,7 @@ const Header = ({
     return(
         <div className='w-full flex justify-center'>
             <div className={
-                `m-[40px] rounded-md shadow-2xl font-semibold lg:text-[18px] md:text[17px] sm:text-[16px] xs:text-[15px] text-[14px] text-white fixed z-50 flex items-center justify-between bg-blue-900 ${isScrolled? "sm:h-[11vh] h-[9vh]": "sm:h-[12vh] h-[10vh]"}`
+                `m-[40px] w-full rounded-md shadow-2xl font-semibold lg:text-[18px] md:text[17px] sm:text-[16px] xs:text-[15px] text-[14px] text-white fixed z-50 flex items-center justify-between bg-blue-900 ${isScrolled? "sm:h-[11vh] h-[9vh]": "sm:h-[12vh] h-[10vh]"}`
             }>
                 <div className='md:gap-[60px] xs:gap-[35px] sm:gap-[50px] xss:gap-[25px] gap-[20px] flex items-center'>
                     <NavLink 
