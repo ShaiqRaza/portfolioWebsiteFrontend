@@ -250,7 +250,7 @@ const Projects = ()=>{
                             </div>
                         </div>
                         :
-                        <p className='lg:pt-[17vh] sm:pt-[16vh] pt-[13vh] h-[80vh] w-full flex justify-center items-center text-white'>I have <span className='text-cyan-500'>no projects</span> yet.</p>
+                        <p className='lg:pt-[17vh] sm:pt-[16vh] pt-[13vh] h-[80vh] w-full flex justify-center items-center bg-gray-900 text-white'>I have <span className='text-cyan-500'>no projects</span> yet.</p>
                     }
                 </div>
                 :
