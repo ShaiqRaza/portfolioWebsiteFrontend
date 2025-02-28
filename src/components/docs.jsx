@@ -119,7 +119,7 @@ const Docs = ()=>{
                         </div>
                         :
                         <div className="h-[80vh] w-full flex justify-center items-center lg:pt-[17vh] sm:pt-[16vh] pt-[13vh] text-white bg-gray-900">
-                            <h1>No <span className="text-cyan-500 mx-2">documents</span> available.</h1>
+                            <h1>No <span className="text-cyan-500 mx-1">documents</span> available.</h1>
                         </div>
                     }
                 </div>
