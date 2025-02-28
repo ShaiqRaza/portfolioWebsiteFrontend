@@ -245,9 +245,7 @@ const Projects = ()=>{
                             )
                         })
                         :
-                        <div className='h-[80vh] w-full flex justify-center items-center text-white'> 
-                            <p>I have <span className='text-cyan-500'>no projects</span> yet.</p>
-                        </div>
+                        <p className='text-white self-center justify-self-center'>I have <span className='text-cyan-500'>no projects</span> yet.</p>
                     }
                 </div>
                 </div>
