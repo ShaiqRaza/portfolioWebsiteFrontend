@@ -250,7 +250,7 @@ const Projects = ()=>{
                             </div>
                         </div>
                         :
-                        <h1 className='lg:pt-[17vh] sm:pt-[16vh] pt-[13vh] h-[80vh] w-full flex justify-center items-center bg-gray-900 text-white'>I have <span className='text-sky-500'>no projects</span> yet.</h1>
+                        <h1 className='lg:pt-[17vh] sm:pt-[16vh] pt-[13vh] h-[80vh] w-full flex justify-center items-center bg-gray-900 text-white'>I have <span className='text-sky-500 mx-1'>no projects</span> yet.</h1>
                     }
                 </div>
                 :
