@@ -65,7 +65,7 @@ const About = ({isLogged}) => {
                     }
                 </div>
                 <div className='absolute xl:w-[450px] lg:w-[370px] md:w-[270px] sm:w-[220px] w-[200px] xl:h-[450px] lg:h-[370px] md:h-[270px] sm:h-[220px] h-[200px] flex justify-center items-center'>
-                    <div className="absolute z-10 rounded-full xl:w-[260px] lg:w-[220px] md:w-[165px] sm:w-[145px] w-[130px] xl:h-[260px] lg:h-[220px] md:h-[165px] sm:h-[125px] h-[130px] bg-white animate-pingSlow"></div>
+                    <div className="absolute z-10 rounded-full xl:w-[265px] lg:w-[225px] md:w-[165px] sm:w-[145px] w-[130px] xl:h-[265px] lg:h-[225px] md:h-[165px] sm:h-[125px] h-[130px] bg-white animate-pingSlow"></div>
                 </div>
                     </div>
                     <div className="sm:w-[60%] w-full sm:order-1 order-2 flex flex-col gap-[2vw]">
