@@ -189,7 +189,6 @@ const Projects = ()=>{
     useEffect(()=>{
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/project/get-all`)
         .then(response=>{
-            console.log(response.data.data)
             setProjects(response.data.data)
         })
         .catch(err=>{
@@ -239,11 +238,16 @@ const Projects = ()=>{
                         </div>
                     }
                     {
-                        projects?.map(project=>{
+                        projects.length>0 ?
+                        projects.map(project=>{
                             return (
                                 <Project isLogged={isLogged} handleVideoAddition={handleVideoAddition} handleVideoDeletion={handleVideoDeletion} handleImageDeletion={handleImageDeletion} handleAddImage={handleAddImage} handleDiscriptionUpdation={handleDiscriptionUpdation} handleTitleUpdation={handleTitleUpdation} handleProjectDeletion={handleProjectDeletion} project={project} setImageClicked={setImageClicked} key={project._id}/>                        
                             )
                         })
+                        :
+                        <div className='lg:pt-[17vh] sm:pt-[16vh] pt-[13vh] h-full w-full flex justify-center items-center text-white'> 
+                            <p>I have <span className='bg-cyan-600'>no projects</span> yet.</p>
+                        </div>
                     }
                 </div>
                 </div>
