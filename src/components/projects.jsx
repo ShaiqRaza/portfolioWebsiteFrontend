@@ -233,7 +233,7 @@ const Projects = ()=>{
                                 <img src={imageClicked} alt="Image!" className='rounded-md drop-shadow-lg max-h-[70vh] sm:max-w-[60vw] max-w-[90vw]' />
                                 </div>
                             }
-                            <div className={`px-[5vw] w-full min-h-[80vh] lg:pt-[17vh] sm:pt-[16vh] pt-[13vh] bg-gray-900 flex flex-col gap-1 z-0`}>
+                            <div className={`px-[4vw] w-full min-h-[80vh] lg:pt-[17vh] sm:pt-[16vh] pt-[13vh] bg-gray-900 flex flex-col gap-1 z-0`}>
                             {
                                 isLogged &&
                                 <div className='w-full flex justify-center mb-2'>
