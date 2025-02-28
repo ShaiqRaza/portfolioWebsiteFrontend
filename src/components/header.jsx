@@ -51,26 +51,26 @@ const Header = ({
                     <NavLink 
                         to='/' 
                         className={({isActive})=>
-                        `${isActive? "text-cyan-400": "text-white hover:text-cyan-400"} font-bold lg:text-[18px] md:text[17px] sm:text-[16px] xs:text-[15px] text-[14px]`
+                        `${isActive? "text-cyan-400": "text-white hover:text-cyan-400"}`
                         }>
                         Home
                     </NavLink>
                     <NavLink 
                         to='/projects' 
                         className={({isActive})=>
-                        `${isActive? "text-cyan-400": "text-white hover:text-cyan-400"} font-bold lg:text-[18px] md:text[17px] sm:text-[16px] xs:text-[15px] text-[14px]`
+                        `${isActive? "text-cyan-400": "text-white hover:text-cyan-400"}`
                         }>
                         Projects
                     </NavLink>
                     <NavLink 
                         to='/docs' 
                         className={({isActive})=>
-                        `${isActive? "text-cyan-400": "text-white hover:text-cyan-400"} font-bold lg:text-[18px] md:text[17px] sm:text-[16px] xs:text-[15px] text-[14px]`
+                        `${isActive? "text-cyan-400": "text-white hover:text-cyan-400"}`
                         }>
                         Docs
                     </NavLink>
                 </div>
-                <div className='flex lg:gap-12 md:gap-11 sm:gap-10 xs:gap-8 gap-6'>
+                <div className='flex lg:gap-12 md:gap-11 sm:gap-10 xs:gap-8 gap-6 font-black lg:font-bold sm:font-extrabold '>
                     {
                         isLogged 
                         && <button onClick={handleLogout} className='lg:text-[18px] md:text[17px] sm:text-[16px] xs:text-[15px] text-[14px] font-bold text-white hover:text-cyan-400'>Logout</button>
