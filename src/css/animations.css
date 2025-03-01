@@ -3,6 +3,9 @@
 }
 @keyframes intro-text-color-animation{
     0%{
+        color: #111827;
+    }
+    50%{
         color: #06b6d4;
     }
     100%{
