@@ -43,7 +43,7 @@ const Skill = ({
             <div className="bg-gray-800 lg:p-6 sm:p-4 p-2 rounded-md flex-col flex items-center gap-3 shadow-md mb-2 break-inside-avoid relative" onMouseLeave={() => setShowOptions(false)}>
                 {isLogged && (
                     <div className="absolute top-2 right-2" >
-                        <button>
+                        <button className='p-1 bg-gray-800'>
                             <FaEllipsisH className="text-white" onMouseEnter={() => setShowOptions(true)}/>
                         </button>
                         {showOptions && (
