@@ -17,7 +17,8 @@ const Skill = ({
     isLogged,
     ID,
     handleSkillDeletion,
-    handleSkillUpdation
+    handleSkillUpdation,
+    logo
 }) => {
     const [showOptions, setShowOptions] = useState(false);
     const [updateSkill, setUpdateSkill] = useState(false);
@@ -54,6 +55,7 @@ const Skill = ({
                         )}
                     </div>
                 )}
+                <img src={logo} alt={`${title}-image`} className='max-h-[250px] max-w-[250px] h-auto w-auto'/>
                 <h3 className="md:font-bold md:text-xl sm:font-extrabold sm:text-lg text-base font-black uppercase text-center text-cyan-400">{title}</h3>
                 {
                     description &&
@@ -135,6 +137,7 @@ const Skills = () => {
                                         isLogged={isLogged}
                                         handleSkillDeletion={handleSkillDeletion}
                                         handleSkillUpdation={handleSkillUpdation}
+                                        logo={skill?.logo}
                                     />
                                 )
                             })
