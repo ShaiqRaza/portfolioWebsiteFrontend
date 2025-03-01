@@ -73,7 +73,7 @@ const Header = ({
                 <div className='flex lg:gap-12 md:gap-11 sm:gap-10 xs:gap-8 gap-6 font-black lg:font-bold sm:font-extrabold '>
                     {
                         isLogged 
-                        && <button onClick={handleLogout} className='lg:text-[18px] md:text[17px] sm:text-[16px] xs:text-[15px] text-[14px] font-bold text-white hover:text-cyan-400'>Logout</button>
+                        && <button onClick={handleLogout} className='lg:text-[18px] md:text[17px] sm:text-[16px] xs:text-[15px] text-[14px] font-black lg:font-bold sm:font-extrabold text-white hover:text-cyan-400'>Logout</button>
                     }          
                         <NavLink 
                         to={isLogged? '/admin/update': '/login'}
