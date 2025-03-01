@@ -60,9 +60,12 @@ const Skill = ({
                 <div className='flex xl:flex-row flex-col xl:gap-2 gap-3 items-center justify-center'>
                     {
                         logo &&
-                        <img src={logo} alt={`${title}-image`} className='max-h-[10vh] max-w-[15vw] min-h-[5vh] min-w-[5vw] h-auto w-auto'/>
+                        <img src={logo} alt={`${title}-image`} className='max-h-[15vh] max-w-[20vw] min-h-[5vh] min-w-[5vw] h-auto w-auto'/>
                     }
-                    <h3 className="md:font-bold md:text-xl sm:font-extrabold sm:text-lg text-base font-black uppercase text-center text-cyan-400">{title}</h3>
+                    {
+                        title &&
+                        <h3 className="md:font-bold md:text-xl sm:font-extrabold sm:text-lg text-base font-black uppercase text-center text-cyan-400">{title}</h3>
+                    }
                 </div>
                 {
                     description &&
