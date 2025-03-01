@@ -87,7 +87,7 @@ const About = ({isLogged}) => {
                             <textarea value={description} className='bg-gray-900 w-[90%] p-2 text-sm sm:text-base rounded-md border border-white hover:border-cyan-500' onChange={(e)=>{setDescription(e.target.value)}}/>
                             <button type='submit' className='hover:text-cyan-500 text-white font-semibold'>Save</button>
                          </form>
-                        :<p className="text-sm sm:text-base">{description}</p>
+                        :<p className="text-sm sm:text-base description-text-color">{description}</p>
                     }
                     </div>
                     </div>
