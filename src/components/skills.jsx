@@ -110,7 +110,7 @@ const Skills = () => {
                         <div className='sm:w-[400px] w-[80%] bg-gray-800 p-6 rounded-md'>
                             <h2 className='text-2xl text-cyan-500 font-bold mb-4'>Add a new Skill</h2>
                             <input type='text' required placeholder='Skill Name' className='outline-none w-full hover:border hover:border-cyan-500 p-2 rounded-md bg-gray-700 text-white mb-4' />
-                            <textarea required placeholder='Skill Description' className='outline-none hover:border hover:border-cyan-500 w-full p-2 rounded-md bg-gray-700 text-white mb-4' />
+                            <textarea placeholder='Skill Description' className='outline-none hover:border hover:border-cyan-500 w-full p-2 rounded-md bg-gray-700 text-white mb-4' />
                             <div className='w-full flex gap-2'>
                                 <button onClick={()=>{setAddSkill(false)}} className='bg-red-500 hover:bg-red-600 text-white rounded-md p-2 w-1/2'>Cancel</button>
                                 <button type='submit' className='bg-cyan-500 hover:bg-cyan-600 text-white rounded-md p-2 w-1/2'>Add</button>
