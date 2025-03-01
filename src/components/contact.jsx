@@ -24,7 +24,7 @@ const Contact = ({isLogged}) => {
                 isSubmit
                 ? <h1 className='mb-6 text-xl'>Thank you for <span className='text-cyan-500'>contacting</span> me.</h1>
                 : <>
-                    <h2 className="text-center font-bold text-2xl lg:text-3xl mb-6 text-cyan-500 animate-bounce">Contact Me</h2>
+                    <h2 className="text-center font-bold text-2xl lg:text-3xl mb-6 text-cyan-500">Contact Me</h2>
                     <form className={`w-full bg-gray-800 lg:p-8 md:p-6 sm:p-5 p-4 rounded-lg`} onSubmit={handleSubmit}>
                         <div className='grid sm:grid-cols-2 gap-4 pb-4'>
                             <div>

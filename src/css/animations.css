@@ -1,0 +1,11 @@
+.intro-text-color{
+    animation: intro-text-color-animation 2s 1;
+}
+@keyframes intro-text-color-animation{
+    0%{
+        color: #06b6d4;
+    }
+    100%{
+        color: #ffffff;
+    }
+}
