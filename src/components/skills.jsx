@@ -117,10 +117,10 @@ const Skills = () => {
                 {
                     addSkill &&
                     <form onSubmit={handleAddSkillSubmission} className='fixed top-0 right-0 w-screen h-screen bg-black bg-opacity-80 z-50 flex justify-center items-center'>
-                        <div className='sm:w-[400px] w-[80%] bg-gray-800 p-6 rounded-md'>
-                            <h2 className='text-2xl text-cyan-500 font-bold mb-4'>Add a new Skill</h2>
-                            <input type='text' required placeholder='Skill Name' className='outline-none w-full hover:border hover:border-cyan-500 p-2 rounded-md bg-gray-700 text-white mb-4' />
-                            <textarea placeholder='Skill Description' className='outline-none hover:border hover:border-cyan-500 w-full p-2 rounded-md bg-gray-700 text-white mb-4' />
+                        <div className='sm:w-[400px] w-[80%] bg-gray-800 p-6 rounded-md flex gap-4 flex-col'>
+                            <h2 className='text-2xl text-cyan-500 font-bold'>Add a new Skill</h2>
+                            <input type='text' required placeholder='Skill Name' className='outline-none w-full hover:border hover:border-cyan-500 p-2 rounded-md bg-gray-700 text-white' />
+                            <textarea placeholder='Skill Description' className='outline-none hover:border hover:border-cyan-500 w-full p-2 rounded-md bg-gray-700 text-white' />
                             <input type="file" accept='image/*' id='logo' className='hidden'/>
                             <label htmlFor="logo" className='rounded-md block w-full py-1 bg-gray-700 border border-gray-800 text-white hover:border-cyan-500'>Add Logo</label>
                             <div className='w-full flex gap-2'>
