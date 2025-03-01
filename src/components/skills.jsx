@@ -122,7 +122,7 @@ const Skills = () => {
                     </form>
                 }
                 <div className="w-full relative text-white flex flex-col items-center lg:py-12 md:py-10 py-8 mb-6 h-full gap-5">
-                    <h2 className="text-center font-bold text-2xl lg:text-3xl text-cyan-500">My Skills</h2>
+                    <h2 className="text-center font-bold text-2xl lg:text-3xl text-cyan-500 animate-bounce">My Skills</h2>
                     <Masonry className="w-full flex justify-center gap-2" breakpointCols={breakpointColumns}>
                         {
                             skills?.map(skill => {
