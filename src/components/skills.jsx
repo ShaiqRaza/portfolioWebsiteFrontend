@@ -92,7 +92,7 @@ const Skills = () => {
 
     const handleAddSkillSubmission = (e) => {
         e.preventDefault();
-        axios.post(`${import.meta.env.VITE_BACKEND_URL}/skill/create`, {title: e.target[0].value, description: e.target[1].value})
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/skill/create`, {title: e.target[0].value, description: e.target[1].value, logo: e.target[2].files[0]}, {headers: {'Content-Type': 'multipart/form-data'}})
         .then(response => {
             setSkills([...skills, response.data.data])
             setAddSkill(false);
@@ -121,6 +121,8 @@ const Skills = () => {
                             <h2 className='text-2xl text-cyan-500 font-bold mb-4'>Add a new Skill</h2>
                             <input type='text' required placeholder='Skill Name' className='outline-none w-full hover:border hover:border-cyan-500 p-2 rounded-md bg-gray-700 text-white mb-4' />
                             <textarea placeholder='Skill Description' className='outline-none hover:border hover:border-cyan-500 w-full p-2 rounded-md bg-gray-700 text-white mb-4' />
+                            <input type="file" accept='image/*' id='logo' className='hidden'/>
+                            <label htmlFor="logo" className='rounded-md w-full py-1 bg-gray-700 border border-gray-800 text-white hover:border-cyan-500'>Add Logo</label>
                             <div className='w-full flex gap-2'>
                                 <button onClick={()=>{setAddSkill(false)}} className='bg-red-500 hover:bg-red-600 text-white rounded-md p-2 w-1/2'>Cancel</button>
                                 <button type='submit' className='bg-cyan-500 hover:bg-cyan-600 text-white rounded-md p-2 w-1/2'>Add</button>
