@@ -55,8 +55,10 @@ const Skill = ({
                         )}
                     </div>
                 )}
-                <img src={logo} alt={`${title}-image`} className='max-h-[10vh] max-w-[15vw] min-h-[5vh] min-w-[5vw] h-auto w-auto'/>
-                <h3 className="md:font-bold md:text-xl sm:font-extrabold sm:text-lg text-base font-black uppercase text-center text-cyan-400">{title}</h3>
+                <div className='flex lg:flex-row flex-col lg:gap-2 gap-3'>
+                    <img src={logo} alt={`${title}-image`} className='max-h-[10vh] max-w-[15vw] min-h-[5vh] min-w-[5vw] h-auto w-auto'/>
+                    <h3 className="md:font-bold md:text-xl sm:font-extrabold sm:text-lg text-base font-black uppercase text-center text-cyan-400">{title}</h3>
+                </div>
                 {
                     description &&
                     <p className="text-sm text-gray-300 break-words text-left">
