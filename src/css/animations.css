@@ -3,15 +3,9 @@
 }
 @keyframes intro-text-color-animation{
     0%{
-        color: #111827;
-    }
-    75%{
-        color: #172943;
-    }
-    85%{
-        color: #06b6d4;
+        opacity: 0;
     }
     100%{
-        color: #ffffff;
+        opacity: 100;
     }
 }
