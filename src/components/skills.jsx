@@ -40,7 +40,7 @@ const Skill = ({
                     </div>
                 </form>
             }
-            <div className="bg-gray-800 lg:p-6 sm:p-4 p-2 rounded-md flex-col flex items-center shadow-md mb-2 break-inside-avoid relative" onMouseLeave={() => setShowOptions(false)}>
+            <div className="bg-gray-800 lg:p-6 sm:p-4 p-2 rounded-md flex-col flex items-center gap-3 shadow-md mb-2 break-inside-avoid relative" onMouseLeave={() => setShowOptions(false)}>
                 {isLogged && (
                     <div className="absolute top-2 right-2" >
                         <button>
@@ -54,7 +54,7 @@ const Skill = ({
                         )}
                     </div>
                 )}
-                <h3 className="font-bold text-xl mb-3 uppercase text-center text-cyan-400">{title}</h3>
+                <h3 className="md:font-bold md:text-xl sm:font-extrabold sm:text-lg text-base font-black uppercase text-center text-cyan-400">{title}</h3>
                 <p className="text-sm text-gray-300 break-words text-left">
                     {description}
                 </p>
