@@ -122,7 +122,7 @@ const Skills = () => {
                             <input type='text' required placeholder='Skill Name' className='outline-none w-full hover:border hover:border-cyan-500 p-2 rounded-md bg-gray-700 text-white mb-4' />
                             <textarea placeholder='Skill Description' className='outline-none hover:border hover:border-cyan-500 w-full p-2 rounded-md bg-gray-700 text-white mb-4' />
                             <input type="file" accept='image/*' id='logo' className='hidden'/>
-                            <label htmlFor="logo" className='rounded-md w-full py-1 bg-gray-700 border border-gray-800 text-white hover:border-cyan-500'>Add Logo</label>
+                            <label htmlFor="logo" className='rounded-md block w-full py-1 bg-gray-700 border border-gray-800 text-white hover:border-cyan-500'>Add Logo</label>
                             <div className='w-full flex gap-2'>
                                 <button onClick={()=>{setAddSkill(false)}} className='bg-red-500 hover:bg-red-600 text-white rounded-md p-2 w-1/2'>Cancel</button>
                                 <button type='submit' className='bg-cyan-500 hover:bg-cyan-600 text-white rounded-md p-2 w-1/2'>Add</button>
