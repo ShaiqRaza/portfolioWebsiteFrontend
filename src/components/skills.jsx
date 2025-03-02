@@ -67,12 +67,12 @@ const Skill = ({
                         <h3 className="md:font-bold md:text-xl sm:font-extrabold sm:text-lg text-base font-black uppercase text-center text-cyan-400">{title}</h3>
                     }
                 </div>
-                {
-                    description &&
-                    <p className="text-sm text-gray-300 break-words text-left">
-                        {description}
-                    </p>
-                }
+                    {
+                        description &&
+                        <p className="text-sm text-gray-300 break-words text-justify text-gray-300">
+                            {description}
+                        </p>
+                    }
             </div>
         </>
     );
@@ -97,7 +97,7 @@ const Skills = () => {
 
     const handleAddSkillSubmission = (e) => {
         e.preventDefault();
-        axios.post(`${import.meta.env.VITE_BACKEND_URL}/skill/create`, {title: e.target[0].value, description: e.target[1].value, logo: e.target[2].files[0]}, {headers: {'Content-Type': 'multipart/form-data'}})
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/skill/create`, {title: e.target[0].value, description: e.target[2].value, logo: e.target[1].files[0]}, {headers: {'Content-Type': 'multipart/form-data'}})
         .then(response => {
             setSkills([...skills, response.data.data])
             setAddSkill(false);
@@ -112,7 +112,7 @@ const Skills = () => {
     const handleSkillUpdation = (e, ID)=>{
         console.log("aa gya update karne")
         e.preventDefault(); 
-        axios.post(`${import.meta.env.VITE_BACKEND_URL}/skill/update/${ID}`, {title: e.target[0].value, description: e.target[1].value, logo: e.target[2].files[0]}, {headers: {'Content-Type': 'multipart/form-data'}})
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/skill/update/${ID}`, {title: e.target[0].value, description: e.target[2].value, logo: e.target[1].files[0]}, {headers: {'Content-Type': 'multipart/form-data'}})
         .then(response => {
             setSkills(skills.map(skill => skill._id == ID ? response.data.data : skill));
         })
