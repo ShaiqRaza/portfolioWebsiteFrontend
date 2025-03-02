@@ -57,7 +57,6 @@ const Skill = ({
                         )}
                     </div>
                 )}
-                <div className='flex xl:flex-row flex-col xl:gap-2 gap-3 items-center justify-center'>
                     {
                         logo &&
                         <img src={logo} alt={`${title}-image`} className='max-h-[15vh] max-w-[20vw] min-h-[5vh] min-w-[5vw] h-auto w-auto'/>
@@ -66,10 +65,9 @@ const Skill = ({
                         title &&
                         <h3 className="md:font-bold md:text-xl sm:font-extrabold sm:text-lg text-base font-black uppercase text-center text-cyan-400">{title}</h3>
                     }
-                </div>
                     {
                         description &&
-                        <p className="text-sm text-gray-300 break-words text-justify text-gray-300">
+                        <p className="text-sm text-gray-300 break-words text-justify">
                             {description}
                         </p>
                     }
@@ -110,7 +108,6 @@ const Skills = () => {
         })
     }
     const handleSkillUpdation = (e, ID)=>{
-        console.log(e)
         e.preventDefault(); 
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/skill/update/${ID}`, {title: e.target[0].value, description: e.target[2].value, logo: e.target[1].files[0]}, {headers: {'Content-Type': 'multipart/form-data'}})
         .then(response => {
