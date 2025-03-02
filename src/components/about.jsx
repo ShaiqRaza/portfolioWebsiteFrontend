@@ -74,7 +74,7 @@ const About = ({isLogged}) => {
                     {
                         isLogged
                         ?<form onSubmit={(e)=>{handleIntroSubmission(e)}} className='w-full flex gap-2'>
-                            <input type="text" value={intro} className='bg-gray-900 w-[90%] border border-white hover:border-cyan-500 rounded-md p-2 text-2xl sm:text-3xl font-bold text-white outline-none' onChange={(e)=>{setIntro(e.target.value)}}/>
+                            <textarea type="text" value={intro} className='bg-gray-900 w-[90%] border border-white hover:border-cyan-500 rounded-md p-2 text-2xl sm:text-3xl font-bold text-white outline-none' onChange={(e)=>{setIntro(e.target.value)}}/>
                             <button type='submit' className='hover:text-cyan-500 font-semibold'>Save</button>
                         </form>
                         :<h1 className="text-2xl sm:text-3xl font-bold text-white intro-text-color">{intro}</h1>
