@@ -29,7 +29,7 @@ const Skill = ({
         <>
             {
                 updateSkill &&
-                <form onSubmit={(e)=>{handleSkillUpdation(e, ID, stateTitle, stateDescription); setUpdateSkill(false)}} className='h-screen w-screen fixed bg-black bg-opacity-80 z-50 top-0 right-0 flex justify-center items-center'>
+                <form onSubmit={(e)=>{handleSkillUpdation(e, ID); setUpdateSkill(false)}} className='h-screen w-screen fixed bg-black bg-opacity-80 z-50 top-0 right-0 flex justify-center items-center'>
                     <div className='sm:w-[500px] w-[85%] bg-gray-800 p-6 rounded-md flex flex-col gap-4'>
                         <h2 className='text-2xl text-cyan-500 font-bold'>Update Skill</h2>
                         <input type='text' value={stateTitle} className='outline-none w-full hover:border hover:border-cyan-500 p-2 rounded-md bg-gray-700 text-white' onChange={(e)=>{setStateTitle(e.target.value)}}/>
@@ -109,9 +109,9 @@ const Skills = () => {
             setSkills(skills.filter(skill => skill._id != ID))
         })
     }
-    const handleSkillUpdation = (e, ID, title, description)=>{
+    const handleSkillUpdation = (e, ID)=>{
         e.preventDefault(); 
-        axios.post(`${import.meta.env.VITE_BACKEND_URL}/skill/update/${ID}`, {title, description})
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/skill/update/${ID}`, {title: e.target[0].value, description: e.target[1].value, logo: e.target[2].files[0]}, {headers: {'Content-Type': 'multipart/form-data'}})
         .then(response => {
             setSkills(skills.map(skill => skill._id == ID ? response.data.data : skill));
         })
