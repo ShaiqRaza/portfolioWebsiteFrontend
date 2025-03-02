@@ -110,7 +110,7 @@ const Skills = () => {
         })
     }
     const handleSkillUpdation = (e, ID)=>{
-        console.log("aa gya update karne")
+        console.log(e)
         e.preventDefault(); 
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/skill/update/${ID}`, {title: e.target[0].value, description: e.target[2].value, logo: e.target[1].files[0]}, {headers: {'Content-Type': 'multipart/form-data'}})
         .then(response => {
