@@ -59,7 +59,7 @@ const Skill = ({
                 )}
                     {
                         logo &&
-                        <img src={logo} alt={`${title}-image`} className='max-h-[15vh] max-w-[20vw] min-h-[5vh] min-w-[5vw] h-auto w-auto'/>
+                        <img src={logo} alt={`${title}-image`} className='max-h-[15vh] max-w-[20vw] min-h-[5vh] min-w-[5vw] h-auto w-auto bg-none'/>
                     }
                     {
                         title &&
