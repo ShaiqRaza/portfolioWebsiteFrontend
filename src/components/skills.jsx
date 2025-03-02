@@ -32,10 +32,10 @@ const Skill = ({
                 <form onSubmit={(e)=>{handleSkillUpdation(e, ID, stateTitle, stateDescription); setUpdateSkill(false)}} className='h-screen w-screen fixed bg-black bg-opacity-80 z-50 top-0 right-0 flex justify-center items-center'>
                     <div className='sm:w-[500px] w-[85%] bg-gray-800 p-6 rounded-md flex flex-col gap-4'>
                         <h2 className='text-2xl text-cyan-500 font-bold'>Update Skill</h2>
-                        <input type='text' value={stateTitle} required className='outline-none w-full hover:border hover:border-cyan-500 p-2 rounded-md bg-gray-700 text-white' onChange={(e)=>{setStateTitle(e.target.value)}}/>
+                        <input type='text' value={stateTitle} className='outline-none w-full hover:border hover:border-cyan-500 p-2 rounded-md bg-gray-700 text-white' onChange={(e)=>{setStateTitle(e.target.value)}}/>
                         <input type="file" accept='image/*' id='logo' className='hidden'/>
                         <label htmlFor="logo" className='rounded-md block w-full py-1 px-2 bg-gray-700 border border-gray-800 text-gray-400 hover:border-cyan-500'>Add Logo</label>
-                        <textarea value={stateDescription} required className='outline-none hover:border hover:border-cyan-500 w-full p-2 rounded-md bg-gray-700 text-white' onChange={(e)=>{setStateDescription(e.target.value)}}/>
+                        <textarea value={stateDescription} className='outline-none hover:border hover:border-cyan-500 w-full p-2 rounded-md bg-gray-700 text-white' onChange={(e)=>{setStateDescription(e.target.value)}}/>
                         <div className='w-full flex gap-2'>
                             <button onClick={()=>{setUpdateSkill(false)}} className='bg-red-500 hover:bg-red-600 text-white rounded-md p-2 w-1/2'>Cancel</button>
                             <button type='submit' className='bg-cyan-500 hover:bg-cyan-600 text-white rounded-md p-2 w-1/2'>Update</button>
