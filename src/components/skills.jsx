@@ -110,6 +110,7 @@ const Skills = () => {
         })
     }
     const handleSkillUpdation = (e, ID)=>{
+        console.log("aa gya update karne")
         e.preventDefault(); 
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/skill/update/${ID}`, {title: e.target[0].value, description: e.target[1].value, logo: e.target[2].files[0]}, {headers: {'Content-Type': 'multipart/form-data'}})
         .then(response => {
@@ -124,7 +125,7 @@ const Skills = () => {
                     <form onSubmit={handleAddSkillSubmission} className='fixed top-0 right-0 w-screen h-screen bg-black bg-opacity-80 z-50 flex justify-center items-center'>
                         <div className='sm:w-[400px] w-[80%] bg-gray-800 p-6 rounded-md flex gap-4 flex-col'>
                             <h2 className='text-2xl text-cyan-500 font-bold'>Add a new Skill</h2>
-                            <input type='text' required placeholder='Skill Name' className='outline-none w-full hover:border hover:border-cyan-500 p-2 rounded-md bg-gray-700 text-white' />
+                            <input type='text' placeholder='Skill Name' className='outline-none w-full hover:border hover:border-cyan-500 p-2 rounded-md bg-gray-700 text-white' />
                             <input type="file" accept='image/*' id='logo' className='hidden'/>
                             <label htmlFor="logo" className='rounded-md block w-full py-1 px-2 bg-gray-700 border border-gray-800 text-gray-400 hover:border-cyan-500'>Add Logo</label>
                             <textarea placeholder='Skill Description' className='outline-none hover:border hover:border-cyan-500 w-full p-2 rounded-md bg-gray-700 text-white' />
