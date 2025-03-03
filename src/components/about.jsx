@@ -77,7 +77,7 @@ const About = ({isLogged}) => {
                                 <textarea type="text" value={intro} className='bg-gray-900 w-[90%] border border-white hover:border-cyan-500 rounded-md p-2 text-2xl sm:text-3xl font-bold text-white outline-none' onChange={(e)=>{setIntro(e.target.value)}}/>
                                 <button type='submit' className='hover:text-cyan-500 font-semibold'>Save</button>
                             </form>
-                            :<h1 className="text-lg lg:text-3xl md:text-2xl sm:text-xl sm:font-bold font-extrabold text-white intro-text-color">{intro}</h1>
+                            :<h1 className="text-lg lg:text-3xl md:text-2xl sm:text-xl sm:font-bold font-extrabold text-white intro-text-color whitespace-pre-line">{intro}</h1>
                         }
                     </div>
                     <div className='flex items-center gap-[2vw] relative text-gray-300'>
