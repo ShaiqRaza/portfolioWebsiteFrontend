@@ -63,7 +63,7 @@ const Skill = ({
                     }
                     {
                         title &&
-                        <h3 className="md:font-bold md:text-xl sm:font-extrabold sm:text-lg text-base font-black uppercase text-center text-cyan-400">{title}</h3>
+                        <h3 className="md:font-bold md:text-xl sm:font-extrabold sm:text-lg text-base font-black capitalize text-center text-cyan-400">{title}</h3>
                     }
                     {
                         description &&
