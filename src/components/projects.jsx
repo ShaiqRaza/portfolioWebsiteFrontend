@@ -250,7 +250,13 @@ const Projects = ()=>{
                             </div>
                         </div>
                         :
-                        <h1 className='lg:pt-[17vh] sm:pt-[16vh] pt-[13vh] h-[80vh] w-full flex justify-center items-center bg-gray-900 text-white'>I have <span className='text-cyan-500 mx-1'>no projects</span> yet.</h1>
+                        <div className='lg:pt-[17vh] sm:pt-[16vh] pt-[13vh] h-[80vh] w-full flex justify-center items-center flex-col gap-3 bg-gray-900 text-white'>
+                            <h1 className=''>I have <span className='text-cyan-500 mx-1'>no projects</span> yet.</h1>
+                            {
+                                isLogged &&
+                                <h1 onClick={()=>{setAddProject(true)}} className='sm:text-sm text-xs text-white cursor-pointer hover:text-cyan-500'>Add project</h1>
+                            }
+                        </div>
                     }
                 </div>
                 :
