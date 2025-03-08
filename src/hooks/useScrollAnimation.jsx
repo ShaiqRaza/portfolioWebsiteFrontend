@@ -29,7 +29,7 @@ const useScrollAnimation = () => {
     });
 
     return () => elements.forEach((el) => observer.unobserve(el));
-  }, []);
+  });
 };
 
 export default useScrollAnimation;
