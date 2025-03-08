@@ -9,7 +9,7 @@ const useScrollAnimation = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("show");
-            observer.unobserve(entry.target); // Stop observing once it's visible
+            observer.unobserve(entry.target); // Stop observing once visible
           }
         });
       },
@@ -17,13 +17,15 @@ const useScrollAnimation = () => {
     );
 
     elements.forEach((el) => {
-      observer.observe(el);
-
-      // ✅ Check if already visible when page loads
-      if (el.getBoundingClientRect().top < window.innerHeight) {
-        el.classList.add("show");
-        observer.unobserve(el);
-      }
+      // ✅ Ensure layout is calculated before checking visibility
+      requestAnimationFrame(() => {
+        if (el.getBoundingClientRect().top < window.innerHeight) {
+          el.classList.add("show");
+          observer.unobserve(el);
+        } else {
+          observer.observe(el);
+        }
+      });
     });
 
     return () => elements.forEach((el) => observer.unobserve(el));
