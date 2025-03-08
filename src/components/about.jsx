@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { MdOutlineModeEdit } from "react-icons/md";
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
-import '../css/animations.css';
+import '../css/scrollbar.css';
 
 const About = ({isLogged}) => {
 
@@ -77,7 +77,7 @@ const About = ({isLogged}) => {
                                 <textarea type="text" value={intro} className='bg-gray-900 w-[90%] border border-white hover:border-cyan-500 rounded-md p-2 text-2xl sm:text-3xl font-bold text-white outline-none' onChange={(e)=>{setIntro(e.target.value)}}/>
                                 <button type='submit' className='hover:text-cyan-500 font-semibold'>Save</button>
                             </form>
-                            :<h1 className="text-lg lg:text-3xl md:text-2xl sm:text-xl sm:font-bold font-extrabold text-white intro-text-color whitespace-pre-line">{intro}</h1>
+                            :<h1 className="text-lg lg:text-3xl md:text-2xl sm:text-xl sm:font-bold font-extrabold text-white whitespace-pre-line">{intro}</h1>
                         }
                     </div>
                     <div className='flex items-center gap-[2vw] relative text-gray-300'>
@@ -87,7 +87,7 @@ const About = ({isLogged}) => {
                                 <textarea value={description} className='bg-gray-900 w-[90%] p-2 text-sm sm:text-base rounded-md border border-white hover:border-cyan-500' onChange={(e)=>{setDescription(e.target.value)}}/>
                                 <button type='submit' className='hover:text-cyan-500 text-white font-semibold'>Save</button>
                              </form>
-                            :<p className="sm:text-sm md:text-base text-xs description-text-color text-justify">{description}</p>
+                            :<p className="sm:text-sm md:text-base text-xs text-justify">{description}</p>
                         }
                     </div>
                     </div>
