@@ -19,7 +19,7 @@ const Contact = ({isLogged}) => {
     }, [formData])
 
     return (
-        <div className="w-full text-white flex flex-col items-center lg:pt-12 md:pt-10 pt-8 gap-4">
+        <div className="w-full text-white flex flex-col items-center lg:pt-12 md:pt-10 pt-8 gap-4 fade-in">
             {
                 isSubmit
                 ? <h1 className='mb-6 text-xl'>Thank you for <span className='text-cyan-500'>contacting</span> me.</h1>
