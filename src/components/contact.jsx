@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import '../css/scrollbarAnimation.css';
 import axios from 'axios'
-import useScrollbarAnimation from '../hooks/useScrollbarAnimation.jsx';
+import useScrollAnimation from '../hooks/useScrollAnimation.jsx';
 
 const Contact = ({isLogged}) => {
     const [formData, setFormData] = useState(null);
     const [isSubmit, setIsSubmit] = useState(false);
 
-    useScrollbarAnimation();
+    useScrollAnimation();
 
     const handleSubmit = (e) => {
         e.preventDefault();
