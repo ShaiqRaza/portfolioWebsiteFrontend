@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import '../css/scrollbar.css';
+import '../css/scrollbarAnimation.css';
 import axios from 'axios'
-import {useScrollbarAnimation} from '../hooks/useScrollbarAnimation.jsx';
+import useScrollbarAnimation from '../hooks/useScrollbarAnimation.jsx';
 
 const Contact = ({isLogged}) => {
     const [formData, setFormData] = useState(null);
