@@ -4,7 +4,7 @@ import { MdOutlineModeEdit } from "react-icons/md";
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import '../css/scrollbarAnimation.css';
-import {useScrollbarAnimation} from '../hooks/useScrollbarAnimation.jsx';
+import {useScrollAnimation} from '../hooks/useScrollAnimation.jsx';
 
 const About = ({isLogged}) => {
 
@@ -13,7 +13,7 @@ const About = ({isLogged}) => {
     const [description, setDescription] = useState(null);
     const [avatar, setAvatar] = useState(null);
 
-    useScrollbarAnimation();
+    useScrollAnimation();
 
     useEffect(()=>{
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/about/get`)
