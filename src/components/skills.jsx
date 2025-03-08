@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Masonry from "react-masonry-css";
 import { FaEllipsisH } from 'react-icons/fa';
 import { useOutletContext } from 'react-router-dom';
+import useScrollAnimation from '../hooks/useScrollAnimation';
 
 const breakpointColumns = {
     default: 4,
@@ -25,6 +26,8 @@ const Skill = ({
     const [stateTitle, setStateTitle] = useState(title);
     const [stateDescription, setStateDescription] = useState(description);
 
+    useScrollAnimation();
+
     return (
         <>
             {
@@ -43,7 +46,7 @@ const Skill = ({
                     </div>
                 </form>
             }
-            <div className="bg-gray-800 lg:p-6 sm:p-4 p-2 rounded-md flex-col flex items-center gap-3 shadow-md mb-2 break-inside-avoid relative" onMouseLeave={() => setShowOptions(false)}>
+            <div className="bg-gray-800 lg:p-6 sm:p-4 p-2 rounded-md flex-col flex items-center gap-3 shadow-md mb-2 break-inside-avoid relative fade-in" onMouseLeave={() => setShowOptions(false)}>
                 {isLogged && (
                     <div className="absolute top-2 right-2" >
                         <button className='p-1 bg-gray-800'>
