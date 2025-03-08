@@ -4,7 +4,7 @@ import { MdOutlineModeEdit } from "react-icons/md";
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import '../css/scrollbar.css';
-import {useScrollAnimation} from '../hooks/useScrollAnimation.jsx';
+import useScrollAnimation from '../hooks/useScrollAnimation.jsx';
 
 const About = ({isLogged}) => {
 
