@@ -5,6 +5,8 @@ import { MdOutlineDeleteOutline } from "react-icons/md";
 import { useOutletContext } from "react-router-dom"
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+import '../css/scrollbar.css';
+import useScrollAnimation from '../hooks/useScrollAnimation.jsx';
 const breakpointColumns = {
     default: 4,
     768: 3,
@@ -16,7 +18,7 @@ const Doc = ({document, setImageClicked, isLogged, handleDocDeletion}) =>{
     const [docHovered, setDocHovered] = useState(false);
 
     return (
-        <div className="pb-2 flex flex-col sm:gap-2 gap-1">
+        <div className="pb-2 flex flex-col sm:gap-2 gap-1 fade-in">
             <div className="relative">
                 <img onMouseEnter={()=>{setDocHovered(true)}} onMouseLeave={()=>{setDocHovered(false)}} src={document.image} alt="Image!" className="max-h-[70vh] min-h-[10vh] h-auto cursor-pointer rounded-sm hover:brightness-50" onClick={()=>{setImageClicked(document)}}/>
                 {

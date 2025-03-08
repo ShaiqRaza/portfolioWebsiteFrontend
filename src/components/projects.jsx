@@ -7,6 +7,8 @@ import { useOutletContext } from "react-router-dom"
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+import '../css/scrollbar.css';
+import useScrollAnimation from '../hooks/useScrollAnimation.jsx';
 
 const breakpointColumns = {
     default: 4,
@@ -35,11 +37,13 @@ const Project = ({project, handleVideoDeletion, handleVideoAddition, setImageCli
     const [clicked, setClicked] = useState(false);
     const [title, setTitle] = useState(project.title);
     const [description, setDescription] = useState(project.description);
+
+    useScrollAnimation();
     
     return(
         <>
             <div key={project._id} className='rounded-sm bg-slate-700 text-white px-3 break-inside-avoid flex flex-col gap-3'>
-                <div onClick={()=>{setClicked(!clicked)}} className='capitalize cursor-pointer h-[7vh] flex items-center justify-between font-bold md:text-xl sm:text-lg text-base'>
+                <div onClick={()=>{setClicked(!clicked)}} className='fade-in capitalize cursor-pointer h-[7vh] flex items-center justify-between font-bold md:text-xl sm:text-lg text-base'>
                     {
                         isLogged
                         ?<input type="text" onClick={e=>{e.stopPropagation()}} className='sm:w-1/3 w-1/2 rounded-sm outline-none border border-white bg-slate-700 p-1 my-2 hover:border-cyan-500' value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
