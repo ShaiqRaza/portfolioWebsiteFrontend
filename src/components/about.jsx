@@ -56,8 +56,8 @@ const About = ({isLogged}) => {
                     </Box>
                 </div>
                 :
-                <div className="flex sm:flex-row flex-col justify-evenly items-center h-[80vh] w-full text-white xl:gap-5 md:gap-3 sm:gap-2">
-                    <div className="flex justify-center sm:justify-end items-center sm:w-[40%] w-full sm:order-2 order-1 relative fade-in">
+                <div className="flex sm:flex-row flex-col justify-evenly items-center h-[80vh] w-full text-white xl:gap-5 md:gap-3 sm:gap-2 fade-in">
+                    <div className="flex justify-center sm:justify-end items-center sm:w-[40%] w-full sm:order-2 order-1 relative">
                         <div className="relative z-20 xl:w-[450px] lg:w-[370px] md:w-[270px] sm:w-[220px] w-[200px] xl:h-[450px] lg:h-[370px] md:h-[270px] sm:h-[220px] h-[200px]">
                             <img src={avatar} alt="Image!" className='w-full h-full rounded-full z-20'/>
                             {
@@ -90,7 +90,7 @@ const About = ({isLogged}) => {
                                 <textarea value={description} className='bg-gray-900 w-[90%] p-2 text-sm sm:text-base rounded-md border border-white hover:border-cyan-500' onChange={(e)=>{setDescription(e.target.value)}}/>
                                 <button type='submit' className='hover:text-cyan-500 text-white font-semibold'>Save</button>
                              </form>
-                            :<p className="sm:text-sm md:text-base text-xs text-justify fade-in">{description}</p>
+                            :<p className="sm:text-sm md:text-base text-xs text-justify">{description}</p>
                         }
                         </div>
                     </div>
