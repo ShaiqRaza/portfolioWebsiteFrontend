@@ -13,7 +13,7 @@ const useScrollAnimation = () => {
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.4 }
     );
 
     elements.forEach((el) => {
@@ -31,6 +31,5 @@ const useScrollAnimation = () => {
     return () => elements.forEach((el) => observer.unobserve(el));
   }, []);
 };
-
 
 export default useScrollAnimation;
