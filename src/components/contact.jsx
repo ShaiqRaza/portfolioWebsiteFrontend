@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import '../css/scrollbarAnimation.css';
+import '../css/scrollbar.css';
 import axios from 'axios'
 import useScrollAnimation from '../hooks/useScrollAnimation.jsx';
 
