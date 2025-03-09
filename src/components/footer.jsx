@@ -8,7 +8,7 @@ const Footer = ({
 }) => {
 
   const [instagram, setInstagram] = useState('');
-  const [gihub, setGithub] = useState('');
+  const [github, setGithub] = useState('');
   const [x, setX] = useState('');
   const [phone, setPhone] = useState('');
   const [linkedin, setLinkedin] = useState('');
@@ -64,7 +64,7 @@ const Footer = ({
         </div>
   
         <div className="flex space-x-6">
-          <a href={facebook} className=" hover:text-black">
+          <a href={github} className=" hover:text-black">
             <FaGithub size={22} />
           </a>
           <a href={instagram} className=" hover:text-pink-500">
