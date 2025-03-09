@@ -18,7 +18,7 @@ const Footer = ({
     axios.post(`${import.meta.env.VITE_BACKEND_URL}/socials/update`, {instagram, github, x, phone, linkedin})
     .then((response)=>{
       setInstagram(response.data.data.instagram);
-      setFacebook(response.data.data.github);
+      setGithub(response.data.data.github);
       setX(response.data.data.x);
       setPhone(response.data.data.phone);
       setLinkedin(response.data.data.linkedin);
@@ -44,7 +44,7 @@ const Footer = ({
         <form onSubmit={updateSocials} className='flex flex-col items-center gap-5 bg-gray-900 w-full pt-5 pb-10'>
           <div className='w-full flex gap-5 flex-wrap justify-center p-6'>
             <input type="text" placeholder='Intagram' name='instagram' className='bg-gray-900 border-b border-white hover:border-cyan-500 outline-none text-white p-1' value={instagram} onChange={(e)=>{setInstagram(e.target.value)}}/>
-            <input type="text" placeholder='Github' name='github' className='bg-gray-900 border-b border-white hover:border-cyan-500 outline-none text-white p-1' value={facebook} onChange={(e)=>{setFacebook(e.target.value)}}/>
+            <input type="text" placeholder='Github' name='github' className='bg-gray-900 border-b border-white hover:border-cyan-500 outline-none text-white p-1' value={github} onChange={(e)=>{setGihub(e.target.value)}}/>
             <input type="text" placeholder='X' name='x' className='bg-gray-900 border-b border-white hover:border-cyan-500 outline-none text-white p-1' value={x} onChange={(e)=>{setX(e.target.value)}}/>
             <input type="text" placeholder='Linkedin' name='linkedin' className='bg-gray-900 border-b border-white hover:border-cyan-500 outline-none text-white p-1' value={linkedin} onChange={(e)=>{setLinkedin(e.target.value)}}/>
             <input type="text" placeholder='Phone Number' name='phone' className='bg-gray-900 border-b border-white hover:border-cyan-500 outline-none text-white p-1' value={phone} onChange={(e)=>{setPhone(e.target.value)}}/>
