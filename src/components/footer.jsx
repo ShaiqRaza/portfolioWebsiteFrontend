@@ -15,10 +15,10 @@ const Footer = ({
 
   const updateSocials = (e)=>{
     e.preventDefault();
-    axios.post(`${import.meta.env.VITE_BACKEND_URL}/socials/update`, {instagram, facebook, x, phone, linkedin})
+    axios.post(`${import.meta.env.VITE_BACKEND_URL}/socials/update`, {instagram, github, x, phone, linkedin})
     .then((response)=>{
       setInstagram(response.data.data.instagram);
-      setFacebook(response.data.data.facebook);
+      setFacebook(response.data.data.github);
       setX(response.data.data.x);
       setPhone(response.data.data.phone);
       setLinkedin(response.data.data.linkedin);
