@@ -1,4 +1,4 @@
-import { FaFacebook, FaInstagram, FaLinkedin, FaPhoneAlt } from 'react-icons/fa';
+import { FaGithub, FaInstagram, FaLinkedin, FaPhoneAlt } from 'react-icons/fa';
 import {FaXTwitter} from 'react-icons/fa6'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -65,7 +65,7 @@ const Footer = ({
   
         <div className="flex space-x-6">
           <a href={facebook} className=" hover:text-blue-500">
-            <FaFacebook size={22} />
+            <FaGithub size={22} />
           </a>
           <a href={x} className=" hover:text-black">
             <FaXTwitter size={22} />
