@@ -60,7 +60,7 @@ const About = ({isLogged}) => {
                     <div className="flex justify-center sm:justify-end items-center sm:w-[40%] w-full sm:order-2 order-1 relative fade-in">
                         <div className="group relative z-20 xl:w-[450px] lg:w-[370px] md:w-[270px] sm:w-[220px] w-[200px] xl:h-[450px] lg:h-[370px] md:h-[270px] sm:h-[220px] h-[200px]">
                             <img src={avatar} alt="Image!" className='absolute w-full h-full rounded-full z-20 hidden group-hover:block'/>
-                            <video src={'../../public/videos/me_solving_problem.mp4'} className='w-full h-full object-cover border-blue-300 rounded-full z-20 group-hover:hidden' autoPlay loop muted/>
+                            <video src={'../../videos/me_solving_problem.mp4'} className='w-full h-full object-cover border-blue-300 rounded-full z-20 group-hover:hidden' autoPlay loop muted/>
                             {
                                 isLogged &&
                                     <>
