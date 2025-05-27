@@ -62,13 +62,15 @@ const Project = ({project, handleVideoDeletion, handleVideoAddition, setImageCli
                     clicked &&
                     <div className='flex flex-col gap-5 px-3 py-1 pb-2 text-gray-300'>
                     {
+                        /*Description Section*/
                         isLogged
                         ?<form onSubmit={(e)=>{e.preventDefault(); handleDiscriptionUpdation(project._id, description)}} className='w-full flex justify-center items-center flex-col gap-2'>
                             <textarea className='w-full bg-slate-700 text-white p-2 rounded-sm outline-none border border-white hover:border-cyan-500' rows={3} value={description} onChange={(e)=>{setDescription(e.target.value)}}></textarea>
                             <button type='submit' className='sm:text-base text-sm rounded-md bg-gray-700 border border-white text-white hover:text-cyan-500 hover:border-cyan-500 py-1 px-2'>Save</button>
                         </form>
-                        :<p className='first-letter:uppercase lg:text-base sm:text-sm text-xs whitespace-pre-line'>{description}</p>
+                        :<p className='first-letter:uppercase lg:text-base sm:text-sm text-xs whitespace-pre-line bg-slate-900 rounded-sm border border-white sm:p-2 p-1'>{description}</p>
                     }
+                    {/*Images Section*/}
                     {
                         project.images.length>0 
                         && 
@@ -90,12 +92,13 @@ const Project = ({project, handleVideoDeletion, handleVideoAddition, setImageCli
                             <input type='file' name='image' accept='image/*' id='project-image' onChange={(e)=>{handleAddImage(project._id, e.target.files[0])}} className='hidden'/>
                         </div>
                     }
+                    {/*Video Section*/}
                     <div className='flex flex-col gap-5'>
                         {
                             project.video ?
                             <div>
+                                <div className='w-full flex flex-col justify-center items-center pb-5 gap-5'>
                                 <div className='h-[1px] w-full bg-gray-500'></div>
-                                <div className='w-full flex flex-col justify-center items-center pb-5 pt-2 gap-5'>
                                     <video controls src={project.video} className='max-h-[50vh] h-auto border-2 border-gray-300'></video>
                                     {
                                         isLogged &&
