@@ -7,7 +7,9 @@ import { useOutletContext } from 'react-router-dom';
 import useScrollAnimation from '../hooks/useScrollAnimation';
 
 const breakpointColumns = {
-    default: 4,
+    default: 6,
+    1000: 5,
+    700: 4,
     580: 3,
     400: 2
 };
@@ -62,7 +64,7 @@ const Skill = ({
                 )}
                     {
                         logo &&
-                        <img src={logo} alt={`${title}-image`} className='max-h-[15vh] max-w-[20vw] min-h-[5vh] min-w-[5vw] h-auto w-auto bg-none'/>
+                        <img src={logo} alt={`${title}-image`} className='max-h-[10vh] max-w-[15vw] min-h-[3vh] min-w-[3vw] h-auto w-auto bg-none'/>
                     }
                     {
                         title &&

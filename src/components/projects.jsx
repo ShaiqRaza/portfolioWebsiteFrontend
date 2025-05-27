@@ -68,7 +68,7 @@ const Project = ({project, handleVideoDeletion, handleVideoAddition, setImageCli
                             <textarea className='w-full bg-slate-700 text-white p-2 rounded-sm outline-none border border-white hover:border-cyan-500' rows={3} value={description} onChange={(e)=>{setDescription(e.target.value)}}></textarea>
                             <button type='submit' className='sm:text-base text-sm rounded-md bg-gray-700 border border-white text-white hover:text-cyan-500 hover:border-cyan-500 py-1 px-2'>Save</button>
                         </form>
-                        :<p className='first-letter:uppercase lg:text-base sm:text-sm text-xs whitespace-pre-line bg-slate-900 rounded-sm border border-white sm:p-2 p-1'>{description}</p>
+                        :<p className='first-letter:uppercase lg:text-base sm:text-sm text-xs whitespace-pre-line bg-slate-900 rounded-sm border border-white sm:p-3 p-2'>{description}</p>
                     }
                     {/*Images Section*/}
                     {
