@@ -14,6 +14,9 @@ export default {
         pingSlow: 'ping 3.5s cubic-bezier(0, 0, 0.2, 1) infinite', // Custom ping animation with 2s duration
         bounce: 'bounce 6s infinite', // Custom bounce animation with 1s duration
       },
+      fontFamily: {
+        bbbFont: ['bbbFont', 'sans-serif'],
+      },
     },
   },
 }
