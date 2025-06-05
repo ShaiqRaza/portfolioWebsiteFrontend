@@ -16,7 +16,7 @@ const Layout = ()=>{
 
     return (
       <>
-        <div className='w-full h-screen font-noteFont tracking-[0.15em] lg:tracking-[0.12em] xl:tracking-widest'>
+        <div className='w-full h-screen font-noteFont lg:tracking-[0.12em] tracking-widest'>
           <Header isLogged={isLogged} setIsLogged={setIsLogged}/>
           <Outlet context={{isLogged, setIsLogged}}/>
           <Footer isLogged={isLogged}/>
