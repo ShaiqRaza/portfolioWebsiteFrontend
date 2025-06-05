@@ -41,7 +41,7 @@ const Footer = ({
       {
         isLogged
         ?
-        <form onSubmit={updateSocials} className='flex flex-col items-center gap-5 bg-gray-900 w-full pt-5 pb-10'>
+        <form onSubmit={updateSocials} className='flex flex-col items-center gap-5 bg-gray-900 w-full pt-5 pb-10 font-noteFont tracking-widest'>
           <div className='w-full flex gap-5 flex-wrap justify-center p-6'>
             <input type="text" placeholder='Intagram' name='instagram' className='bg-gray-900 border-b border-white hover:border-cyan-500 outline-none text-white p-1' value={instagram} onChange={(e)=>{setInstagram(e.target.value)}}/>
             <input type="text" placeholder='Github' name='github' className='bg-gray-900 border-b border-white hover:border-cyan-500 outline-none text-white p-1' value={github} onChange={(e)=>{setGithub(e.target.value)}}/>
@@ -52,10 +52,10 @@ const Footer = ({
           <button className='px-2 py-1 border border-white hover:border-cyan-500 text-white hover:text-cyan-500 bg-gray-800 rounded-md'>Save</button>
         </form>
         :
-        <div className="z-50 h-[20vh] text-sm text-gray-500 flex flex-col items-center justify-evenly bg-gray-900 py-2 w-full xs:text-[14px] text-[13px]">
+        <div className="z-50 h-[20vh] font-noteFont tracking-widest text-sm text-gray-500 flex flex-col items-center justify-evenly bg-gray-900 py-2 w-full xs:text-[14px] text-[13px]">
         <div className="flex items-center">
           ©2024
-          <a href="#" className=" ml-1 hover:underline">
+          <a href="#" className=" ml-1 hover:underline font-bold">
             {
               `${import.meta.env.VITE_OWNER}`
             }

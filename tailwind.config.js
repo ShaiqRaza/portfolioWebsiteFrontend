@@ -16,6 +16,7 @@ export default {
       },
       fontFamily: {
         bbbFont: ['bbbFont', 'sans-serif'],
+        noteFont: ['noteFont', 'sans-serif'],
       },
     },
   },
