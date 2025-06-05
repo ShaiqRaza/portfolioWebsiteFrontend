@@ -52,7 +52,7 @@ const Footer = ({
           <button className='px-2 py-1 border border-white hover:border-cyan-500 text-white hover:text-cyan-500 bg-gray-800 rounded-md'>Save</button>
         </form>
         :
-        <div className="z-50 h-[20vh] font-noteFont tracking-widest text-sm text-gray-500 flex flex-col items-center justify-evenly bg-gray-900 py-2 w-full xs:text-[14px] text-[13px]">
+        <div className="z-50 h-[20vh] text-sm text-gray-500 flex flex-col items-center justify-evenly bg-gray-900 py-2 w-full xs:text-[14px] text-[13px]">
         <div className="flex items-center">
           ©2024
           <a href="#" className=" ml-1 hover:underline font-bold">
