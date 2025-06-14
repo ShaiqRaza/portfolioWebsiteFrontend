@@ -41,7 +41,7 @@ const Footer = ({
       {
         isLogged
         ?
-        <form onSubmit={updateSocials} className='flex flex-col items-center gap-5 bg-gray-900 w-full pt-5 pb-10 font-noteFont tracking-widest'>
+        <form onSubmit={updateSocials} className='flex flex-col items-center gap-5 bg-gray-900 w-full pt-5 pb-10'>
           <div className='w-full flex gap-5 flex-wrap justify-center p-6'>
             <input type="text" placeholder='Intagram' name='instagram' className='bg-gray-900 border-b border-white hover:border-cyan-500 outline-none text-white p-1' value={instagram} onChange={(e)=>{setInstagram(e.target.value)}}/>
             <input type="text" placeholder='Github' name='github' className='bg-gray-900 border-b border-white hover:border-cyan-500 outline-none text-white p-1' value={github} onChange={(e)=>{setGithub(e.target.value)}}/>

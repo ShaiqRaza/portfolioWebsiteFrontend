@@ -6,7 +6,3 @@
   font-family: 'bbbFont';
   src: url('../fonts/Bing\ Bam\ Boum.ttf') format('truetype');
 }
-@font-face {
-  font-family: 'noteFont';
-  src: url('../fonts/This\ Notes\ Personal\ Use.ttf') format('truetype');
-}
